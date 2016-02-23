@@ -1,0 +1,108 @@
+<div class="tweet-detail" layout="row">
+  <div flex="100" layout="column" class="md-padding">
+    <h2 flex>Tweet Administration</h2>
+    <md-tabs flex md-dynamic-height md-border-bottom class="md-whiteframe-1dp">
+      <md-tab label="stream">
+        <md-content class="md-padding">
+          <section layout="row">
+            <md-input-container flex>
+              <label>#Hashtag</label>
+              <input ng-model="target">
+            </md-input-container>
+            <div layout="row" layout-align="center center">
+              <md-button class="md-raised" ng-click="startStream(target)" ng-disabled="!target || tweetsstreams.user">Start</md-button>
+              <md-button class="md-raised" ng-click="stopStream()" ng-disabled="!tweetsstreams.user">Stop</md-button>
+              <md-button class="md-raised" ng-click="clearStream()">Clear</md-button>
+            </div>
+          </section>
+          <div ng-show="tweetsstreams.user" layout="row" layout-align="start center">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular> <span>Streaming Tweets</span>
+          </div>
+
+          <!-- List START-->
+          <md-list>
+            <md-list-item class="md-3-line md-whiteframe-1dp tweet-card" ng-repeat="tweet in tweetstemp">
+              <img ng-src="{{ tweet.tweet.user.profile_image_url_https}}" class="md-avatar" alt="{{tweet.tweet.user.screen_name}}" />
+              <div class="md-list-item-text tweet-text" layout="column">
+                <div layout="row">
+                  <span class="md-title">{{ tweet.tweet.user.name }}</span>
+                  <p>&nbsp; @{{ tweet.tweet.user.screen_name }}</p>
+                </div>
+                <p class="md-caption">{{ tweet.tweet.text }}</p>
+                <div layout="row" class="tweet-actions">
+                  <md-button ng-show="!tweet.status" class="md-icon-button" aria-label="Favorite" ng-click="tweetFavorite(tweet.tweet)">
+                    <md-tooltip md-direction="top">
+                      Favorite
+                    </md-tooltip>
+                    <ng-md-icon icon="favorite_outline" style="fill: #ccc" size="18"></ng-md-icon>
+                  </md-button>
+                  <md-button ng-show="tweet.status" class="md-icon-button" aria-label="Favorite">
+                    <md-tooltip md-direction="top">
+                      Favorited!
+                    </md-tooltip>
+                    <ng-md-icon icon="favorite" style="fill: #E91E63" size="18"></ng-md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Remove" ng-click="tweetRemove(tweet._id)">
+                    <md-tooltip md-direction="top">
+                      Remove
+                    </md-tooltip>
+                    <ng-md-icon icon="delete" style="fill: #ccc" size="18"></ng-md-icon>
+                  </md-button>
+                </div>
+              </div>
+            </md-list-item>
+          </md-list>
+          <!-- List END -->
+        </md-content>
+      </md-tab>
+      <md-tab label="search">
+        <md-content class="md-padding">
+          <h3 class="md-headline">Search</h3>
+        </md-content>
+      </md-tab>
+      <md-tab label="curated">
+        <md-content class="md-padding">
+          <div layout="row" layout-align="center center">
+            <md-button class="md-raised" ng-click="tweetsPublish()">Publish All</md-button>
+            <md-button class="md-raised" ng-click="tweetsPublish()">Unpublish All</md-button>
+            <md-button class="md-raised" ng-click="tweetsDelete()">Delete All</md-button>
+          </div>
+          <!-- List START-->
+          <md-list>
+            <md-list-item class="md-3-line md-whiteframe-1dp tweet-card" ng-repeat="tweet in tweets">
+              <img ng-src="{{ tweet.tweet.user.profile_image_url_https}}" class="md-avatar" alt="{{tweet.tweet.user.screen_name}}" />
+              <div class="md-list-item-text tweet-text" layout="column">
+                <div layout="row">
+                  <span class="md-title">{{ tweet.tweet.user.name }}</span>
+                  <p>&nbsp; @{{ tweet.tweet.user.screen_name }}</p>
+                </div>
+                <p class="md-caption">{{ tweet.tweet.text }}</p>
+                <div layout="row" class="tweet-actions">
+                  <md-button ng-show="!tweet.status" class="md-icon-button md-accent" aria-label="Favorite" ng-click="tweetUnpublish(tweet.tweet)">
+                    <md-tooltip md-direction="top">
+                      Published!
+                    </md-tooltip>
+                    <ng-md-icon icon="public" size="18"></ng-md-icon>
+                  </md-button>
+                  <md-button ng-show="tweet.status" class="md-icon-button" aria-label="Favorite" ng-click="tweetPublish(tweet.tweet)">
+                    <md-tooltip md-direction="top">
+                      Publish
+                    </md-tooltip>
+                    <ng-md-icon icon="public" style="fill: #ccc" size="18"></ng-md-icon>
+                  </md-button>
+                  <md-button class="md-icon-button" aria-label="Remove" ng-click="tweetDelete(tweet._id)">
+                    <md-tooltip md-direction="top">
+                      Delete
+                    </md-tooltip>
+                    <ng-md-icon icon="delete" style="fill: #ccc" size="18"></ng-md-icon>
+                  </md-button>
+                </div>
+              </div>
+            </md-list-item>
+          </md-list>
+          <!-- List END -->
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </div>
+</div>
