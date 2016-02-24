@@ -6,18 +6,18 @@ angular.module('iotdashboardApp')
   $scope.perPage = 3;
   $scope.sort = {name_sort : 1};
   $scope.orderProperty = '1';
-  
+
   $scope.helpers({
     cards: function() {
       return Cards.find({}, {
-        sort: $scope.getReactively('sort') 
+        sort: $scope.getReactively('sort')
       });
     },
     cardsCount: function() {
       return Counts.get('numberOfCards');
     }
   });
-                  
+
   $scope.subscribe('cards', function() {
     return [{
       sort: $scope.getReactively('sort'),
@@ -32,15 +32,15 @@ angular.module('iotdashboardApp')
       $scope.newCard = undefined;
     }
   };
-                  
+
   $scope.remove = function(card) {
     Cards.remove({_id:card.id});
   };
-                  
+
   $scope.pageChanged = function(newPage) {
     $scope.page = newPage;
   };
-                  
+
   return $scope.$watch('orderProperty', function() {
     if ($scope.orderProperty) {
       $scope.sort = {

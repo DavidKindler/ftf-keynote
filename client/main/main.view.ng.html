@@ -1,7 +1,37 @@
-<div class="main" layout="row">
-  <span flex=""></span>
+<nxpnav></nxpnav>
+<div layout="row">
   <div layout="column">
-    <h1>Nothing here yet</h1>
+   <div layout-align="center">Video Sync Demo</div>
+<style>
+  .bc-player-f5dae957-1421-47f2-9de8-90cf42d311ae_default .vjs-tech {position: relative; max-height: 500px; }
+</style>
+  <!--  <div id="video-container" class="outer-container text-center">
+          <video id="fslPlayer" data-video-id="ref:RF-SAGE-VIDEO" data-account="4089003392001" class="video-js"
+                data-setup='{"autoplay":false}'
+                data-player="f5dae957-1421-47f2-9de8-90cf42d311ae" data-embed="default"
+                data-delayanalytics="true"
+                controls width="100%" height="100%"
+                poster="http://media.w3.org/2010/05/sintel/poster.png">
+                <source type="video/mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" id="mp4">
+                <source type="video/webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" id="webm">
+                <source type="video/ogg" src="http://media.w3.org/2010/05/sintel/trailer.ogv" id="ogv">
+                <p>Your user agent does not support the HTML5 Video element.</p>
+              </video>
+            <script
+                src="http://players.brightcove.net/4089003392001/f5dae957-1421-47f2-9de8-90cf42d311ae_default/index.min.js"></script>
+              <!~~ <script type="text/javascript" src="http://style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.preroll.js"></script> ~~>
+              <script src="http://players.brightcove.net/videojs-social/dist/videojs-social.min.js"></script>
+              <link href="http://players.brightcove.net/videojs-social/dist/videojs-social.css" rel='stylesheet'>
+              <script type="text/javascript" src="http://style.nxp.com/v1.36/search/javascript/nxpvid_bumper.js"></script>
+                <script>videojs('fslPlayer',{"autoplay":false});</script>
+                <!~~ <script>videojs('fslPlayer',{"autoplay":false}).nxpvidBumper("RF-SAGE-VIDEO", true);</script> ~~>
+              <div id="current">0:00</div>
+            </div> -->
+</div></div>
+
+<div class="main" layout="row">
+  <div layout="column">
+      <div flex="66" flex-md="{{vm.box1Width}}" class="card" ng-repeat="card in cards" >{{ card.name }}</div>
+
   </div>
-  <span flex=""></span>
 </div>
