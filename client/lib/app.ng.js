@@ -4,7 +4,8 @@ angular.module('iotdashboardApp', [
   'ui.router',
   'ngMaterial',
   'angularUtils.directives.dirPagination',
-  'accounts.ui'
+  'accounts.ui',
+  'ui.bootstrap'
 ]);
 
 onReady = function() {

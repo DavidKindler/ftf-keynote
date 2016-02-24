@@ -24,3 +24,5 @@ dotansimha:accounts-ui-angular
 schiller:twit
 sebhero:angular-material-icons
 reactive-var
+twbs:bootstrap
+angularui:angular-ui-bootstrap

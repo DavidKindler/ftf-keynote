@@ -9,6 +9,7 @@ angular:angular@1.4.8
 angular:angular-animate@1.4.8
 angular:angular-aria@1.4.8
 angular:angular-material@1.0.5
+angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
 angularutils:pagination@0.9.1_2
 autoupdate@1.2.4
@@ -87,6 +88,7 @@ templating@1.1.5
 templating-tools@1.0.0
 tmeasday:publish-counts@0.7.3
 tracker@1.0.9
+twbs:bootstrap@3.3.6
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
