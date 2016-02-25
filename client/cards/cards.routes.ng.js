@@ -9,7 +9,8 @@ angular.module('iotdashboardApp')
     controller: 'CardsListCtrl',
     resolve: {
       currentUser: ['$meteor', function($meteor) {
-        return $meteor.requireUser();
+        // return $meteor.requireUser();
+        return Meteor.user();
       }]
     }
   })
@@ -19,7 +20,8 @@ angular.module('iotdashboardApp')
     controller: 'CardDetailCtrl',
     resolve: {
       currentUser: ['$meteor', function($meteor) {
-        return $meteor.requireUser();
+        // return $meteor.requireUser();
+        return Meteor.user();
       }]
     }
   });

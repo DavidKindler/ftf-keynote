@@ -6,7 +6,7 @@ angular.module('iotdashboardApp')
   .state('admin', {
     url: '/admin',
     templateUrl: 'client/admin/admin.view.ng.html',
-    controller: 'AdminCtrl',
+    controller: 'AdminCtrl'
     // resolve: {
     //     currentUser: ($q) => {
     //       if (Meteor.userId() == null) {
