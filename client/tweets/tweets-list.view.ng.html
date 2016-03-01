@@ -1,17 +1,11 @@
 <bstoolbar></bstoolbar>
-<div class="tweets-list" layout="row">
-  <span flex=""></span>
-  <div layout="column">
-    <h1>Tweets</h1>
 
-    <ul>
-      <li dir-paginate="tweet in tweets | itemsPerPage: perPage" total-items="tweetsCount" current-page='page'>
-        <p><a href="#">{{ tweet.name }}</a> <button ng-click="remove(tweet)">&times;</button></p>
-      </li>
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center">Tweets ({{tweetscount}})</h1>
+
+    <ul ng-repeat="tweet in tweets">
+      <li >{{tweet.name}}</li>
     </ul>
-    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
-
-    <p>Total number of tweets: {{tweetsCount}}</p>
   </div>
-  <span flex=""></span>
 </div>

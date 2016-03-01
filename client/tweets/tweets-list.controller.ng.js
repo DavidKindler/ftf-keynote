@@ -12,7 +12,8 @@ angular.module('iotdashboardApp')
       return Tweets.find({}, {
         sort: $scope.getReactively('sort') 
       });
-    },
+    }
+    ,
     tweetsCount: function() {
       return Counts.get('numberOfTweets');
     }

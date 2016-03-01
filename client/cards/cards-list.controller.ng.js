@@ -22,8 +22,8 @@ angular.module('iotdashboardApp')
   $scope.subscribe('cards', function() {
     return [{
       sort: $scope.getReactively('sort'),
-      limit: parseInt($scope.getReactively('perPage')),
-      skip: ((parseInt($scope.getReactively('page'))) - 1) * (parseInt($scope.getReactively('perPage')))
+      // limit: parseInt($scope.getReactively('perPage')),
+      // skip: ((parseInt($scope.getReactively('page'))) - 1) * (parseInt($scope.getReactively('perPage')))
     }, $scope.getReactively('search')];
   });
 
@@ -35,12 +35,12 @@ angular.module('iotdashboardApp')
   };
 
   $scope.remove = function(card) {
-    Cards.remove({_id:card.id});
+    Cards.remove({_id:card._id});
   };
 
-  $scope.pageChanged = function(newPage) {
-    $scope.page = newPage;
-  };
+  // $scope.pageChanged = function(newPage) {
+  //   $scope.page = newPage;
+  // };
 
   return $scope.$watch('orderProperty', function() {
     if ($scope.orderProperty) {

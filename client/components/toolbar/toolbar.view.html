@@ -1,13 +1,26 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-     <div class="navbar-collapse collapse">
-     <ul class="nav navbar-nav">  
-      <li><a href="/">Keynote</a></li>
-      <!-- <li><a href="/tweets">Tweets</a></li> -->
-      <li><a href="/cards">Cards</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/admin">Admin</a></li>
-      <li><login-buttons></login-buttons></li>
-    </ul>
-  </div>
-</nav>
+ <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="/">Keynote</a>
+           </div>
+
+           <div class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav">
+               <li><a href="/cards">Cards</a></li>
+               <li><a href="/tweets">Tweets</a></li>
+               
+            </ul>
+            <button class="btn btn-primary" data-add-item style="margin-top:8px;">Add an card</button>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/admin">Admin</a></li>
+              <li><login-buttons></login-buttons></li>
+            </ul>
+       </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>

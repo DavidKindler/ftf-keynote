@@ -1,7 +1,8 @@
 'use strict'
 
 angular.module('iotdashboardApp')
-.config(function($stateProvider) {
+.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+
   $stateProvider
   .state('cards-list', {
     url: '/cards',
