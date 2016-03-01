@@ -19,10 +19,10 @@ angular.module('iotdashboardApp')
     //   }
   });
 })
-// .run(function ($rootScope, $state) {
-//     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-//       if (error === 'AUTH_REQUIRED') {
-//         $state.go('tweets-list');
-//       }
-//     });
-//   });
+.run(function ($rootScope, $state) {
+    $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      if (error === 'AUTH_REQUIRED') {
+        $state.go('cards');
+      }
+    });
+  });

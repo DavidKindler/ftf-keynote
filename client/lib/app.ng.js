@@ -1,3 +1,27 @@
+// $(document).ready(function(){
+//     console.log ('starting...')
+//       $("#fslPlayer").on(
+//       // $("#video-active").on(
+//         "timeupdate", 
+//         function(event){
+//           console.log ('watching video now');
+//          // Session.set('currentTime',this.currentTime);
+//           $("#current").text(this.currentTime);
+//           // if (this.currentTime>1) {Session.set('videoStarted',true)}
+//         });
+//       // $('body').delegate('#fslPlayer','timeupdate',function(event){
+//       //   console.log ('watching video now2...');
+//       // })
+// });
+
+ $('body').delegate('#fslPlayer','timeupdate',function(event){
+        console.log ('watching video now2...');
+})
+
+$('#fslPlayer').on('timeupdate',function(event){
+  console.log ('watching video now3...');
+});
+
 angular.module('iotdashboardApp', [
   'angular-meteor',
   'ngMdIcons',

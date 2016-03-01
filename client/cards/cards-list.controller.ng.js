@@ -12,10 +12,11 @@ angular.module('iotdashboardApp')
       return Cards.find({}, {
         sort: $scope.getReactively('sort')
       });
-    },
-    cardsCount: function() {
-      return Counts.get('numberOfCards');
     }
+    // ,
+    // cardsCount: function() {
+    //   return Counts.get('numberOfCards');
+    // }
   });
 
   $scope.subscribe('cards', function() {

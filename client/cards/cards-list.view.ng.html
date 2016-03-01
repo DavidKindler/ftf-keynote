@@ -12,11 +12,11 @@
       <input class="md-button" type="submit" value="Add">
     </form>
     <div layout="row" layout-padding="">
-      <md-input-container flex="65">
+      <md-input-container flex="65" aria-label="Search">
         <label>Search</label>
-        <input type="Search" ng-model="search" placeholder="Search">
+        <input type="Search" ng-model="search" placeholder="Search" aria-label="Search">
       </md-input-container>
-      <md-select ng-model="orderProperty" flex="35">
+      <md-select ng-model="orderProperty" flex="35" aria-label="Order">
         <md-option value="1">Ascending</md-option>
         <md-option value="-1">Descending</md-option>
       </md-select>
