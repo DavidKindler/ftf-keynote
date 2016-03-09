@@ -11,7 +11,7 @@
   <md-list>
     <md-list-item class="md-1-line" ng-repeat="card in adminCtrl.cards">
       <div class="md-list-item-text">
-        name: {{card.name}}  |  time: {{card.time}} | public: {{card.public}} | {{card.owner}}
+        content: {{card.content}}  |  time: {{card.time}} | public: {{card.public}} | {{card.owner}}
 
       <md-button class="md-raised" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)">Remove</md-button>
       <!-- <button ng-show="adminCtrl.isLoggedIn"  ui-sref="cardEdit({cardId: card._id})">Edit</button> -->

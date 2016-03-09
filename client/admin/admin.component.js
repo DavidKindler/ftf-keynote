@@ -50,7 +50,7 @@
         this.save = () => {
           Cards.update({_id: $stateParams.cardId}, {
             $set: {
-              name: this.card.name,
+              content: this.card.content,
               time: this.card.time,
               'public' : this.card.public
               // time: new Date()

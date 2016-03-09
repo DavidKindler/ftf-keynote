@@ -2,26 +2,20 @@
 </bsnxpnav>
 <div class="row">
     <div class="col-sm-12" style="background-color:black;">
-        <!-- <videoplayer>        </videoplayer> -->
+        <videoplayer>        </videoplayer>
        
     </div>
 </div>
 
 <input type="number" ng-model="timeFilter" placeholder="Time" ng-change="updateTime()"/>
-<!-- <ul>
-    <li  ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:timeFilter | orderBy:'-time'">
-   name: {{card.name}} |  time: {{card.time}} | public: {{card.public}} | {{card.owner}}
-  </li>
-</ul>
- -->
+
 <div class="row">
     <div class="col-sm-9">
         <div class="items" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:timeFilter | orderBy:'-time'">
-        <!-- <div class="items" ng-repeat="card in cardsList.cards | published:timeFilter | orderBy:'-time'"> -->
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
                     <h2>
-                        {{card.name}}
+                        {{card.content}}
                     </h2>
                     <div class="caption">
                         <div class="title text-center">

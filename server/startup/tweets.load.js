@@ -6,7 +6,7 @@ Meteor.startup(function() {
     ];
     tweets.forEach(function(tweet) {
       TweetsTemp.insert({
-        name: tweet,
+        content: tweet,
         createdAt: new Date()
       });
     });

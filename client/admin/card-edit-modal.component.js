@@ -24,7 +24,7 @@ angular.module('ftfKeynoteApp')
       this.save = () => {
           Cards.update({_id: this.card._id}, {
             $set: {
-              'name': this.card.name,
+              'content': this.card.content,
               'time': this.card.time,
               'public' : this.card.public
             }
