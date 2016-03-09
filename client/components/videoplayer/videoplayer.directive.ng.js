@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .directive('videoplayer', function() {
 	return {
     restrict: 'E',

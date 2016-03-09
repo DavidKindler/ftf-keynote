@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .directive('bstoolbar', function() {
   return {
     restrict: 'AE',

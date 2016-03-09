@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .controller('CardDetailCtrl', function($scope, $stateParams) {
   
   $scope.helpers({

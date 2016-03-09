@@ -1,4 +1,4 @@
-  // angular.module('iotdashboardApp').directive('partiesList', function() {
+  // angular.module('ftfKeynoteApp').directive('partiesList', function() {
   //   return {
   //     restrict: 'E',
   //     templateUrl: 'client/cards/cards-list.view.ng.html',

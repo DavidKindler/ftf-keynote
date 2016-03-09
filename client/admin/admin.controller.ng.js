@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .controller('AdminCtrl', function($scope, $stateParams) {
 
 

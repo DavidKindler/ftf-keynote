@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .controller('CardsListCtrl', function($scope) {
   $scope.page = 1;
   $scope.perPage = 3;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 
 .config(function($urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);

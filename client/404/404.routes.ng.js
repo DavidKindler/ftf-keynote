@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .config(function($stateProvider) {
   $stateProvider
   .state('404', {

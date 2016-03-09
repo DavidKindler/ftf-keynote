@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .controller('TweetAdminCtrl', function($scope, $stateParams) {
 
   $scope.helpers({

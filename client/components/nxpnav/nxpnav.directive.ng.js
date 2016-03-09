@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .directive('nxpnav', function() {
   return {
     restrict: 'AE',
@@ -9,7 +9,7 @@ angular.module('iotdashboardApp')
   };
 });
 
-angular.module('iotdashboardApp')
+angular.module('ftfKeynoteApp')
 .directive('bsnxpnav', function() {
   return {
     restrict: 'AE',

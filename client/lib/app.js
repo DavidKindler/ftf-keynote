@@ -22,7 +22,7 @@ $('#fslPlayer').on('timeupdate',function(event){
   console.log ('watching video now3...');
 });
 
-angular.module('iotdashboardApp', [
+angular.module('ftfKeynoteApp', [
   'angular-meteor',
   'ngMdIcons',
   'ui.router',
@@ -33,7 +33,7 @@ angular.module('iotdashboardApp', [
 ]);
 
 onReady = function() {
-  angular.bootstrap(document, ['iotdashboardApp']);
+  angular.bootstrap(document, ['ftfKeynoteApp']);
 };
 
 if(Meteor.isCordova) {
