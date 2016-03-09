@@ -1,0 +1,16 @@
+<bstoolbar></bstoolbar>
+
+<div class="alert alert-info" ng-hide="adminUsersCtrl.isLoggedIn">
+  Please log in!
+</div>
+
+<div  ng-show="adminUsersCtrl.isLoggedIn" >
+<h2>Admin page</h2>
+
+  <ul>
+    Users:
+    <li ng-repeat="user in adminUsersCtrl.users">
+      <div>{{ user.emails[0].address }}</div>
+    </li>
+  </ul>
+	</div>

@@ -106,7 +106,7 @@ video#fslPlayer {max-height: 200px;}
   opacity:1;
 } */
 
-.ma-add-new-party-container, .ma-edit-party-container {min-width:600px; padding: 10px;}
+.ma-add-new-card-container, .ma-edit-card-container {min-width:600px; padding: 10px;}
 
 
 

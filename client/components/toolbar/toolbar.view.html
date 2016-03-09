@@ -12,13 +12,16 @@
 
            <div class="collapse navbar-collapse" >
             <ul class="nav navbar-nav">
-               <li><a href="/cards">Cards</a></li>
+               <!-- <li><a href="/cards">Cards</a></li> -->
                <li><a href="/tweets">Tweets</a></li>
+               <li><a href="/users">Users</a></li>
+
                
             </ul>
-            <button class="btn btn-primary" data-add-item style="margin-top:8px;">Add an card</button>
+            <!-- <button class="btn btn-primary" data-add-item style="margin-top:8px;">Add an card</button> -->
+            <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/admin">Admin</a></li>
+              <li class="active"><a href="/admin">Admin</a></li>
               <li><login-buttons></login-buttons></li>
             </ul>
        </div><!-- /.navbar-collapse -->
