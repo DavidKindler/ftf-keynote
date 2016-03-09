@@ -26,8 +26,48 @@ angular.module('ftfKeynoteApp')
     //   }]
     // }
   })
+  .state('admin', {
+    url: '/admin',
+    template: '<admin></admin>'
+    // templateUrl: 'client/admin/admin.view.ng.html',
+    // controller: 'AdminCtrl'
+    // resolve: {
+    //     currentUser: ($q) => {
+    //       if (Meteor.userId() == null) {
+    //         return $q.reject('AUTH_REQUIRED');
+    //       }
+    //       else {
+    //         return $q.resolve();
+    //       }
+    //     }
+    //   }
+  })
+  .state('users',{
+    url: '/users',
+    template: '<users></users>'
+  })
 
-
+  .state('tweets-list', {
+    url: '/tweets',
+    templateUrl: 'client/tweets/tweets-list.view.ng.html',
+    controller: 'TweetsListCtrl'
+  })
+  .state('tweet-admin', {
+    url: '/tweets/admin',
+    templateUrl: 'client/tweets/tweet-admin.view.ng.html',
+    controller: 'TweetAdminCtrl'
+    // ,
+    // resolve: {
+    //     currentUser: ($q) => {
+    //       if (Meteor.userId() == null) {
+    //         return $q.reject('AUTH_REQUIRED');
+    //       }
+    //       else {
+    //         return $q.resolve();
+    //       }
+    //     }
+    //   }
+  })
   $urlRouterProvider.otherwise('/404');
  })
 

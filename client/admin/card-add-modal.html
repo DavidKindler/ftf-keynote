@@ -1,0 +1,70 @@
+
+
+<div class="container-fluid ma-add-new-card-container">
+<div class="alert alert-info" ng-hide="addNewCardModal.isLoggedIn">
+  Please log in to create a card!
+</div>
+ 
+<!-- <md-dialog style="min-width:600px;"> -->
+<form ng-show="addNewCardModal.isLoggedIn">
+<h2>Create a new card</h2>
+ <div class="form-group">
+  <label>Card Name: </label>  <input type="text" ng-model="addNewCardModal.newCard.content" />
+  </div>
+   <div class="form-group">
+  <!-- <label>Description: </label> <input type="text" ng-model="partiesAdd.newCard.description" /> -->
+  <label>Time: </label> <input type="number" ng-model="addNewCardModal.newCard.time">
+  </div>
+   <div class="form-group">
+  <label>Public Card?</label> <input type="checkbox" ng-model="addNewCardModal.newCard.public">
+  </div>
+
+
+<!--   <md-whiteframe class="md-whiteframe-z1" layout="column">
+          <div layout="row" class="images-container-title">
+            <div flex>
+              <h3>Add photos to your card!</h3>
+                <div ngf-drop ngf-select
+                     ngf-change="addNewCardModal.addImages($files)"
+                     ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
+                     ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
+                     ngf-drop-available="true">
+                  <div>Click here to select image</div>
+                  <div>
+                    <strong>OR</strong>
+                  </div>
+                  You can also drop image to here
+                </div>
+            </div>
+          </div>
+        </md-whiteframe>
+ -->
+        
+<!--   <div layout="row" class="images-container-title">
+            <div flex>
+              <h3>Add photos to your card!</h3>
+                <div ngf-drop ngf-select
+                     ngf-change="addNewCardModal.addImages($files)"
+                     ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
+                     ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
+                     ngf-drop-available="true">
+                  <div>Click here to select image</div>
+                  <div>
+                    <strong>OR</strong>
+                  </div>
+                  You can also drop image to here
+                </div>
+            </div>
+          </div> -->
+
+      <md-button  class="md-raised" ng-click="addNewCardModal.close()">
+        Close
+      </md-button>
+      <md-button  class="md-raised" ng-click="addNewCardModal.addNewCard()" style="margin-right:20px;">
+        Add
+      </md-button>
+   <!-- <button ng-click="addNewCardModal.addNewCard()" class="btn">Add</button> -->
+</form>
+  <!-- </md-dialog> -->
+</div>
+

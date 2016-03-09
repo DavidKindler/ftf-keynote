@@ -1,8 +1,8 @@
-'use strict'
+// 'use strict'
 
-angular.module('ftfKeynoteApp')
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-  .primaryPalette('amber')
-  .accentPalette('orange');
-});
+// angular.module('ftfKeynoteApp')
+// .config(function($mdThemingProvider) {
+//   $mdThemingProvider.theme('default')
+//   .primaryPalette('amber')
+//   .accentPalette('orange');
+// });

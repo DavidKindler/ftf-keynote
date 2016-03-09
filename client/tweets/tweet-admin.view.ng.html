@@ -25,7 +25,7 @@
               <img ng-src="{{ tweet.tweet.user.profile_image_url_https}}" class="md-avatar" alt="{{tweet.tweet.user.screen_name}}" />
               <div class="md-list-item-text tweet-text" layout="column">
                 <div layout="row">
-                  <span class="md-title">{{ tweet.tweet.user.name }}</span>
+                  <span class="md-title">{{ tweet.tweet.user.content }}</span>
                   <p>&nbsp; @{{ tweet.tweet.user.screen_name }}</p>
                 </div>
                 <p class="md-caption">{{ tweet.tweet.text }}</p>
@@ -73,7 +73,7 @@
               <img ng-src="{{ tweet.tweet.user.profile_image_url_https}}" class="md-avatar" alt="{{tweet.tweet.user.screen_name}}" />
               <div class="md-list-item-text tweet-text" layout="column">
                 <div layout="row">
-                  <span class="md-title">{{ tweet.tweet.user.name }}</span>
+                  <span class="md-title">{{ tweet.tweet.user.content }}</span>
                   <p>&nbsp; @{{ tweet.tweet.user.screen_name }}</p>
                 </div>
                 <p class="md-caption">{{ tweet.tweet.text }}</p>
