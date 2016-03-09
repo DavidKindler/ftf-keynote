@@ -17,12 +17,11 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 angular
 angularui:angular-ui-router
 angular:angular-material
-tmeasday:publish-counts
-angularutils:pagination
 accounts-password
 dotansimha:accounts-ui-angular
 schiller:twit
 sebhero:angular-material-icons
-reactive-var
 twbs:bootstrap
 angularui:angular-ui-bootstrap
+angular:angular-animate
+alanning:roles

@@ -1,4 +1,4 @@
-'use strict'
+/*'use strict'
 
 angular.module('ftfKeynoteApp')
 .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -26,4 +26,4 @@ angular.module('ftfKeynoteApp')
       }]
     }
   });
-});
+});*/

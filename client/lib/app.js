@@ -27,7 +27,7 @@ angular.module('ftfKeynoteApp', [
   'ngMdIcons',
   'ui.router',
   'ngMaterial',
-  'angularUtils.directives.dirPagination',
+  // 'angularUtils.directives.dirPagination',
   'accounts.ui',
   'ui.bootstrap'
 ]);
