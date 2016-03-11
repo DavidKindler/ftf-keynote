@@ -7,6 +7,7 @@
 <div  ng-show="adminCtrl.isLoggedIn" >
 <h2>Admin page</h2>
   <h4> Cards:  </h4>
+    <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button>
 
   <md-list>
     <md-list-item class="md-1-line" ng-repeat="card in adminCtrl.cards">

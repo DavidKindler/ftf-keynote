@@ -27,6 +27,7 @@ angular.module('ftfKeynoteApp', [
   'ngMdIcons',
   'ui.router',
   'ngMaterial',
+  // 'ngAnimate',
   // 'angularUtils.directives.dirPagination',
   'accounts.ui',
   'ui.bootstrap'

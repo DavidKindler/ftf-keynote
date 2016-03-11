@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 angular.module('ftfKeynoteApp')
 .directive('videoplayer', function() {
@@ -14,6 +14,7 @@ angular.module('ftfKeynoteApp')
         // var t = document.getElementById('current');
         v.addEventListener('timeupdate',function(event){
           // t.innerHTML = parseInt(v.currentTime);
+          Session.set('videoTime',parseInt(v.currentTime));
         },false);
     }
   };

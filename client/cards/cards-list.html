@@ -1,17 +1,38 @@
 <bsnxpnav>
 </bsnxpnav>
-<div class="row">
-    <div class="col-sm-12" style="background-color:black;">
+<div class="row" id="video-container-outer">
+    <div class="col-sm-12"  >
         <videoplayer>        </videoplayer>
        
     </div>
 </div>
 
-<input type="number" ng-model="timeFilter" placeholder="Time" ng-change="updateTime()"/>
+ 
+<script>
+$(window).scroll(function(){
+    var scrollPos = $(document).scrollTop();
+    // console.log(scrollPos);
+    if (scrollPos >= 200 ) { 
+        $('#video-container-outer').addClass('video-container-shrunk');
+        $('#slide-row').css('margin-top','340px')
+    } else {
+        $('#video-container-outer').removeClass('video-container-shrunk');
+        $('#slide-row').css('margin-top','20px')
+    }
+});
 
-<div class="row">
+
+
+</script>
+
+<!-- <input type="number" ng-model="timeFilter" placeholder="Time" ng-change="updateTime()"/> -->
+
+<div id="slide-row" class="row" >
+
     <div class="col-sm-9">
-        <div class="items" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:timeFilter | orderBy:'-time'">
+        <!-- <div class="animate-repeat slide"  ng-repeat="card in cardsList.cards | orderBy:'-time'"> -->
+        <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'">
+        <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
                     <h2>
@@ -32,6 +53,7 @@
         </div>
     </div>
     <div class="col-sm-3">
+        <p>VideoTime: {{cardsList.videoTime}}</p>
         <h1>
             Tweets
         </h1>

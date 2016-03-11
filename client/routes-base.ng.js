@@ -3,7 +3,7 @@
 angular.module('ftfKeynoteApp')
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
  
  $stateProvider
   .state('cards', {
@@ -68,7 +68,7 @@ angular.module('ftfKeynoteApp')
     //     }
     //   }
   })
-  $urlRouterProvider.otherwise('/404');
+  $urlRouterProvider.otherwise('/');
  })
 
 .run(['$rootScope', '$state', function($rootScope, $state) {

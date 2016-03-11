@@ -38,7 +38,12 @@
         this.helpers({
           cards: () => {
              return Cards.find({}) 
+          },
+          videoTime: () => {
+            return Session.get('videoTime');
+            // return $scope.getReactively('videoTime');
           }
+
         });
 
       }
@@ -54,3 +59,18 @@ angular.module('ftfKeynoteApp').filter('published', function () {
   }
 });
 
+// angular.module('ftfKeynoteApp').animation('.slide',[function(){
+//   return {
+//     enter: function(element,doneFn) {
+//       jQuery(element).fadeIn(5000,doneFn);
+//     },
+//     move: function(element,doneFn){
+//       jQuery(element).fadeIn(5000,doneFn);
+//     },
+//     leave: function(element,doneFn){
+//       jQuery(element).fadeOut(5000,doneFn);
+//     }
+
+//   }
+
+// }])
