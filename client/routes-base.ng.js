@@ -3,7 +3,7 @@
 angular.module('ftfKeynoteApp')
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-  // $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true);
  
  $stateProvider
   .state('cards', {
@@ -15,7 +15,7 @@ angular.module('ftfKeynoteApp')
   //   template: '<card-details></card-details>'
   // })
   .state('cardDetails', {
-    url: '/cards/:cardId',
+    url: '/:cardId',
     templateUrl: 'client/cards/cards-detail.html',
     controller: 'CardDetailCtrl'
     // ,
@@ -68,6 +68,10 @@ angular.module('ftfKeynoteApp')
     //     }
     //   }
   })
+  // .state('404', {
+  //   url: '/404',
+  //   templateUrl: 'client/404/404.view.ng.html'
+  // })
   $urlRouterProvider.otherwise('/');
  })
 

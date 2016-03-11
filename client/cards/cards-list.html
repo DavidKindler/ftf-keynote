@@ -30,9 +30,8 @@ $(window).scroll(function(){
 <div id="slide-row" class="row" >
 
     <div class="col-sm-9">
-        <!-- <div class="animate-repeat slide"  ng-repeat="card in cardsList.cards | orderBy:'-time'"> -->
-        <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'">
-        <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
+        <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
+        <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'">
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
                     <h2>
