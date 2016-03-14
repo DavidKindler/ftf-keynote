@@ -30,7 +30,9 @@ angular.module('ftfKeynoteApp', [
   // 'ngAnimate',
   // 'angularUtils.directives.dirPagination',
   'accounts.ui',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'socialLinks',
+  'updateMeta'
 ]);
 
 onReady = function() {

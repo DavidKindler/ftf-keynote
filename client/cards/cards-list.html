@@ -6,6 +6,7 @@
        
     </div>
 </div>
+<div id="fb-root"></div>
 
  
 <script>
@@ -21,8 +22,6 @@ $(window).scroll(function(){
     }
 });
 
-
-
 </script>
 
 <!-- <input type="number" ng-model="timeFilter" placeholder="Time" ng-change="updateTime()"/> -->
@@ -31,7 +30,8 @@ $(window).scroll(function(){
 
     <div class="col-sm-9">
         <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'">
+        <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
+        <div class="col-sm-6 animate-repeat slide" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'">
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
                     <h2>
@@ -46,6 +46,18 @@ $(window).scroll(function(){
                                 sync time: {{card.time}}
                             </div>
                         
+                        <ul >
+                         <li class="facebook"><a social-facebook custom-url="http://www.nxp.com/{{card._id}}"><span href="" class="icon-facebook3">Facebook</span></a></li>
+                         <li class="twitter"><a social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 //localhost:3000/{{card._id}} {{card.content}}" custom-url="//www.nxp.com/{{card._id}}"><span class="icon-twitter">Twitter</span></a></li>
+                          <!-- <li class="twitter"><a social-twitter status="#NXPFTF {{card.info}} {{card.content | strippedString}}" custom-url="{{card.info}}"><span class="icon-twitter"></span></a></li> -->
+                         <li class="googleplus"><a social-gplus custom-url="http://www.nxp.com/{{card._id}}" ><span class="icon-googleplus2">Google+</span></a></li>
+                         <li class="linkedin"><a social-linkedin custom-url="http://www.nxp.com/{{card._id}}"><span class="icon-linkedin">LinkIn</span></a></li>
+                         <!-- <li class="email" target-blank><a href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}}%0D%0A {{card.name | strippedString}}"><span -->
+                         <li class="email" target-blank><a href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}}%0D%0A http://www.nxp.com/{{card._id}}"><span class="icon-envelop2">Email</span></a></li>
+                         <!-- <li class="timestamp"><span>{{card.timestamp |date: 'shortTime'}}</span></li> -->
+                      </ul>
+
+
                     </div>
                 </div>
             </div>
@@ -78,3 +90,7 @@ $(window).scroll(function(){
         </div>
     </div>
 </div>
+
+
+
+
