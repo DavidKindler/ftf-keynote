@@ -165,6 +165,38 @@ video#fslPlayer {
   margin-bottom: 5px;
 }
 
+div.item-footer ul.list-inline {margin-bottom: 0px;}
+
+div.item-footer ul.list-inline a, div.item-footer ul.list-inline svg {
+  display: block;
+}
+div.item-footer ul.list-inline a {
+  position: relative;
+  height: 20px;
+  width: 20px;
+}
+div.item-footer ul.list-inline svg {
+  height: 100%;
+  width: 100%;
+}
+
+.social-icon:hover {
+  border-radius: 50%;
+  fill: white;
+  background-color: #b5b2b1;
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+  -webkit-transition: background-color 0.5s, -webkit-transform 0.5s ease-out;
+  transition: background-color 0.5s, -webkit-transform 0.5s ease-out;
+  transition: background-color 0.5s, transform 0.5s ease-out;
+  transition: background-color 0.5s, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+
+.social-icon {
+  fill: #b5b2b1;
+}
+
+
 .ma-add-new-card-container, .ma-edit-card-container {min-width:600px; padding: 10px;}
 
 #login-buttons {margin-right:70px;}
@@ -174,7 +206,9 @@ video#fslPlayer {
 #login-buttons .login-link-and-dropdown-list {margin-right: 110px;}
 
 .item {height:225px;}
-.thumbnail {height:95%;}
+.thumbnail {height:100%;}
+.item-footer {position: absolute; bottom:0px;}
+.item-footer ul.list-line {margin-bottom: 0px;}
 .container-fluid {margin-top:50px;}
 .navbar .container {margin-top:0px;}
 
