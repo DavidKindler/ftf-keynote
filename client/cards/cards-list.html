@@ -1,28 +1,11 @@
-<bsnxpnav>
-</bsnxpnav>
-<div class="row" id="video-container-outer">
-    <div class="col-sm-12"  >
-        <videoplayer>        </videoplayer>
-       
-    </div>
+<bsnxpnav></bsnxpnav>
+<div class="row cbp-af-header" id="video-container-outer">
+
+        <videoplayer></videoplayer>
+       <div id="nxp-ftf-video-headline-text" >NXP FTF 2016</div>
 </div>
-<div id="fb-root"></div>
-
  
-<script>
-$(window).scroll(function(){
-    var scrollPos = $(document).scrollTop();
-    // console.log(scrollPos);
-    if (scrollPos >= 200 ) { 
-        $('#video-container-outer').addClass('video-container-shrunk');
-        $('#slide-row').css('margin-top','340px')
-    } else {
-        $('#video-container-outer').removeClass('video-container-shrunk');
-        $('#slide-row').css('margin-top','20px')
-    }
-});
 
-</script>
 
 <!-- <input type="number" ng-model="timeFilter" placeholder="Time" ng-change="updateTime()"/> -->
 
@@ -34,7 +17,8 @@ $(window).scroll(function(){
         <div class="col-sm-6 animate-repeat slide" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'">
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
-                    <div class="caption" ui-sref="cardDetails({ cardId: card._id })">
+                    <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
+                    <div class="caption" >
                         <h2>{{card.content}}</h2>
                         
                         <div class="title text-center">
@@ -107,5 +91,21 @@ $(window).scroll(function(){
 </div>
 
 
+<script>
+$(window).scroll(function(){
+    var scrollPos = $(document).scrollTop();
+    // console.log(scrollPos);
+    if (scrollPos >= 445 ) { 
+        // $('#video-container-outer').addClass('video-container-shrunk');
+       $('.cbp-af-header').addClass("cbp-af-header-shrink");
+        $('#slide-row').css('margin-top','530px')
+    } else {
+        $('.cbp-af-header').removeClass("cbp-af-header-shrink");
+        // $('#video-container-outer').removeClass('video-container-shrunk');
+        $('#slide-row').css('margin-top','20px')
+    }
+});
 
+
+</script>
 
