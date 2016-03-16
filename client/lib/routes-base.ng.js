@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 angular.module('ftfKeynoteApp')
 
@@ -8,7 +8,9 @@ angular.module('ftfKeynoteApp')
  $stateProvider
   .state('card', {
     url: '/',
-    template: '<cards-list></cards-list>'        
+    // template: '<cards-list></cards-list>',
+    templateUrl: 'client/cards/cards-list.html',
+    controller: 'cardsList'    
   })
   // .state('cardDetails', {
   //   url: '/cards/:cardId',
@@ -66,7 +68,7 @@ angular.module('ftfKeynoteApp')
     controller: 'TweetsListCtrl'
   })
   .state('tweet-admin', {
-    url: '/tweets/admin',
+    url: '/tweets-admin',
     templateUrl: 'client/tweets/tweet-admin.view.ng.html',
     controller: 'TweetAdminCtrl'
     // ,
@@ -80,14 +82,13 @@ angular.module('ftfKeynoteApp')
     //       }
     //     }
     //   }
-  })
+  });
   // .state('404', {
   //   url: '/404',
   //   templateUrl: 'client/404/404.view.ng.html'
   // })
   $urlRouterProvider.otherwise('/');
  })
-
 .run(['$rootScope', '$state', function($rootScope, $state) {
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     switch(error) {

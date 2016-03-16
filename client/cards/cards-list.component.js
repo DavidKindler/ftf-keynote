@@ -1,55 +1,46 @@
-// 'use strict'
+ 
+  angular.module('ftfKeynoteApp')
+  // .directive('cardsList', function() {
+  //   return {
+  //     restrict: 'E',
+  //     templateUrl: 'client/cards/cards-list.html',
+  //     controllerAs: 'cardsList',
+  //     controller: function($scope, $reactive,  $mdDialog) {
+  //       $reactive(this).attach($scope);
+  //       this.subscribe('publicCards');
 
-// angular.module('ftfKeynoteApp')
-// .controller('MainCtrl', function($scope) {
-// //Main controller
-// $scope.page = 1;
-// $scope.perPage = 3;
-// $scope.sort = {name_sort : 1};
-// $scope.orderProperty = '1';
+  //       this.helpers({
+  //         cards: function() {
+  //            return Cards.find({}) 
+  //         },
+  //         videoTime: function() {
+  //           return Session.get('videoTime');
+  //           // return $scope.getReactively('videoTime');
+  //         }
 
-// $scope.helpers({
-//   cards: function() {
-//     return Cards.find({}, {
-//       sort: $scope.getReactively('sort')
-//     });
-//   }
-// });
+  //       });
 
-// $scope.subscribe('cards', function() {
-//   return [{
-//     sort: $scope.getReactively('sort'),
-//   }, $scope.getReactively('search')];
-// });
+  //     }
+  //   }
+  // })
 
-
-// });
-
-  
-  angular.module('ftfKeynoteApp').directive('cardsList', function() {
-    return {
-      restrict: 'E',
-      templateUrl: 'client/cards/cards-list.html',
-      controllerAs: 'cardsList',
-      controller: function($scope, $reactive,  $mdDialog) {
-        $reactive(this).attach($scope);
-        this.subscribe('publicCards');
-
-        this.helpers({
-          cards: function() {
-             return Cards.find({}) 
-          },
-          videoTime: function() {
-            return Session.get('videoTime');
-            // return $scope.getReactively('videoTime');
-          }
-
-        });
-
-      }
+.controller('cardsList', function($scope, $reactive, $stateParams, $log) {
+  // $reactive(this).attach($scope);
+  $scope.subscribe('publicCards');
+  $scope.$log = $log;
+  // $log.debug('stateparams:',$stateParams);
+  // $scope.subscribe('cards');
+  // $scope.id = $stateParams.cardId;
+  $scope.helpers({
+    cards: function() {
+      return Cards.find({}) 
+    },
+    videoTime: function() {
+      console.log ('videoTime',Session.get('videoTime'))
+      return Session.get('videoTime');
     }
   });
-
+});
 
 angular.module('ftfKeynoteApp').filter('published', function () {
   return function(cards,timeFilter) {
@@ -59,18 +50,3 @@ angular.module('ftfKeynoteApp').filter('published', function () {
   }
 });
 
-// angular.module('ftfKeynoteApp').animation('.slide',[function(){
-//   return {
-//     enter: function(element,doneFn) {
-//       jQuery(element).fadeIn(5000,doneFn);
-//     },
-//     move: function(element,doneFn){
-//       jQuery(element).fadeIn(5000,doneFn);
-//     },
-//     leave: function(element,doneFn){
-//       jQuery(element).fadeOut(5000,doneFn);
-//     }
-
-//   }
-
-// }])

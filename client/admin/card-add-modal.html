@@ -20,49 +20,12 @@
   </div>
 
 
-<!--   <md-whiteframe class="md-whiteframe-z1" layout="column">
-          <div layout="row" class="images-container-title">
-            <div flex>
-              <h3>Add photos to your card!</h3>
-                <div ngf-drop ngf-select
-                     ngf-change="addNewCardModal.addImages($files)"
-                     ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
-                     ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
-                     ngf-drop-available="true">
-                  <div>Click here to select image</div>
-                  <div>
-                    <strong>OR</strong>
-                  </div>
-                  You can also drop image to here
-                </div>
-            </div>
-          </div>
-        </md-whiteframe>
- -->
-        
-<!--   <div layout="row" class="images-container-title">
-            <div flex>
-              <h3>Add photos to your card!</h3>
-                <div ngf-drop ngf-select
-                     ngf-change="addNewCardModal.addImages($files)"
-                     ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
-                     ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
-                     ngf-drop-available="true">
-                  <div>Click here to select image</div>
-                  <div>
-                    <strong>OR</strong>
-                  </div>
-                  You can also drop image to here
-                </div>
-            </div>
-          </div> -->
-
-      <md-button  class="md-raised" ng-click="addNewCardModal.close()">
+      <button  class="btn btn-sm" ng-click="addNewCardModal.close()">
         Close
-      </md-button>
-      <md-button  class="md-raised" ng-click="addNewCardModal.addNewCard()" style="margin-right:20px;">
+      </button>
+      <button  class="btn btn-sm" ng-click="addNewCardModal.addNewCard()" style="margin-right:20px;">
         Add
-      </md-button>
+      </button>
    <!-- <button ng-click="addNewCardModal.addNewCard()" class="btn">Add</button> -->
 </form>
   <!-- </md-dialog> -->
