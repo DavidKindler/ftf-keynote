@@ -18,17 +18,21 @@
         this.subscribe('cards');
         this.newCard={};
         this.helpers({
-          cards: () => {
+          cards:function() {
             return Cards.find({},{sort:{time:-1}});
           },
-          users: () => {
+          users: function() {
             return Meteor.users.find({});
           },
-          isLoggedIn: () => {
+          isLoggedIn: function() {
             return Meteor.userId() !== null;
+          },
+          videoTime: function() {
+            console.log ('admin videotime',Session.get('videoTime'))
+            return Session.get('videoTime');
           }
         });
-        this.removeCard = (card) => {
+        this.removeCard = function(card) {
           Cards.remove({_id: card._id});
         };
         
@@ -39,15 +43,13 @@
          });
         };
         this.editCardModal = function (card) {
-          // console.log ('party is ',party)
           $mdDialog.show({
             template: '<edit-card-modal card='+card._id+'></edit-card-modal>',
             clickOutsideToClose: true
-            // locals: {Party: party}
          });
         };
 
-        this.save = () => {
+        this.save = function() {
           Cards.update({_id: $stateParams.cardId}, {
             $set: {
               content: this.card.content,

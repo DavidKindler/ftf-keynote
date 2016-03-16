@@ -8,16 +8,16 @@ angular.module('ftfKeynoteApp')
       $reactive(this).attach($scope);
  
       this.helpers({
-        isLoggedIn: () => {
+        isLoggedIn: function() {
           return Meteor.userId() !== null;
         }
       });
  
       this.newCard = {};
-      this.close = () => {
+      this.close = function() {
         $mdDialog.hide();
       };
-      this.addNewCard = () => {
+      this.addNewCard = function() {
         this.newCard.owner = Meteor.userId();
         Cards.insert(this.newCard);
         this.newCard = {};

@@ -92,13 +92,14 @@
 }
 
 /*#video-container {background-color: black;}*/
-video#fslPlayer {
+#video-container-outer video#fslPlayer {
   height: 500px;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   transition: all 1s;
-
 }
+
+div#admin-video-container video#fslPlayer { max-height:200px; max-width: 364px;}
 
 #video-container-outer.video-container-shrunk video#fslPlayer {
   height: 100px;

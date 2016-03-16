@@ -67,7 +67,7 @@ angular.module('ftfKeynoteApp')
     templateUrl: 'client/tweets/tweets-list.view.ng.html',
     controller: 'TweetsListCtrl'
   })
-  .state('tweet-admin', {
+  .state('tweets-admin', {
     url: '/tweets-admin',
     templateUrl: 'client/tweets/tweet-admin.view.ng.html',
     controller: 'TweetAdminCtrl'
