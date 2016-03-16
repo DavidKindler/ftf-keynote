@@ -25,17 +25,45 @@
   });
 */
 
-angular.module('ftfKeynoteApp')
-.controller('CardDetailCtrl', function($scope, $stateParams) {
+
+// angular.module('ftfKeynoteApp')
+// .directive('cardDetail', function() {
+//   return {
+//     return: "AE",
+//     templateUrl: 'card-detail.html',
+//     controllerAs: 'cardDetailCtrl',
+//     controller: function($scope,$stateParams){
+//       this.cardId = $stateParams,cardId;
+//       $scope.subscribe('cards');
+//       $scope.helpers({
+//         cardOne: function() {
+//           return Cards.findOne({ _id: this.cardId }); 
+//         },
+//         cards: () => {
+//                  return Cards.find({}) 
+//               },
+//       })        
+//     }
+//   }  
+
+// });
   
+
+angular.module('ftfKeynoteApp')
+.controller('CardDetailCtrl', function($scope, $stateParams, $log) {
+  $scope.$log = $log;
+  $log.debug('stateparams:',$stateParams);
+
   $scope.subscribe('cards');
   $scope.helpers({
     cardOne: function() {
+      // console.log (Cards.findOne({_id:'Z7JW8DySD42g7LANT'}));
       return Cards.findOne({ _id: $stateParams.cardId }); 
+      // return Cards.findOne({ _id: $stateParams.cardId }); 
     },
-    cards: () => {
-             return Cards.find({}) 
-          },
+    cards: function() {
+      return Cards.find({}) 
+    }
   });
 });
   

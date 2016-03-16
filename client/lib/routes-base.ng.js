@@ -6,7 +6,7 @@ angular.module('ftfKeynoteApp')
   $locationProvider.html5Mode(true);
  
  $stateProvider
-  .state('cards', {
+  .state('card', {
     url: '/',
     template: '<cards-list></cards-list>'        
   })
@@ -14,8 +14,21 @@ angular.module('ftfKeynoteApp')
   //   url: '/cards/:cardId',
   //   template: '<card-details></card-details>'
   // })
+  // .state('cardList', {
+  //   url: '/card',
+  //   // templateUrl: 'client/cards/cards-list.html',
+  //   // controller: 'CardDetailCtrl'
+  //   template: '<cards-list></cards-list>'
+  //   // ,
+  //   // resolve: {
+  //   //   currentUser: ['$meteor', function($meteor) {
+  //   //     // return $meteor.requireUser();
+  //   //     return Meteor.user();
+  //   //   }]
+  //   // }
+  // })
   .state('cardDetails', {
-    url: '/:cardId',
+    url: '/card/:cardId',
     templateUrl: 'client/cards/cards-detail.html',
     controller: 'CardDetailCtrl'
     // ,
@@ -30,7 +43,7 @@ angular.module('ftfKeynoteApp')
     url: '/admin',
     template: '<admin></admin>'
     // templateUrl: 'client/admin/admin.view.ng.html',
-    // controller: 'AdminCtrl'
+    // ,controller: 'AdminCtrl'
     // resolve: {
     //     currentUser: ($q) => {
     //       if (Meteor.userId() == null) {
@@ -79,12 +92,15 @@ angular.module('ftfKeynoteApp')
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     switch(error) {
       case 'AUTH_REQUIRED':
+        console.log ('AUTH_REQUIRED');
         $state.go('admin');
         break;
       case 'FORBIDDEN':
+        console.log ('FORBIDDEN');
         $state.go('admin');
         break;
       case 'UNAUTHORIZED':
+        console.log ('UNAUTHORIZED');
         $state.go('admin');
         break;
     }

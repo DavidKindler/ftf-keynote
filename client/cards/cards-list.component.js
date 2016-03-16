@@ -36,10 +36,10 @@
         this.subscribe('publicCards');
 
         this.helpers({
-          cards: () => {
+          cards: function() {
              return Cards.find({}) 
           },
-          videoTime: () => {
+          videoTime: function() {
             return Session.get('videoTime');
             // return $scope.getReactively('videoTime');
           }
