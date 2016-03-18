@@ -19,7 +19,7 @@
                     <div class="thumbnail" >
                         <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                         <div class="caption" >
-                            <h2 ui-sref="cardDetails({ cardId: card._id })">{{card.content}}</h2>
+                            <div ui-sref="cardDetails({ cardId: card._id })"><span ng-bind-html="card.content | html"></span></div>
                             
                             <div class="title text-center">
                                 public: {{card.public}}
@@ -27,6 +27,9 @@
                             
                             <div class="text-center">
                                     sync time: {{card.time}}
+                            </div>
+                            <div class="text-center">
+                                    event: {{card.event.name}}
                             </div>
                             
                             
@@ -59,7 +62,7 @@
                     <div class="thumbnail" >
                         <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                         <div class="caption" >
-                            <h2 ui-sref="cardDetails({ cardId: card._id })">{{card.content}}</h2>
+                       <div ui-sref="cardDetails({ cardId: card._id })"><span ng-bind-html="card.content | html"></span></div>
                             
                             <div class="title text-center">
                                 public: {{card.public}}
@@ -67,6 +70,9 @@
                             
                             <div class="text-center">
                                     sync time: {{card.time}}
+                            </div>
+                              <div class="text-center">
+                                    event: {{card.event.name}}
                             </div>
                         </div>
                     
@@ -87,7 +93,8 @@
             <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)">Remove</button>
             <!-- <button ng-show="adminCtrl.isLoggedIn"  ui-sref="cardEdit({cardId: card._id})">Edit</button> -->
             <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)">Edit</button>
-            <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.timestampCard(card)">Timestamp</button>
+            <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.setTime(card)">Timestamp</button>&nbsp;{{adminCtrl.videoTime}}
+              <button class="btn btn-xs" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public">Make Public</button>
             </div>
 
 
@@ -96,11 +103,18 @@
         <div class="col-xs-2">
           <div id="admin-static">
             <h3>Admin Area</h3>
+            <h4>Event:</h4>
+             <select class="form-control" name="mySelect" id="mySelect"
+                 ng-options="option.name for option in adminCtrl.availableOptions track by option.id"
+                 ng-model="adminCtrl.selectedOption"></select>
+            <br>
               <div id="admin-video-container">
                 <videoplayer></videoplayer>
               </div>
             <h4>Video Time: {{adminCtrl.videoTime}}</h4>
             <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button>
+             
+
           </div>
         </div>
 

@@ -4,7 +4,7 @@ angular.module('ftfKeynoteApp')
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
   $locationProvider.html5Mode(false);
- 
+
  $stateProvider
   .state('cards', {
     url: '/',

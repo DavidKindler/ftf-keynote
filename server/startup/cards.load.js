@@ -4,11 +4,15 @@ Meteor.startup(function() {
       {
         'content': 'card 1',
         'time' : 1,
+         'timestamp' : new Date(),
+         'event' : {id: '1', name: 'Keynote'},
         'public': true
       },
       {
         'content': 'card 2',
         'time' : 2,
+        'timestamp' : new Date(),
+         'event' : {id: '1', name: 'Keynote'},
         'public': true
       }
     ];

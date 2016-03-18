@@ -17,7 +17,7 @@
         this.subscribe('users');
         this.subscribe('cards');
         this.currentUrl = location.origin+"/#/card"
-        console.log ('url',this.currentUrl)
+        // console.log ('url',this.currentUrl)
         this.newCard={};
         this.helpers({
           cards:function() {
@@ -32,14 +32,20 @@
           videoTime: function() {
             // console.log ('admin videotime',Session.get('videoTime'))
             return Session.get('videoTime');
-          }
+          },
+          availableOptions: function(){
+            return [{id: '1', name: 'Keynote'}, {id: '2', name: 'Speaker 2'} ]
+          },
+          selectedOption: function() { return {id: '1', name: 'Keynote'} }
         });
         this.removeCard = function(card) {
           if (confirm("Are you sure you want to delete this card?")){ 
             Cards.remove({_id: card._id});
           }
         };
-        
+        // this.timestampCard = function(card){
+        //   Car
+        // }
         this.openAddNewCardModal = function () {
           $mdDialog.show({
             template: '<add-new-card-modal></add-new-card-modal>',
@@ -53,25 +59,28 @@
          });
         };
 
-        this.save = function() {
-          Cards.update({_id: $stateParams.cardId}, {
+        this.setTime = function(card) {
+          Cards.update({_id: card._id}, {
             $set: {
-              content: this.card.content,
-              time: this.card.time,
-              'public' : this.card.public
+              // content: this.card.content,
+              time: Session.get('videoTime')
+              // 'public' : this.card.public
               // time: new Date()
             }
-          }, 
-          (error) => {
-            if (error) {
-              console.log ('Oops, unable to update the card');
-            }
-            else {
-              console.log ('Done');
-            }
-          });
-          $state.go('admin');
+          })
         };
+
+        this.setPublic = function(card) {
+          Cards.update({_id: card._id}, {
+            $set: {
+              // content: this.card.content,
+              'public': true
+              // 'public' : this.card.public
+              // time: new Date()
+            }
+          })
+        };
+
       }
     }
   });

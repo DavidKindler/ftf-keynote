@@ -261,7 +261,9 @@ footer.item-footer ul.list-inline svg {
 }
 
 
-.ma-add-new-card-container, .ma-edit-card-container {min-width:600px; padding: 10px;}
+.ma-add-new-card-container, .ma-edit-card-container {min-width:400px;  max-width:800px; padding: 10px;}
+.content-modal {width: 300px; height: 300px;}
+
 
 #login-buttons {margin-right:70px;}
 #login-buttons a {padding: 15px; display: block; line-height: 20px;}
@@ -271,7 +273,6 @@ footer.item-footer ul.list-inline svg {
 
 .item {height:225px; display: block; position: relative;}
 
->>>>>>> master
 .thumbnail {height:100%;}
 .item-footer {position: absolute; bottom:0px;}
 .item-footer ul.list-line {margin-bottom: 0px;}
