@@ -14,13 +14,13 @@
 //       // })
 // });
 
- $('body').delegate('#fslPlayer','timeupdate',function(event){
-        console.log ('watching video now2...');
-})
+//  $('body').delegate('#fslPlayer','timeupdate',function(event){
+//         console.log ('watching video now2...');
+// })
 
-$('#fslPlayer').on('timeupdate',function(event){
-  console.log ('watching video now3...');
-});
+// $('#fslPlayer').on('timeupdate',function(event){
+//   console.log ('watching video now3...');
+// });
 
 angular.module('ftfKeynoteApp', [
   'angular-meteor',
@@ -50,3 +50,6 @@ if(Meteor.isCordova) {
 } else {
   angular.element(document).ready(onReady);
 }
+
+
+

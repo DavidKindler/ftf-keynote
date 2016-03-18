@@ -16,7 +16,7 @@
                 <div class="thumbnail" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
-                        <h2 ui-sref="cardDetails({ cardId: card._id })">{{card.content}}</h2>
+                        <div ui-sref="cardDetails({ cardId: card._id })"><span ng-bind-html="card.content | html"></span></div>
                         
                         <div class="title text-center">
                             public: {{card.public}}

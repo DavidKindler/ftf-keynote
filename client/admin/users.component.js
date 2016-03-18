@@ -12,7 +12,7 @@
       restrict: 'E',
       templateUrl: 'client/admin/users.html',
       controllerAs: 'adminUsersCtrl',
-      controller: function ($scope, $stateParams, $reactive, $state, $mdDialog) {
+      controller: function ($scope, $reactive) {
         $reactive(this).attach($scope);
         this.subscribe('users');
         // this.subscribe('cards');
@@ -21,10 +21,10 @@
           // cards: () => {
           //   return Cards.find({},{sort:{time:-1}});
           // },
-          users: () => {
+          users: function () {
             return Meteor.users.find({});
           },
-          isLoggedIn: () => {
+          isLoggedIn: function(){
             return Meteor.userId() !== null;
           }
         });

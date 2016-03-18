@@ -1,11 +1,3 @@
-
-// angular.module('ftfKeynoteApp')
-// .controller('AdminCtrl', function($scope, $stateParams) {
-
-
-// });
-
-
   angular.module('ftfKeynoteApp')
   .directive('admin', function () {
     return {
@@ -17,7 +9,6 @@
         this.subscribe('users');
         this.subscribe('cards');
         this.currentUrl = location.origin+"/#/card"
-        // console.log ('url',this.currentUrl)
         this.newCard={};
         this.helpers({
           cards:function() {
@@ -43,9 +34,7 @@
             Cards.remove({_id: card._id});
           }
         };
-        // this.timestampCard = function(card){
-        //   Car
-        // }
+       
         this.openAddNewCardModal = function () {
           $mdDialog.show({
             template: '<add-new-card-modal></add-new-card-modal>',
@@ -62,10 +51,7 @@
         this.setTime = function(card) {
           Cards.update({_id: card._id}, {
             $set: {
-              // content: this.card.content,
               time: Session.get('videoTime')
-              // 'public' : this.card.public
-              // time: new Date()
             }
           })
         };
@@ -73,10 +59,7 @@
         this.setPublic = function(card) {
           Cards.update({_id: card._id}, {
             $set: {
-              // content: this.card.content,
               'public': true
-              // 'public' : this.card.public
-              // time: new Date()
             }
           })
         };

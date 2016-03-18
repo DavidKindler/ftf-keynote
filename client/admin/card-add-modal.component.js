@@ -3,12 +3,7 @@ angular.module('ftfKeynoteApp')
   return {
     restrict: 'E',
     templateUrl: 'client/admin/card-add-modal.html',
-    controllerAs: 'addNewCardModal',
-    link: function(scope, elem, attr) {
-        console.log ('scope',scope)
-        console.log('elem',elem)
-        console.log ('attr',attr)
-    },
+    controllerAs: 'addNewCardModal',   
     controller: function ($scope, $reactive, $mdDialog) {
       $reactive(this).attach($scope);
       this.helpers({
@@ -26,8 +21,6 @@ angular.module('ftfKeynoteApp')
         $mdDialog.hide();
       };
       this.addNewCard = function() {
-        console.log (this.newCard.content)
-        // this.newCard.content = this.unsafeContent;
         this.newCard.owner = Meteor.userId();
         this.newCard.event = this.selectedOption;
         this.newCard.public = false;
@@ -39,4 +32,3 @@ angular.module('ftfKeynoteApp')
     }
   }
 })
-// .filter('unsafe', function($sce) { return $sce.trustAsHtml; });
