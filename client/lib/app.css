@@ -229,17 +229,17 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
   margin-bottom: 5px;
 }
 
-div.item-footer ul.list-inline {margin-bottom: 0px;}
+footer.item-footer ul.list-inline {margin-bottom: 0px;}
 
-div.item-footer ul.list-inline a, div.item-footer ul.list-inline svg {
+footer.item-footer ul.list-inline a, footer.item-footer ul.list-inline svg {
   display: block;
 }
-div.item-footer ul.list-inline a {
+footer.item-footer ul.list-inline a {
   position: relative;
   height: 20px;
   width: 20px;
 }
-div.item-footer ul.list-inline svg {
+footer.item-footer ul.list-inline svg {
   height: 100%;
   width: 100%;
 }
@@ -269,7 +269,8 @@ div.item-footer ul.list-inline svg {
 #login-dropdown-list {top:24px; right:-34px;}
 #login-buttons .login-link-and-dropdown-list {margin-right: 110px;}
 
-.item {height:225px;}
+.item {height:225px; display: block; position: relative;}
+
 .thumbnail {height:100%;}
 .item-footer {position: absolute; bottom:0px;}
 .item-footer ul.list-line {margin-bottom: 0px;}

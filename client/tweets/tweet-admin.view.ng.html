@@ -22,7 +22,7 @@
 
           <!-- List START-->
           <md-list>
-            <md-list-item class="md-3-line md-whiteframe-1dp tweet-card" ng-repeat="tweet in tweetstemp">
+            <md-list-item class="md-3-line md-whiteframe-1dp tweet-card" ng-repeat="tweet in tweetstemp | orderBy:reverse">
               <img ng-src="{{ tweet.tweet.user.profile_image_url_https}}" class="md-avatar" alt="{{tweet.tweet.user.screen_name}}" />
               <div class="md-list-item-text tweet-text" layout="column">
                 <div layout="row">

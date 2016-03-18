@@ -3,10 +3,10 @@
 angular.module('ftfKeynoteApp')
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(false);
  
  $stateProvider
-  .state('card', {
+  .state('cards', {
     url: '/',
     // template: '<cards-list></cards-list>',
     templateUrl: 'client/cards/cards-list.html',
@@ -63,7 +63,7 @@ angular.module('ftfKeynoteApp')
   })
 
   .state('tweets-list', {
-    url: '/tweets',
+    url: '/tweets-list',
     templateUrl: 'client/tweets/tweets-list.view.ng.html',
     controller: 'TweetsListCtrl'
   })
@@ -89,7 +89,8 @@ angular.module('ftfKeynoteApp')
   // })
   $urlRouterProvider.otherwise('/');
  })
-.run(['$rootScope', '$state', function($rootScope, $state) {
+.run(['$rootScope', '$state', function($rootScope, $state, $location) {
+  $rootScope.location = $location;
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     switch(error) {
       case 'AUTH_REQUIRED':
