@@ -16,6 +16,8 @@
         $reactive(this).attach($scope);
         this.subscribe('users');
         this.subscribe('cards');
+        this.currentUrl = location.origin+"/#/card"
+        console.log ('url',this.currentUrl)
         this.newCard={};
         this.helpers({
           cards:function() {
@@ -28,12 +30,14 @@
             return Meteor.userId() !== null;
           },
           videoTime: function() {
-            console.log ('admin videotime',Session.get('videoTime'))
+            // console.log ('admin videotime',Session.get('videoTime'))
             return Session.get('videoTime');
           }
         });
         this.removeCard = function(card) {
-          Cards.remove({_id: card._id});
+          if (confirm("Are you sure you want to delete this card?")){ 
+            Cards.remove({_id: card._id});
+          }
         };
         
         this.openAddNewCardModal = function () {

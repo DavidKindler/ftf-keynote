@@ -1,3 +1,4 @@
+// https://github.com/fixate/angular-social-links
 (function() {
   angular.module('socialLinks', [])
   .factory('socialLinker', [
@@ -41,9 +42,6 @@
       };
     }
   ])
-
-  // https://www.facebook.com/sharer/sharer.php?app_id=113354768698255&sdk=joey&u=http%3A%2F%2Fwww.nxp.com%2FEc562FPN5bzcz8GrJ&display=popup&ref=plugin&src=share_button
-
 
   .directive('socialTwitter', [
     'socialLinker', function(linker) {

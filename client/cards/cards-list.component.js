@@ -36,7 +36,7 @@
       return Cards.find({}) 
     },
     videoTime: function() {
-      console.log ('videoTime',Session.get('videoTime'))
+      // console.log ('videoTime',Session.get('videoTime'))
       return Session.get('videoTime');
     }
   });
