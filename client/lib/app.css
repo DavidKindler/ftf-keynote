@@ -269,7 +269,7 @@ div.item-footer ul.list-inline svg {
 #login-dropdown-list {top:24px; right:-34px;}
 #login-buttons .login-link-and-dropdown-list {margin-right: 110px;}
 
-.item {height:225px;}
+.item {height:225px; position: relative;}
 .thumbnail {height:100%;}
 .item-footer {position: absolute; bottom:0px;}
 .item-footer ul.list-line {margin-bottom: 0px;}
