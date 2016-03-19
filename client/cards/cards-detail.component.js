@@ -51,8 +51,11 @@
 
 angular.module('ftfKeynoteApp')
 .controller('CardDetailCtrl', function($scope, $stateParams, $log) {
-  $scope.$log = $log;
-  $log.debug('stateparams:',$stateParams);
+  // $scope.$log = $log;
+  // $log.debug('stateparams:',$stateParams);
+  // $scope.cards = $rootScope.Xcards;
+  // console.log ($scope.cards);
+  // console.log ($rootScope.Xcards);
   $scope.subscribe('cards');
   $scope.id = $stateParams.cardId;
   $scope.helpers({
