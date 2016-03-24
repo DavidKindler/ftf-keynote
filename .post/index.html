@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" >
+<html lang="en" ng-app="FTFEventPost">
 <head>
 <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,10 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script>document.write('<base href="' + document.location + '" />');</script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">  
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <title>NXP.com FTF keynote</title>
+
 <meta name="description" content="From microcontrollers and processors to sensors, analog ICs and connectivity, our technologies are fueling innovation in automotive, consumer, industrial and networking.">
 <meta name="keywords" content="NXP, NXP Semiconductors, NXP Solutions, NXP Applications, Analog, DSP, Digital Signal Processing, Power Management, Microcontroller, Sensors, RF, Processors, ICs, SOCs">
 
@@ -24,39 +23,26 @@
 <meta property="og:image"         content="http://www.nxp.com/shared/images/NXP_logo.png" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular-route.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="lib/update-meta.js"></script> 
+<script src="lib/angular-social-links.js"></script> 
+<script src="lib/filters.js"></script> 
+<script src="lib/app.js"></script> 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="post-event.css">
 
-<script src="app.js"></script> 
 </head>
-<body ng-app="FTFEventPost">
-<div class="container-fluid" ng-view>
-
-
-
+<body >
+<div class="containter-fluid">
+  <div ng-include="'templates/nav.html'"></div>
+  <div ng-include="'templates/video.html'"></div>
 </div>
-<script type="text/ng-template" id="cards.html">
-All Cards
-  <div ng-controller="CardController">  
-    <div class="col-sm-6" ng-repeat="card in data" >
-    <div class="item" id="{{card._id}}" ><a href="index-post.html#{{card._id}}"><span ng-bind-html="card.content | html"></span></a></div>
-    </div>
-  </div>
 
-</script>
-
-<script type="text/ng-template" id="card-detail.html">
-Card Details for {{cardOne._id}} Content is: <span ng-bind-html="cardOne.content | html"></span>
-  <div ng-controller="CardDetailController">  
-    <div class="col-sm-6" ng-repeat="card in data" >
-      <div class="item" id="{{card._id}}" ><span ng-bind-html="card.content | html"></span> </div>
-    </div>
-  </div>
-
-</script>
-
+<div class="container-fluid" ng-view></div>
 
 </body>
 </html>

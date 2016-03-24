@@ -51,24 +51,12 @@
         <h1>
             Tweets
         </h1>
-        <div class="tweets">
-            <h3>
-                NXP Twitter
-            </h3>
-            <div class="tweet-row">
-                <div class="tweet">
-                    Tweet
-                </div>
-            </div>
-            <div class="tweet-row">
-                <div class="tweet">
-                    Tweet
-                </div>
-            </div>
-            <div class="tweet-row">
-                <div class="tweet">
-                    Tweet
-                </div>
+        <div class="tweets" ng-controller="tweetsCtrl">
+            <h3>                NXP Twitter            </h3>
+            <div class="tweet-row" ng-repeat="tweet in livetweets" >
+              <div class="tweet">
+                  <div >{{tweet.tweet.text}}</div>
+              </div>
             </div>
         </div>
     </div>

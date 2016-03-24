@@ -1,0 +1,6 @@
+All Cards
+  <div ng-controller="CardController">  
+    <div class="col-sm-6" ng-repeat="card in data" >
+    <div class="item" id="{{card._id}}" ><a href="./#{{card._id}}"><span ng-bind-html="card.content | html"></span></a></div>
+    </div>
+  </div>

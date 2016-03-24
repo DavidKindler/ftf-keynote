@@ -7,6 +7,7 @@ Meteor.startup(function() {
     tweets.forEach(function(tweet) {
       TweetsTemp.insert({
         content: tweet,
+        // text: "This is a test tweet",
         createdAt: new Date()
       });
     });
@@ -21,6 +22,7 @@ Meteor.startup(function() {
       Tweets.insert({
         type: "Test",
         tweet: tweet,
+        // text: "Initial tweet",
         createdAt: new Date()
       });
     });
