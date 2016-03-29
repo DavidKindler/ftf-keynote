@@ -11,14 +11,12 @@ session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
-standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
 angular
 angularui:angular-ui-router
 angular:angular-material
 accounts-password
-dotansimha:accounts-ui-angular
 schiller:twit
 sebhero:angular-material-icons
 twbs:bootstrap
@@ -26,3 +24,5 @@ angularui:angular-ui-bootstrap
 angular:angular-animate
 alanning:roles
 tmeasday:publish-counts
+standard-minifier-css
+standard-minifier-js

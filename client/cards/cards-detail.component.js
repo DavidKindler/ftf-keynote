@@ -58,12 +58,14 @@ angular.module('ftfKeynoteApp')
   // console.log ($rootScope.Xcards);
   $scope.subscribe('cards');
   $scope.id = $stateParams.cardId;
+  $scope.currentUrl = location.origin+"/#/card"
+ 
   $scope.helpers({
     cardOne: function() {
       // console.log (Cards.findOne({_id:'Z7JW8DySD42g7LANT'}));
       return Cards.findOne({ _id: $scope.id }); 
       // return Cards.findOne({ _id: $stateParams.cardId }); 
-    },
+	},
     cards: function() {
       return Cards.find({}) 
     }

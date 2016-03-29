@@ -11,29 +11,29 @@
     <section class="col-sm-9">
         <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
         <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <article class="col-sm-6 animate-repeat slide" ng-repeat="card in cards |published:videoTime | orderBy:'-time'">
+        <article class="col-sm-6 animate-repeat slide" ng-repeat="card in cards  | orderBy:'-time'">
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
-                        <div ui-sref="cardDetails({ cardId: card._id })"><span ng-bind-html="card.content | html"></span></div>
+                        <div><span ng-bind-html="card.content | html"></span></div>
                         
-                        <div class="title text-center">
+                       <!--  <div class="title text-center">
                             public: {{card.public}}
                         </div>
                         
                         <div class="text-center">
                                 sync time: {{card.time}}
-                        </div>
+                        </div> -->
                     </div>
                 
                 <footer class="item-footer">
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
-                    <li class="twitter"><a custom-url="{{adminCtrl.currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{adminCtrl.currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
+                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
                   <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{adminCtrl.currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
-                  <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
-                  <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{adminCtrl.currentUrl}}/{{card._id}}">
+                  <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
+                  <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{currentUrl}}/{{card._id}}">
                     <email-icon></email-icon></a></li>
                  </ul>
                </footer>
@@ -46,20 +46,24 @@
 
     </section>  <!-- <section class="col-sm-9"> -->
 
-    <div class="col-sm-3">
-        <p>VideoTime: {{videoTime}}</p>
-        <h1>
-            Tweets
-        </h1>
-        <div class="tweets" ng-controller="tweetsCtrl">
-            <h3>                NXP Twitter            </h3>
-            <div class="tweet-row" ng-repeat="tweet in livetweets" >
-              <div class="tweet">
-                  <div >{{tweet.tweet.text}}</div>
-              </div>
+    <section class="col-sm-3">
+        <!-- <p>VideoTime: {{videoTime}}</p> -->
+      <div id="affixTweets"  >
+        <div class="tweets" ng-controller="tweetsCtrl" >
+            <h2>#NXPFTF</h2>
+            <div class="tweets-container">
+            <div class="tweet-row" ng-repeat="tweet in livetweets | orderBy:'-createdAt'" >
+                  <span class="tweetItem" ng-bind-html="tweet.tweet | encodeTweet"></span>              
+            </div>
             </div>
         </div>
-    </div>
+      </div>
+
+        <!-- Filler bottom -->
+    <div id="stretch"></div>
+
+
+    </section>
 </div>
 
 
@@ -78,6 +82,7 @@ $(window).scroll(function(){
     }
 });
 
+$('#affixTweets').affix({ offset: {top: 450} })
 
 </script>
 
