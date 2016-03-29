@@ -28,6 +28,7 @@
   // $reactive(this).attach($scope);
   $scope.subscribe('publicCards');
   $scope.$log = $log;
+  $scope.currentUrl = location.origin+"/#/card"
   // $log.debug('stateparams:',$stateParams);
   // $scope.subscribe('cards');
   // $scope.id = $stateParams.cardId;

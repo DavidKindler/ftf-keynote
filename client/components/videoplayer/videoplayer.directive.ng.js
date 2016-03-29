@@ -12,10 +12,10 @@ angular.module('ftfKeynoteApp')
     	// }) 
         var v = document.getElementsByTagName('video')[0]
         // var t = document.getElementById('current');
-        v.addEventListener('timeupdate',function(event){
-          // t.innerHTML = parseInt(v.currentTime);
-          Session.set('videoTime',parseInt(v.currentTime));
-        },false);
+        // v.addEventListener('timeupdate',function(event){
+        //   // t.innerHTML = parseInt(v.currentTime);
+        //   Session.set('videoTime',parseInt(v.currentTime));
+        // },false);
     }
   };
 });

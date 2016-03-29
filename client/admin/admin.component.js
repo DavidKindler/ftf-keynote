@@ -9,6 +9,7 @@
         this.subscribe('users');
         this.subscribe('cards');
         this.currentUrl = location.origin+"/#/card"
+        // console.log (this.currentUrl)
         this.newCard={};
         this.helpers({
           cards:function() {
@@ -32,6 +33,15 @@
         this.removeCard = function(card) {
           if (confirm("Are you sure you want to delete this card?")){ 
             Cards.remove({_id: card._id});
+          }
+        };
+        this.unpublishCard = function(card) {
+          if (confirm("Are you sure you want to unpublish this card?")){ 
+            Cards.update({_id: card._id}, {
+                        $set: {
+                          'public': false
+                        }
+                      })
           }
         };
        

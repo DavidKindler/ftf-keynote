@@ -65,7 +65,7 @@ angular.module('ftfKeynoteApp')
       if(error){
         console.error(error);
       }else{
-        console.info(result);
+        console.info('Tweet stream stopped',result);
       }
     });
   };
