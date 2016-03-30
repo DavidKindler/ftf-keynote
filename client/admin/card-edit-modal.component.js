@@ -26,7 +26,8 @@ angular.module('ftfKeynoteApp')
             $set: {
               'content': this.card.content,
               'time': this.card.time,
-              'public' : this.card.public
+              'public' : this.card.public,
+              'order':this.card.order
             }
           }, 
           (error) => {

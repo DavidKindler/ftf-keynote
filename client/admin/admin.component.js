@@ -30,11 +30,7 @@
           },
           selectedOption: function() { return {id: '1', name: 'Keynote'} }
         });
-        this.removeCard = function(card) {
-          if (confirm("Are you sure you want to delete this card?")){ 
-            Cards.remove({_id: card._id});
-          }
-        };
+       
         this.unpublishCard = function(card) {
           if (confirm("Are you sure you want to unpublish this card?")){ 
             Cards.update({_id: card._id}, {
@@ -44,7 +40,7 @@
                       })
           }
         };
-       
+        
         this.openAddNewCardModal = function () {
           $mdDialog.show({
             template: '<add-new-card-modal></add-new-card-modal>',
@@ -73,7 +69,20 @@
             }
           })
         };
-        // this.newCard = {};
+        this.removeCard = function(card) {
+          if (confirm("Are you sure you want to delete this card?")) 
+          { 
+            // Cards.remove({_id: card._id});
+            Meteor.call('CardDelete',card, 
+              function (error, result) {
+                if (error){
+                console.error(error)
+                }else{
+                console.info(result)
+                }
+              })
+            }
+        };
         this.addCardBelow = function(card){
              Meteor.call('CardAddBelow', card.order,
                 function (error, result) {

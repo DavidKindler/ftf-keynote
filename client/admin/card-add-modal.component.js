@@ -21,14 +21,30 @@ angular.module('ftfKeynoteApp')
         $mdDialog.hide();
       };
       this.addNewCard = function() {
-        console.log (Cards.find().count());
-        this.newCard.order = Cards.find().count()+1;
+        // this.newCard.order = Cards.find().count()+1;
         this.newCard.owner = Meteor.userId();
         this.newCard.event = this.selectedOption;
         this.newCard.public = false;
         this.newCard.timestamp =  new Date();
-        Cards.insert(this.newCard);
+        // Cards.insert(this.newCard);
+        Meteor.call('CardAddNew', this.newCard,
+           function (error, result) {
+             if(error){
+               console.error(error);
+             }else{
+               console.info(result);
+             }
+           });
         this.newCard = {};
+        // console.log (Cards.find().max({order:-1});
+        // console.log ( Cards.find({ "order": { $exists: true } }, {"order": 1}).sort({"order": -1}) )
+        // this.newCard.order = Cards.find().count()+1;
+        // this.newCard.owner = Meteor.userId();
+        // this.newCard.event = this.selectedOption;
+        // this.newCard.public = false;
+        // this.newCard.timestamp =  new Date();
+        // Cards.insert(this.newCard);
+        // this.newCard = {};
         $mdDialog.hide();
       };
     }
