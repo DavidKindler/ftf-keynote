@@ -73,6 +73,29 @@
             }
           })
         };
+        // this.newCard = {};
+        this.addCardBelow = function(card){
+             Meteor.call('CardAddBelow', card.order,
+                function (error, result) {
+                  if(error){
+                    console.error(error);
+                  }else{
+                    console.info(result);
+                  }
+                });
+        };
+
+        this.addCardAbove = function(card){
+           Meteor.call('CardAddAbove', card.order,
+                function (error, result) {
+                  if(error){
+                    console.error(error);
+                  }else{
+                    console.info(result);
+                  }
+                });
+
+        }
 
       }
     }

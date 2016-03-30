@@ -21,6 +21,8 @@ angular.module('ftfKeynoteApp')
         $mdDialog.hide();
       };
       this.addNewCard = function() {
+        console.log (Cards.find().count());
+        this.newCard.order = Cards.find().count()+1;
         this.newCard.owner = Meteor.userId();
         this.newCard.event = this.selectedOption;
         this.newCard.public = false;

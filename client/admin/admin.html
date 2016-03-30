@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-xs-5">
           <h3>Public Cards</h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-time' | filter:{public:true}">
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order' | filter:{public:true}">
                 <div class="item" id="{{card._id}}" >
                     <div class="thumbnail" >
                         <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
@@ -61,8 +61,8 @@
         </div>
         <div class="col-xs-5">
           <h3>All Cards</h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-time'">
-                <div class="item" id="{{card._id}}" data-public="{{card.public}}" data-event="{{card.event.name}}" >
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order'">
+                <div class="item" id="{{card._id}}" data-public="{{card.public}}" data-event="{{card.event.name}}" data-sort="{{card.order}}">
                     <div class="thumbnail" >
                         <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                         <div class="caption" >
@@ -98,8 +98,8 @@
            <!--  <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.setTime(card)">Timestamp</button>&nbsp;{{adminCtrl.videoTime}} -->
               <button class="btn btn-xs" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public">Publish</button>
               &nbsp; &nbsp; 
-              <button class="btn btn-xs btn-info" >Add Card Below</button>
-              <button class="btn btn-xs btn-info" >Add Card Above</button>
+              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardBelow(card)">Add Card Below</button>
+              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardAbove(card)">Add Card Above</button>
             </div>
 
 
