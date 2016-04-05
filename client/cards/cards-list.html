@@ -5,15 +5,14 @@
 </div>
  
 
-
+<div class="container-wrapper">
 <div id="slide-row" class="row" >
 
     <section class="col-sm-9">
         <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
         <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <article class="col-sm-6 animate-repeat slide" ng-repeat="card in cards  | orderBy:'-time'">
-            <div class="item" id="{{card._id}}" >
-                <div class="thumbnail" >
+        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-time'">             <div class="item" id="{{card._id}}" >
+                <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
                         <div><span ng-bind-html="card.content | html"></span></div>
@@ -65,13 +64,28 @@
 
     </section>
 </div>
+  </div>
 
 
 <script>
+var windowWidth = $(window).width();
+
+$(window).resize(function(){
+    windowWidth = $(window).width();
+    console.log('WindowWidth2',windowWidth);
+    if (windowWidth<768) {
+      $('.affix').css('position','relative');
+    } else
+    {
+      $('.affix').css('position','fixed');
+    }
+});
+
 $(window).scroll(function(){
     var scrollPos = $(document).scrollTop();
-    // console.log(scrollPos);
-    if (scrollPos >= 445 ) { 
+    // var windowWidth = $(window).width();
+    console.log('WindowWidth',windowWidth);
+    if (scrollPos >= 445  ) { 
         // $('#video-container-outer').addClass('video-container-shrunk');
        $('.cbp-af-header').addClass("cbp-af-header-shrink");
         $('#slide-row').css('margin-top','530px')

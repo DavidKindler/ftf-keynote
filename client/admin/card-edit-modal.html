@@ -6,14 +6,14 @@
 <form ng-show="editCardModal.isLoggedIn">
   <h4>Edit Card</h4>
       <div class="form-group">
-         <label>Content: </label>  <textarea class="content-modal" ng-model="editCardModal.card.content"></textarea> 
+         <!-- <label>Content: </label>   -->
+          <!-- <textarea class="content-modal" id="edit" ng-model="editCardModal.card.content"> </textarea>  -->
+
+         <wysiwyg textarea-id="question" textarea-class="form-control content-modal"  textarea-height="230px" textarea-width="350px" textarea-name="textareaQuestion" textarea-required enable-bootstrap-title="true" textarea-menu="editCardModal.customMenu" ng-model="editCardModal.card.content"></wysiwyg>
+
       </div>
-   <div class="form-group">
-   <label>Order: </label> <input type="number" ng-model="editCardModal.card.order">
-  </div>
-   <div class="form-group">
-  <label>Public Card?</label> <input type="checkbox" ng-model="editCardModal.card.public">
-  </div>
+   
+
       <button  class="btn btn-sm" ng-click="editCardModal.close()">
         Close
       </button>

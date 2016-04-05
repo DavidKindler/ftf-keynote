@@ -5,34 +5,17 @@
 </div>
 
 <div  ng-show="adminCtrl.isLoggedIn" >
-<!-- <h2>Admin page</h2>
-  <h4> Cards:  </h4>
- --> 
   
 
   <div class="container">
       <div class="row">
         <div class="col-xs-5">
           <h3>Public Cards</h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order' | filter:{public:true}">
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order' | filter:{public:true}" class="item-container"> 
                 <div class="item" id="{{card._id}}" >
-                    <div class="thumbnail" >
-                        <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
+                    <div class="cardContent" >
                         <div class="caption" >
                             <div><span ng-bind-html="card.content | html"></span></div>
-                            
-                            <!-- <div class="title text-center">
-                                public: {{card.public}}
-                            </div>
-                            
-                            <div class="text-center">
-                                    sync time: {{card.time}}
-                            </div>
-                            <div class="text-center">
-                                    event: {{card.event.name}}
-                            </div> -->
-                            
-                            
                         </div>
                     
                        <footer class="item-footer">
@@ -44,16 +27,13 @@
                           <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{adminCtrl.currentUrl}}/{{card._id}}">
                             <email-icon></email-icon></a></li>
                          </ul>
-                         Order: {{card.order}}
                        </footer>
                 </div>
 
                 </div>
-                <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)">Edit</button>
-                <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.unpublishCard(card)">Unpublish</button>
-                <!-- <button ng-show="adminCtrl.isLoggedIn"  ui-sref="cardEdit({cardId: card._id})">Edit</button> -->
-               <!--  <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.setTime(card)">Timestamp</button>&nbsp;{{adminCtrl.videoTime}} -->
-                  <!-- <button class="btn btn-xs" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public">Make Public</button> -->
+                <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-xs btn-warning" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.unpublishCard(card)">Unpublish</button>
+
             </div>
 
 
@@ -62,24 +42,12 @@
         </div>
         <div class="col-xs-5">
           <h3>All Cards</h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order'">
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order'" class="item-container">
                 <div class="item" id="{{card._id}}" data-public="{{card.public}}" data-event="{{card.event.name}}" data-sort="{{card.order}}">
-                    <div class="thumbnail" >
-                        <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
+                    <div class="cardContent" >
                         <div class="caption" >
                        <div><span ng-bind-html="card.content | html"></span></div>
-                            
-<!--                             <div class="title text-center">
-                                public: {{card.public}}
-                            </div>
-                            
-                            <div class="text-center">
-                                    sync time: {{card.time}}
-                            </div>
-                              <div class="text-center">
-                                    event: {{card.event.name}}
-                            </div>
- -->                        </div>
+                        </div>
                     
                        <footer class="item-footer">
                          <ul class="list-inline">
@@ -89,19 +57,19 @@
                           <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
                           <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{adminCtrl.currentUrl}}/{{card._id}}">
                             <email-icon></email-icon></a></li>
+                            <li class="small"><em>Card order: {{card.order}}</em></li>
                          </ul>
-                         order: {{card.order}}
+                         
                        </footer>
                 </div>
                 </div>
-            <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)">Delete</button>
-            <!-- <button ng-show="adminCtrl.isLoggedIn"  ui-sref="cardEdit({cardId: card._id})">Edit</button> -->
-            <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)">Edit</button>
-           <!--  <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.setTime(card)">Timestamp</button>&nbsp;{{adminCtrl.videoTime}} -->
-              <button class="btn btn-xs" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public">Publish</button>
+            <button class="btn btn-xs btn-danger" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)"><span class="fa fa-trash"></span></button>
+            <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)"><i class="fa fa-pencil"></i></button>
+             <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.showCardModal(card)"><i class="fa fa-code"></i></button>
+              <button class="btn btn-xs btn-warning" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public">Publish</button>
               &nbsp; &nbsp; 
-              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardBelow(card)">Add Card Below</button>
-              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardAbove(card)">Add Card Above</button>
+              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardBelow(card)">Add Card <span class="arrow-down"></span></button>
+              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardAbove(card)">Add Card <span class="arrow-up"></span></button>
             </div>
 
 
@@ -118,7 +86,6 @@
               <div id="admin-video-container">
                 <videoplayer></videoplayer>
               </div>
-            <!-- <h4>Video Time: {{adminCtrl.videoTime}}</h4> -->
             <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button>
              
 
@@ -127,18 +94,6 @@
 
       </div>
   </div>
-<!--   <md-list>
-  <md-list-item class="md-1-line" ng-repeat="card in adminCtrl.cards">
-    <div class="md-list-item-text">
-      content: {{card.content}}  |  time: {{card.time}} | public: {{card.public}} | {{card.owner}}
-
-    <md-button class="md-raised" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)">Remove</md-button>
-    <button ng-show="adminCtrl.isLoggedIn"  ui-sref="cardEdit({cardId: card._id})">Edit</button>
-    <md-button class="md-raised" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)">Edit</md-button>
-
-    </div>
-  </md-list-item>
-</md-list> -->
 
 
 

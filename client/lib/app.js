@@ -34,14 +34,15 @@ angular.module('ftfKeynoteApp', [
   // 'ui.bootstrap.affix',
   'socialLinks',
   'updateMeta',
-  'ngEncodeTweet'
+  'ngEncodeTweet',
+  'wysiwyg.module'
   // 'ngSanitize'
 ])
 .filter('html', function($sce) {
       return function(val) {
           return $sce.trustAsHtml(val);
       };
-});
+})
 
 onReady = function() {
   angular.bootstrap(document, ['ftfKeynoteApp']);

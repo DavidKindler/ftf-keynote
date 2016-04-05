@@ -4,7 +4,7 @@
       restrict: 'E',
       templateUrl: 'client/admin/admin.html',
       controllerAs: 'adminCtrl',
-      controller: function ($scope, $stateParams, $reactive, $state, $mdDialog) {
+      controller: function ($scope, $stateParams, $reactive, $state, $mdDialog, $timeout) {
         $reactive(this).attach($scope);
         this.subscribe('users');
         this.subscribe('cards');
@@ -53,26 +53,45 @@
             clickOutsideToClose: true
          });
         };
-
-        this.setTime = function(card) {
-          Cards.update({_id: card._id}, {
-            $set: {
-              time: Session.get('videoTime')
-            }
-          })
+         this.showCardModal = function (card) {
+          $mdDialog.show({
+            template: '<show-card-modal card='+card._id+'></show-card-modal>',
+            clickOutsideToClose: true
+         });
         };
 
-        this.setPublic = function(card) {
+        // this.setTime = function(card) {
+        //   Cards.update({_id: card._id}, {
+        //     $set: {
+        //       time: Session.get('videoTime')
+        //     }
+        //   })
+        // };
+
+        function delayPublish (card){
+          // console.log ('publish card: ', card);
           Cards.update({_id: card._id}, {
             $set: {
               'public': true
             }
           })
+
+        }
+        this.setPublic = function(card) {
+          if (confirm("This card will be published in 20 seconds.  Okay?"))
+          {
+            $timeout(delayPublish, 20000, true, card);
+            // Cards.update({_id: card._id}, {
+            //   $set: {
+            //     'public': true
+            //   }
+            // })
+          }
         };
+
         this.removeCard = function(card) {
           if (confirm("Are you sure you want to delete this card?")) 
           { 
-            // Cards.remove({_id: card._id});
             Meteor.call('CardDelete',card, 
               function (error, result) {
                 if (error){

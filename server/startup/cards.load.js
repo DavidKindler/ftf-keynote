@@ -28,10 +28,8 @@ Meteor.methods({
     CardAddNew: function (newCard) {
         highestCard = Cards.findOne({},{sort:{order:-1}, limit:1})
         newCard.order = highestCard.order+1
-        // console.log ('highestCard====>',highestCard);
-        // console.log ('NEW CARD====>',newCard);
         Cards.insert(newCard);
-      return "Card inserted above "+newCard;
+      return "Newc card added";
     },
     CardDelete: function(card){
         cardorder = card.order;
@@ -39,14 +37,12 @@ Meteor.methods({
         for (var i =cardorder; i<= Cards.find().count()+1; i++){
           Cards.update({'order':i }, {$set: {'order':i-1}})
         }
-
+      return "Card deleted at "+cardorder;
     },
     CardAddAbove: function (cardorder) {
-        // console.log ('card count',Cards.find().count(),'card order', cardorder)
         for (var i =cardorder+1; i<= Cards.find().count(); i++){
           Cards.update({'order':i }, {$set: {'order':i+1}})
         }
-        // Cards.update({'order':{'$gt':cardorder}}, {'$inc':{'order':1}}, multi=true)
         newCard = {owner: Meteor.userId(), public: false, timestamp: new Date(), order: cardorder+1}
         Cards.insert(newCard);
       return "Card inserted above "+cardorder;
@@ -55,14 +51,7 @@ Meteor.methods({
         for (var i =cardorder; i<= Cards.find().count(); i++){
           Cards.update({'order':i }, {$set: {'order':i+1}})
         }
-
-       // Cards.update({'order':{'$gt':cardorder}}, {'$inc':{'order':1}}, multi=true)
-        // this.newCard.order = card.order+1;
-         newCard = {owner: Meteor.userId(), public: false, timestamp: new Date(), order: cardorder}
-            // this.newCard.owner = Meteor.userId();
-            // this.newCard.event = thselectedOption;
-            // this.newCard.public = false;
-            // this.newCard.timestamp =  new Date();
+        newCard = {owner: Meteor.userId(), public: false, timestamp: new Date(), order: cardorder}
             Cards.insert(newCard);
       return "Card inserted below "+cardorder;
     }

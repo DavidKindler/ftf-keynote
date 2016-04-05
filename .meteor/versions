@@ -32,12 +32,14 @@ ddp-rate-limiter@1.0.2
 ddp-server@1.2.4
 deps@1.0.10
 diff-sequence@1.0.3
+eastamis:angular-bootstrap-colorpicker@0.1.0
 ecmascript@0.4.1
 ecmascript-runtime@0.2.8
 ejson@1.0.9
 email@1.0.10
 es5-shim@4.5.8
 fastclick@1.0.9
+fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.6
 hot-code-push@1.0.2
 html-tools@1.0.7
