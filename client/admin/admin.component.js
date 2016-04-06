@@ -42,6 +42,7 @@
         };
         
         this.openAddNewCardModal = function () {
+          console.log ('adding a card??')
           $mdDialog.show({
             template: '<add-new-card-modal></add-new-card-modal>',
             clickOutsideToClose: true

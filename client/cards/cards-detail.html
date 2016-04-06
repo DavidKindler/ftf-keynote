@@ -36,7 +36,7 @@
  <div class="col-sm-12">
       
 
-        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-time'">
+        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">
             <div class="item" id="{{card._id}}" >
                 <div class="thumbnail" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
@@ -52,7 +52,7 @@
                         </div> -->
                     </div>
                 
-                <footer class="item-footer">
+                <div class="item-footer">
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
                     <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
@@ -61,7 +61,7 @@
                   <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{currentUrl}}/{{card._id}}">
                     <email-icon></email-icon></a></li>
                  </ul>
-               </footer>
+               </div>
             </div>
 
                 

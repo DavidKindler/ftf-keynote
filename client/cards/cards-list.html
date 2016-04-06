@@ -11,7 +11,7 @@
     <section class="col-sm-9">
         <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
         <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-time'">             <div class="item" id="{{card._id}}" >
+        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">             <div class="item" id="{{card._id}}" >
                 <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
@@ -26,7 +26,7 @@
                         </div> -->
                     </div>
                 
-                <footer class="item-footer">
+                <div class="item-footer">
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
                     <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
@@ -35,7 +35,7 @@
                   <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{currentUrl}}/{{card._id}}">
                     <email-icon></email-icon></a></li>
                  </ul>
-               </footer>
+               </div>
             </div>
 
                 
@@ -72,13 +72,19 @@
 var windowWidth = $(window).width();
 
 $(window).resize(function(){
-    windowWidth = $(window).width();
+    var windowWidth = $(window).width();
+    var scrollPos = $(document).scrollTop();
     console.log('WindowWidth2',windowWidth);
+    console.log ('scroll pos2',scrollPos);
     if (windowWidth<768) {
       $('.affix').css('position','relative');
     } else
     {
-      $('.affix').css('position','fixed');
+      if (scrollPos >=300){
+        $('.affix').css({'position':'fixed','top':'140px'});
+      }  else {
+        $('.affix').css('position','relative');
+      }
     }
 });
 
@@ -86,18 +92,21 @@ $(window).scroll(function(){
     var scrollPos = $(document).scrollTop();
     // var windowWidth = $(window).width();
     console.log('WindowWidth',windowWidth);
-    if (scrollPos >= 445  ) { 
+    console.log (scrollPos)
+    if (scrollPos >= 330  ) { 
+        console.log ('scrollPos is >= 330')
         // $('#video-container-outer').addClass('video-container-shrunk');
        $('.cbp-af-header').addClass("cbp-af-header-shrink");
-        $('#slide-row').css('margin-top','530px')
+        $('#slide-row').css('margin-top','510px')
     } else {
+        console.log ('scrollPos is <= 330')
         $('.cbp-af-header').removeClass("cbp-af-header-shrink");
         // $('#video-container-outer').removeClass('video-container-shrunk');
         $('#slide-row').css('margin-top','20px')
     }
 });
 
-$('#affixTweets').affix({ offset: {top: 450} })
+$('#affixTweets').affix({ offset: {top: 400} })
 
 $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {

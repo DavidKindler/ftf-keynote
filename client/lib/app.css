@@ -70,7 +70,7 @@ body {background-color: #f1f1f1;}
 
 #video-container-outer {
   /*background-color: black;*/
-  background: rgba(0,0,0,.8);
+  background: rgba(0,0,0,.88);
 /*   -webkit-transition: 1s ease-in-out;
     -moz-transition: 1s ease-in-out;
     -o-transition: 1s ease-in-out;
@@ -86,6 +86,8 @@ body {background-color: #f1f1f1;}
 }
 
 #video-container {width:888px; margin:0px auto;}
+#admin-video-container #video-container {width:auto; margin:0px;}
+#admin-video-container div#nxp-ftf-video-headline-text {display: none;}
 
 #video-container-outer.video-container-shrunk {
  /*background-color: black;*/
@@ -216,7 +218,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
   }
   
   .tweets h2 { margin:0; padding:6px 0px 6px 6px; color: #E66A08; font-weight: 600;}
-  .tweet-row{padding: 2px 5px; border-top:1px solid #d7d7d7;}
+  .tweet-row{padding: 2px 5px; border-top:1px solid #d7d7d7; line-height:14px;}
   .tweetItem > img {border-radius:50%; height:20px; width:20px; display:inline;  margin-right: 4px;}
   .tweet .emoji {width:15px; height:15px;}
   .tweet {font-size: 12px; line-height: 14px; }
@@ -239,17 +241,17 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
   margin-bottom: 5px;
 }*/
 
-footer.item-footer ul.list-inline {margin-bottom: 0px;}
+.item-footer ul.list-inline {margin-bottom: 0px;}
 
-footer.item-footer ul.list-inline a, footer.item-footer ul.list-inline svg {
+.item-footer ul.list-inline a, .item-footer ul.list-inline svg {
   display: block;
 }
-footer.item-footer ul.list-inline a {
+.item-footer ul.list-inline a {
   position: relative;
   height: 20px;
   width: 20px;
 }
-footer.item-footer ul.list-inline svg {
+.item-footer ul.list-inline svg {
   height: 100%;
   width: 100%;
 }
@@ -272,7 +274,7 @@ footer.item-footer ul.list-inline svg {
 
 
 .ma-add-new-card-container, .ma-edit-card-container {min-width:400px;  max-width:800px; padding: 10px;}
-.content-modal {width: 300px; height: 300px;}
+.content-modal {width: 360px; height: 300px;}
 
 
 #login-buttons {margin-right:70px;}
@@ -305,12 +307,12 @@ footer.item-footer ul.list-inline svg {
 .container-fluid {margin-top:30px;}
 /*.navbar .container {margin-top:0px;}*/
 
-/*.navbar-default { background-color: #f9b500;  }*/
+.navbar-default { background-color: #f9b500;  }
 /*.navbar {border-radius:0px; border:0px;}*/
 
 /*.navbar-nav {margin: 7.5px -15px;}*/
 
-/*.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus { color: black; font-weight: 700;}
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus { color: black; font-weight: 700;}
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus  { color: white; font-weight: 700; }
 
@@ -331,7 +333,7 @@ footer.item-footer ul.list-inline svg {
   background-color: white;
   color: #777777;
 }
-*/
+
 /* 
 #admin-static {position: fixed; }
 
@@ -350,7 +352,7 @@ footer.item-footer ul.list-inline svg {
     top: 0px;
 } */
 
-.affix {top:160px;}
+.affix {top:140px;}
 
 #stretch {
     height: 500px;  
@@ -795,6 +797,46 @@ li.productsmenu div.dropdown-menu {left:-150px;}
 li.applicationsmenu div.dropdown-menu {left:-280px;}
 li.trainingmenu div.dropdown-menu {left:-414px;}
 li.aboutmenu div.dropdown-menu {left:-530px;}
+
+/* /////////////CARD CONTENT HTML MARKUP////////////////// */
+
+.item .caption {
+  min-height: 1px;
+  padding: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  position: relative;
+  height:220px;
+}
+.item .caption h2,
+.item .caption .h2 {
+  color: #e66a08;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 0px;
+}
+.item .caption p {
+  margin: 2px 0px;
+}
+.item .caption img {
+  width: 100%;
+  max-height: 125px;
+}
+.item .caption .center {
+  text-align: center;
+}
+.item .caption .block-of-text {
+  height: 200px;
+  position: relative;
+}
+.item .caption .block-of-text div {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 @media screen and (max-width: 768px) {#header #fsl-logo img {
