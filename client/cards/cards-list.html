@@ -68,6 +68,7 @@
 
 
 <script>
+
 var windowWidth = $(window).width();
 
 $(window).resize(function(){
@@ -98,5 +99,9 @@ $(window).scroll(function(){
 
 $('#affixTweets').affix({ offset: {top: 450} })
 
+$.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
+    if (typeof NXP.top_nav != 'undefined') {
+          $('.navbar-collapse').html(NXP.top_nav);
+    } // load top nav elements
+})
 </script>
-
