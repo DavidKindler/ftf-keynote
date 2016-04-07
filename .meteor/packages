@@ -17,7 +17,6 @@ angular
 angularui:angular-ui-router
 angular:angular-material
 accounts-password
-schiller:twit
 sebhero:angular-material-icons
 twbs:bootstrap
 angularui:angular-ui-bootstrap
