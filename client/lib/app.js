@@ -29,7 +29,7 @@ angular.module('ftfKeynoteApp', [
   'ngMaterial',
   // 'ngAnimate',
   // 'angularUtils.directives.dirPagination',
-  // 'accounts.ui',
+  'accounts.ui',
   'ui.bootstrap',
   // 'ui.bootstrap.affix',
   'socialLinks',

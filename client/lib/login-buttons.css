@@ -1,0 +1,70 @@
+#login-buttons {margin-right:70px;}
+#login-buttons a {padding: 15px; display: block; line-height: 20px;}
+#login-dropdown-list {top:24px; right:-34px;}
+
+#login-buttons .login-link-and-dropdown-list {margin-right: 130px;}
+
+
+
+#login-buttons a {cursor: pointer;}
+#login-buttons a.login-link-text {color:white; font-weight: bold;}
+#login-buttons a.login-link-text:hover, #login-buttons a.login-link-text:active, #login-buttons a.login-link-text:focus {color:#007088; background-color: #f2f2f5; }
+
+#login-buttons #login-email-label, #login-buttons #login-password-label {float:left;}
+#login-buttons #login-email, #login-buttons #login-password {float:right; border:1px solid #ccc; padding: 3px; border-radius: 3px; box-shadow: 1px 2px 2px rgba(221, 221, 221, 0.60);}
+#login-email-label-and-input, #login-password-label-and-input {padding-bottom: 40px;}
+
+#login-dropdown-list {
+	position:absolute; 
+	top:auto; 
+	right:auto;
+	width:100%; 
+	background-color: white; 
+	padding: 15px;
+	border:1px solid #ccc; 
+	box-shadow: 1px 6px 8px #ccc;
+}
+
+#login-dropdown-list .login-close-text {
+	cursor: pointer;
+	/*display:inline-block;*/
+	border-radius: 3px; 
+	border: 1px solid #A0A0A0;  
+	/*box-shadow: 1px 1px 1px #ccc; */
+	padding: 0px 10px;  
+	text-align: center; 
+	text-decoration: initial; 
+	margin-bottom:10px;
+	font-size: .9em;
+}
+
+#login-dropdown-list .login-close-text:hover {
+	background-color: #267F0;
+}
+
+
+
+#login-dropdown-list .login-button {
+	cursor: pointer;
+	display:inline-block;
+	border-radius: 3px; 
+	border: 1px solid #B8D66F;  
+	box-shadow: 1px 1px 1px #ccc; 
+	padding: 3px 10px;  
+	text-align: center; 
+	text-decoration: initial; 
+	margin-bottom:10px;
+	background-color: honeydew;
+}
+
+#login-dropdown-list .additional-link-container a {
+	display:block;
+	/*border-radius: 3px; */
+	/*border: 1px solid #1A2200;  */
+	/*box-shadow: 1px 1px 1px #ccc; */
+	padding: 3px 10px;  
+	/*text-align: center; */
+	text-decoration: initial; 
+	/*margin-bottom:10px;*/
+	font-size: 0.9em;
+}
