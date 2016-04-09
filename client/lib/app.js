@@ -43,6 +43,14 @@ angular.module('ftfKeynoteApp', [
           return $sce.trustAsHtml(val);
       };
 })
+.filter('published', function () {
+  return function(cards,timeFilter) {
+    return _.filter(cards, function(card){
+       return card.time <= timeFilter
+    })
+  }
+});
+
 
 onReady = function() {
   angular.bootstrap(document, ['ftfKeynoteApp']);

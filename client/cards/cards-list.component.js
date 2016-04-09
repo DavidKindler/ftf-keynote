@@ -43,12 +43,3 @@
   });
 });
 
-angular.module('ftfKeynoteApp')
-.filter('published', function () {
-  return function(cards,timeFilter) {
-    return _.filter(cards, function(card){
-       return card.time <= timeFilter
-    })
-  }
-});
-

@@ -16,6 +16,7 @@
 <meta name="DCSext.language_option" content="en" />
 <meta name="DCSext.en_ti" content="Welcome to NXP Semiconductors" />
 
+<meta property="og:site_name"     content="NXP Semiconductors" />
 <meta property="og:url"           content="http://www.nxp.com/" />
 <meta property="og:type"          content="website" />
 <meta property="og:title"         content="NXP FTF 2016" />
@@ -28,21 +29,172 @@
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-<script src="lib/update-meta.js"></script> 
-<script src="lib/angular-social-links.js"></script> 
-<script src="lib/filters.js"></script> 
-<script src="lib/app.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="app.js"></script> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="post-event.css">
 
 </head>
 <body >
 <div class="containter-fluid">
-  <div ng-include="'templates/nav.html'"></div>
-  <div ng-include="'templates/video.html'"></div>
+ <div id="header">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+  <div class="nav-container">
+  <div class="navbar-header">
+            <button  type="button" data-toggle="collapse" data-target="#navbar-collapse-nxp" class="navbar-toggle collapsed"><span class="fa fa-bars"></span></button>
+            <span class="logo-img"><img src="NXP_logo_SOLID_WHITE.png"></span> 
+  </div>
+     <div id="navbar-collapse-nxp" class="navbar-collapse collapse">
+       <ul class="nav navbar-nav">         </ul>
+    </div>
+  </div>
+</nav>
+</div>
+
+  <div ng-include="'video.html'"></div>
 </div>
 
 <div class="container-fluid" ng-view></div>
+
+<script>
+$.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
+    if (typeof NXP.top_nav != 'undefined') {
+          $('.navbar-collapse').html(NXP.top_nav);
+          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li><li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li>')
+    } // load top nav elements
+})
+
+  </script>
+
+<script type="text/ng-template" id="video.html">
+<div class="videoplayer">
+
+<div id="video-container" class="outer-container text-center">
+  <video id="fslPlayer" data-video-id="ref:RF-SAGE-VIDEO" data-account="4089003392001" class="video-js"
+    data-setup='{"autoplay":false}' 
+    data-player="f5dae957-1421-47f2-9de8-90cf42d311ae" data-embed="default"
+    data-delayanalytics="true"
+    controls width="100%" height="100%"
+    poster="http://media.w3.org/2010/05/sintel/poster.png">
+    <source type="video/mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" id="mp4">
+    <source type="video/webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" id="webm">
+    <source type="video/ogg" src="http://media.w3.org/2010/05/sintel/trailer.ogv" id="ogv"> 
+    <p>Your user agent does not support the HTML5 Video element.</p>
+  </video>
+<!--     
+		<script src="//players.brightcove.net/4089003392001/f5dae957-1421-47f2-9de8-90cf42d311ae_default/index.min.js"></script>
+    <script src="//style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.preroll.js"></script>
+    <script src="//players.brightcove.net/videojs-social/dist/videojs-social.min.js"></script>
+    <script type="text/javascript" src="//style.nxp.com/v1.36/search/javascript/nxpvid_bumper.js"></script>
+    <script>videojs('fslPlayer',{"autoplay":false}).nxpvidBumper("RF-SAGE-VIDEO", true);</script>
+ -->
+</div>
+
+</div>
+
+</script>
+
+
+<script type="text/ng-template" id="modal.html">
+	
+<div class="modal-body">
+ <span ng-bind-html="cardOne.content | html"></span>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-xs" type="button" ng-click="cancel()">Close</button>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="cards.html">
+	
+	  <div ng-controller="CardController">  
+
+<div class="container-wrapper">
+<div id="slide-row" class="row" >
+    <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in data  | orderBy:'-order' | filter:{public:true}">             <div class="item" id="{{card._id}}" >
+                <div class="cardContent" >
+                    <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
+                    <div class="caption" >
+                        <div><span ng-bind-html="card.content | html"></span></div>
+                    </div>
+                
+                <div class="item-footer">
+                 <ul class="list-inline">
+                   <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
+                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
+                  <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
+                  <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
+                  <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{currentUrl}}/{{card._id}}">
+                    <email-icon></email-icon></a></li>
+                 </ul>
+               </div>
+            </div>
+
+                
+            </div>
+        </article>
+      </div>
+    </div>
+
+
+  </div>
+</script>
+
+<script type="text/ng-template" id="card-detail.html">
+<update-title title="{{cardOne.title}}"></update-title>
+<update-meta property="og:title" content="{{cardOne.title}}"></update-meta>
+<update-meta property="og:url" content="{{cardOne.cardUrl}}"></update-meta>
+<update-meta property="og:type" content="website"></update-meta>
+<update-meta property="og:description" content="{{cardOne.description}}"></update-meta>
+<update-meta property="og:image" content="{{cardOne.image}}"></update-meta>
+<update-meta name="description" content="{{cardOne.description}}"></update-meta>
+
+
+  <!-- <div ng-if="cardOne">Card Details for {{cardOne._id}} Content is: <span ng-bind-html="cardOne.content | html"></span></div> -->
+  
+  <div ng-controller="CardDetailController">  
+
+<!--     <div class="col-sm-6" ng-repeat="card in data" >
+      <div class="item" id="{{card._id}}" ><span ng-bind-html="card.content | html"></span> </div>
+    </div>
+ -->
+
+    <div class="container-wrapper">
+    <div id="slide-row" class="row" >
+        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in data  | orderBy:'-order' | filter:{public:true}">             <div class="item" id="{{card._id}}" >
+                    <div class="cardContent" >
+                        <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
+                        <div class="caption" >
+                            <div><span ng-bind-html="card.content | html"></span></div>
+                        </div>
+                    
+                    <div class="item-footer">
+                     <ul class="list-inline">
+                       <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
+                        <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
+                      <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
+                      <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
+                      <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{currentUrl}}/{{card._id}}">
+                        <email-icon></email-icon></a></li>
+                     </ul>
+                   </div>
+                </div>
+
+                    
+                </div>
+            </article>
+          </div>
+        </div>
+
+
+
+  </div>
+
+  <span ng-click="open(cardOne)" ng-controller="ModalDemoCtrl" id="openModal"></button>
+  
+</script>
 
 </body>
 </html>

@@ -5,12 +5,98 @@
 </div>
 
 <div  ng-show="adminCtrl.isLoggedIn" >
-  
+ 
+
+  <modal title="Add new card" visible="adminCtrl.showAddNewCardModal" data-backdrop="static">
+    <form  role="form">
+      <!-- <h4>Create a new card</h4> -->
+       <div class="form-group">
+        <label>Event: </label>  
+           <select name="mySelect" id="mySelect"
+                 ng-options="option.name for option in adminCtrl.availableOptions track by option.id"
+                 ng-model="adminCtrl.selectedOption"></select>
+        </div>
+       <div class="form-group">
+        <label>Title: </label>  
+        <input ng-model="adminCtrl.newCard.title"  /> <br>
+        <label>Description:</label>
+        <input ng-model="adminCtrl.newCard.description" /> <br>
+        <label>Image url:</label>
+        <input ng-model="adminCtrl.newCard.image"/> <br>
+
+        <wysiwyg textarea-id="content" textarea-class="form-control content-modal"  textarea-height="230px" textarea-width="350px" textarea-name="textareaConten" textarea-required enable-bootstrap-title="true" textarea-menu="adminCtrl.customMenu" ng-model="adminCtrl.newCard.content"></wysiwyg>
+        
+        </div>
+       <!--  <div class="form-group">
+        <label>Order: </label>  <input  type="number" ng-model="addNewCardModal.newCard.order" /> 
+        </div> -->
+
+            <button  class="btn btn-sm" ng-click="adminCtrl.toggleAddNewCardModal()">
+              Close
+            </button>
+            <button  class="btn btn-sm" ng-click="adminCtrl.processAddNewCard()" style="margin-right:20px;">
+              Save
+            </button>
+      </form>
+  </modal>
+
+  <modal title="Edit a card" visible="adminCtrl.showEditCardModal" data-backdrop="static">
+  <form role="form">
+    <h4>Edit Card</h4>
+        <div class="form-group">
+          <label>Title: </label>  
+          <input ng-model="adminCtrl.newCard.title"  /><br>
+          <label>Description:</label>
+          <input ng-model="adminCtrl.newCard.description"  /> <br>
+          <label>Image url:</label>
+          <input ng-model="adminCtrl.newCard.image" /> <br>
+
+           <wysiwyg textarea-id="content" textarea-class="form-control content-modal"  textarea-height="230px" textarea-width="350px" textarea-name="textareaQuestion" textarea-required enable-bootstrap-title="true" textarea-menu="adminCtrl.customMenu" ng-model="adminCtrl.newCard.content"></wysiwyg>
+
+        </div>
+     
+
+        <button  class="btn btn-sm" ng-click="adminCtrl.closeEditCardModal()">
+          Close
+        </button>
+        <button  class="btn btn-sm" ng-click="adminCtrl.updateCard()" style="margin-right:20px;">
+          Save
+        </button>
+  </form>
+
+  </modal>
+
+  <modal title="Edit html" visible="adminCtrl.showHTMLCardModal" data-backdrop="static">
+    <form role=form>
+          <div class="form-group">
+              <label>Title: </label>  
+              <input ng-model="adminCtrl.newCard.title"  /> <br>
+              <label>Description:</label>
+              <input ng-model="adminCtrl.newCard.description" /> <br>
+              <label>Image url:</label>
+              <input ng-model="adminCtrl.newCard.image"/>  <br>
+
+              <textarea class="content-modal" id="edit" ng-model="adminCtrl.newCard.content"> </textarea> 
+
+          </div>
+       
+
+          <button  class="btn btn-sm" ng-click="adminCtrl.closeHTMLCardModal()">
+            Close
+          </button>
+          <button  class="btn btn-sm" ng-click="adminCtrl.saveHTMLCardModal()" style="margin-right:20px;">
+            Save
+          </button>
+    </form>
+
+  </modal>
+
+
 
   <div class="container">
       <div class="row">
         <div class="col-xs-5">
-          <h3>Public Cards</h3>
+          <h3>Published Cards <span class="small">(descending order)</span></h3>
             <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order' | filter:{public:true}" class="item-container"> 
                 <div class="item" id="{{card._id}}" >
                     <div class="cardContent" >
@@ -26,13 +112,14 @@
                           <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
                           <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{adminCtrl.currentUrl}}/{{card._id}}">
                             <email-icon></email-icon></a></li>
+                            <li class="small"><em>Card order: {{card.order}}</em></li>
                          </ul>
                        </footer>
                 </div>
 
                 </div>
-                <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)"><i class="fa fa-pencil"></i></button>
-                 <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.showCardModal(card)"><i class="fa fa-code"></i></button>
+                <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleEditCardModal(card)"><i class="fa fa-pencil"></i></button>
+                 <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleHTMLCardModal(card)"><i class="fa fa-code"></i></button>
                 <button class="btn btn-xs btn-warning" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.unpublishCard(card)">Unpublish</button>
 
             </div>
@@ -42,8 +129,8 @@
 
         </div>
         <div class="col-xs-5">
-          <h3>All Cards</h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order'" class="item-container">
+          <h3>Unpublished Cards <span class="small">(ascending order)</span></h3>
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'order' | filter:{public:false}" class="item-container">
                 <div class="item" id="{{card._id}}" data-public="{{card.public}}" data-event="{{card.event.name}}" data-sort="{{card.order}}">
                     <div class="cardContent" >
                         <div class="caption" >
@@ -65,12 +152,13 @@
                 </div>
                 </div>
             <button class="btn btn-xs btn-danger" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)"><span class="fa fa-trash"></span></button>
-            <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.editCardModal(card)"><i class="fa fa-pencil"></i></button>
-             <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.showCardModal(card)"><i class="fa fa-code"></i></button>
-              <button class="btn btn-xs btn-warning" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public">Publish</button>
+            <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleEditCardModal(card)"><i class="fa fa-pencil"></i></button>
+             <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleHTMLCardModal(card)"><i class="fa fa-code"></i></button>
+              <button class="btn btn-xs btn-warning" ng-disabled="card.countdown" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public" data-toggle="confirmation">Publish {{card.countdown}}</button>
               &nbsp; &nbsp; 
-              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardBelow(card)">Add Card <span class="arrow-down"></span></button>
-              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardAbove(card)">Add Card <span class="arrow-up"></span></button>
+             
+              <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardAbove(card)">Add Card <span class="arrow-down"></span></button>
+               <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardBelow(card)">Add Card <span class="arrow-up"></span></button>
             </div>
 
 
@@ -87,8 +175,8 @@
               <div id="admin-video-container">
                 <videoplayer></videoplayer>
               </div>
-            <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button>
-             
+            <!-- <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button> -->
+               <button ng-click="adminCtrl.toggleAddNewCardModal()" class="btn btn-default">Add new card</button>
 
           </div>
         </div>
@@ -99,3 +187,4 @@
 
 
 </div>
+

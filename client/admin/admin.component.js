@@ -4,16 +4,38 @@
       restrict: 'E',
       templateUrl: 'client/admin/admin.html',
       controllerAs: 'adminCtrl',
-      controller: function ($scope, $stateParams, $reactive, $state, $mdDialog, $timeout) {
+      controller: function ($scope, $stateParams, $reactive, $state, $timeout, $mdDialog, $interval) {
+
+
         $reactive(this).attach($scope);
         this.subscribe('users');
         this.subscribe('cards');
         this.currentUrl = location.origin+"/#/card"
         // console.log (this.currentUrl)
         this.newCard={};
+        this.showAddNewCardModal = false;
+        this.showEditCardModal = false;
+        this.showHTMLCardModal = false;
+        this.customMenu = [
+                          ['bold', 'italic', 'underline'],
+                          ['format-block'],
+                          // ['font'],
+                          ['font-size'],
+                          // ['font-color', 'hilite-color'],
+                          ['remove-format'],
+                          // ['ordered-list', 'unordered-list', 'outdent', 'indent'],
+                          ['left-justify', 'center-justify', 'right-justify'],
+                          [/*'code',*/ 'quote', 'paragraph'],
+                          ['link', 'image', 'hero']
+                      ];
+
+
         this.helpers({
           cards:function() {
             return Cards.find({},{sort:{time:-1}});
+          },
+           card: () => {
+            return Cards.findOne({_id: $scope.card});
           },
           users: function() {
             return Meteor.users.find({});
@@ -41,34 +63,114 @@
           }
         };
         
-        this.openAddNewCardModal = function () {
-          console.log ('adding a card??')
-          $mdDialog.show({
-            template: '<add-new-card-modal></add-new-card-modal>',
-            clickOutsideToClose: true
-         });
+        this.toggleAddNewCardModal = function(){
+            this.newCard = {}; 
+            this.showAddNewCardModal = !this.showAddNewCardModal;
         };
-        this.editCardModal = function (card) {
-          $mdDialog.show({
-            template: '<edit-card-modal card='+card._id+'></edit-card-modal>',
-            clickOutsideToClose: true
-         });
+        this.toggleEditCardModal = function(card){
+          // console.log ('clicked on ',this)
+          this.newCard = card;
+          this.showEditCardModal = !this.showEditCardModal;
         };
-         this.showCardModal = function (card) {
-          $mdDialog.show({
-            template: '<show-card-modal card='+card._id+'></show-card-modal>',
-            clickOutsideToClose: true
-         });
+        this.toggleHTMLCardModal = function(card){
+          // console.log ('clicked on ',this)
+          this.newCard = card;
+          this.showHTMLCardModal = !this.showHTMLCardModal;
         };
 
-        // this.setTime = function(card) {
-        //   Cards.update({_id: card._id}, {
-        //     $set: {
-        //       time: Session.get('videoTime')
-        //     }
-        //   })
+        this.processAddNewCard = function(){
+          // console.log ('form clicked on', this.newCard);
+          // this.newCard.order = Cards.find().count()+1;
+          this.newCard.owner = Meteor.userId();
+          this.newCard.event = this.selectedOption;
+          this.newCard.public = false;
+          this.newCard.timestamp =  new Date();
+          // Cards.insert(this.newCard);
+          Meteor.call('CardAddNew', this.newCard,
+             function (error, result) {
+               if(error){
+                 console.error(error);
+               }else{
+                 console.info(result);
+               }
+             });
+          this.newCard = {};
+          this.showAddNewCardModal = !this.showAddNewCardModal;
+        };
+
+        this.updateCard = function() {
+            Cards.update({_id: this.newCard._id}, {
+              $set: {
+                'title':this.newCard.title,
+                'description':this.newCard.description,
+                'image':this.newCard.image,
+                'content': this.newCard.content,
+                'time': this.newCard.time,
+                'public' : this.newCard.public,
+                'order':this.newCard.order
+              }
+            }, 
+            (error) => {
+              if (error) {
+                console.log ('Oops, unable to update the card');
+              }
+              else {
+                console.log ('Done');
+              }
+            });
+            this.newCard = {};
+            this.showEditCardModal = !this.showEditCardModal;
+            // $state.go('admin');
+        };
+
+        this.closeEditCardModal = function(){
+          this.showEditCardModal = !this.showEditCardModal;
+        }
+
+        this.saveHTMLCardModal = function() {
+            Cards.update({_id: this.newCard._id}, {
+              $set: {
+                'title':this.newCard.title,
+                'description':this.newCard.description,
+                'image':this.newCard.image,
+                'content': this.newCard.content,
+                'time': this.newCard.time,
+                'public' : this.newCard.public,
+                'order':this.newCard.order
+              }
+            }, 
+            (error) => {
+              if (error) {
+                console.log ('Oops, unable to update the card');
+              }
+              else {
+                console.log ('Done');
+              }
+            });
+            this.newCard = {};
+            this.showHTMLCardModal = !this.showHTMLCardModal;
+            // $state.go('admin');
+        };
+
+        this.closeHTMLCardModal = function(){
+          this.showHTMLCardModal = !this.showHTMLCardModal;
+        }
+        // this.editCardModal = function (card) {
+        //   $mdDialog.show({
+        //     template: '<edit-card-modal card='+card._id+'></edit-card-modal>',
+        //     clickOutsideToClose: true
+        //  });
+        // };
+        // this.showCardModal = function (card) {
+        //   $mdDialog.show({
+        //     template: '<show-card-modal card='+card._id+'></show-card-modal>',
+        //     clickOutsideToClose: true
+        //  });
         // };
 
+        // this.showCardModal = function(card){
+
+        // }
         function delayPublish (card){
           // console.log ('publish card: ', card);
           Cards.update({_id: card._id}, {
@@ -76,17 +178,19 @@
               'public': true
             }
           })
-
         }
+
+        function countdownTimer(card){
+             $interval(function(){card.countdown--},1000,Math.round(this.delayToPublish),card);
+        }
+
         this.setPublic = function(card) {
+          this.delayToPublish=10; // In seconds
           if (confirm("This card will be published in 20 seconds.  Okay?"))
           {
-            $timeout(delayPublish, 20000, true, card);
-            // Cards.update({_id: card._id}, {
-            //   $set: {
-            //     'public': true
-            //   }
-            // })
+            card.countdown = Math.round(this.delayToPublish);
+            $timeout(delayPublish, this.delayToPublish*1000, true, card);
+            countdownTimer(card);          
           }
         };
 
@@ -128,4 +232,53 @@
 
       }
     }
+  })
+   .directive('modal', function () {
+    return {
+      template: '<div class="modal fade">' + 
+          '<div class="modal-dialog">' + 
+            '<div class="modal-content">' + 
+              '<div class="modal-header">' + 
+                // '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' + 
+                '<h4 class="modal-title">{{ title }}</h4>' + 
+              '</div>' + 
+              '<div class="modal-body" ng-transclude></div>' + 
+            '</div>' + 
+          '</div>' + 
+        '</div>',
+      restrict: 'E',
+      transclude: true,
+      replace:true,
+      scope:true,
+      link: function postLink(scope, element, attrs) {
+        scope.title = attrs.title;
+
+        scope.$watch(attrs.visible, function(value){
+          if(value == true)
+          { 
+            $(element).modal({'show': true, 'backdrop':'static'});
+          }
+          else {
+            $(element).modal('hide');
+          }
+        });
+       
+        $(element).on('shown.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = true;
+          });
+        });
+
+        $(element).on('hidden.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = false;
+          });
+        });
+
+      }
+    };
   });
+
+
+
+  
