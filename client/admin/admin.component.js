@@ -4,7 +4,7 @@
       restrict: 'E',
       templateUrl: 'client/admin/admin.html',
       controllerAs: 'adminCtrl',
-      controller: function ($scope, $stateParams, $reactive, $state, $timeout, $mdDialog, $interval) {
+      controller: function ($scope, $stateParams, $reactive, $state, $timeout, $interval) {
 
 
         $reactive(this).attach($scope);
@@ -155,22 +155,7 @@
         this.closeHTMLCardModal = function(){
           this.showHTMLCardModal = !this.showHTMLCardModal;
         }
-        // this.editCardModal = function (card) {
-        //   $mdDialog.show({
-        //     template: '<edit-card-modal card='+card._id+'></edit-card-modal>',
-        //     clickOutsideToClose: true
-        //  });
-        // };
-        // this.showCardModal = function (card) {
-        //   $mdDialog.show({
-        //     template: '<show-card-modal card='+card._id+'></show-card-modal>',
-        //     clickOutsideToClose: true
-        //  });
-        // };
 
-        // this.showCardModal = function(card){
-
-        // }
         function delayPublish (card){
           // console.log ('publish card: ', card);
           Cards.update({_id: card._id}, {

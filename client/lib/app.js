@@ -24,9 +24,9 @@
 
 angular.module('ftfKeynoteApp', [
   'angular-meteor',
-  'ngMdIcons',
+  // 'ngMdIcons',
   'ui.router',
-  'ngMaterial',
+  // 'ngMaterial',
   // 'ngAnimate',
   // 'angularUtils.directives.dirPagination',
   'accounts.ui',

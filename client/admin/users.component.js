@@ -1,12 +1,4 @@
-
-// angular.module('ftfKeynoteApp')
-// .controller('AdminCtrl', function($scope, $stateParams) {
-
-
-// });
-
-
-  angular.module('ftfKeynoteApp')
+angular.module('ftfKeynoteApp')
   .directive('users', function () {
     return {
       restrict: 'E',
@@ -28,44 +20,7 @@
             return Meteor.userId() !== null;
           }
         });
-        // this.removeCard = (card) => {
-        //   Cards.remove({_id: card._id});
-        // };
-        
-        // this.openAddNewCardModal = function () {
-        //   $mdDialog.show({
-        //     template: '<add-new-card-modal></add-new-card-modal>',
-        //     clickOutsideToClose: true
-        //  });
-        // };
-        // this.editCardModal = function (card) {
-        //   // console.log ('party is ',party)
-        //   $mdDialog.show({
-        //     template: '<edit-card-modal party='+party._id+'></edit-card-modal>',
-        //     clickOutsideToClose: true
-        //     // locals: {Party: party}
-        //  });
-        // };
-
-        // this.save = () => {
-        //   Cards.update({_id: $stateParams.cardId}, {
-        //     $set: {
-        //       name: this.card.content,
-        //       time: this.card.time,
-        //       'public' : this.card.public
-        //       // time: new Date()
-        //     }
-        //   }, 
-        //   (error) => {
-        //     if (error) {
-        //       console.log ('Oops, unable to update the card');
-        //     }
-        //     else {
-        //       console.log ('Done');
-        //     }
-        //   });
-        //   $state.go('admin');
-        // };
+   
       }
     }
   });
