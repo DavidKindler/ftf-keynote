@@ -7,7 +7,7 @@
 <div  ng-show="adminCtrl.isLoggedIn" >
  
 
-  <modal title="Add new card" visible="adminCtrl.showAddNewCardModal" data-backdrop="static">
+  <modal title="Add a new card" visible="adminCtrl.showAddNewCardModal" data-backdrop="static">
     <form  role="form">
       <!-- <h4>Create a new card</h4> -->
        <div class="form-group">
@@ -24,17 +24,17 @@
         <label>Image url:</label>
         <input ng-model="adminCtrl.newCard.image"/> <br>
 
-        <wysiwyg textarea-id="content" textarea-class="form-control content-modal"  textarea-height="230px" textarea-width="350px" textarea-name="textareaConten" textarea-required enable-bootstrap-title="true" textarea-menu="adminCtrl.customMenu" ng-model="adminCtrl.newCard.content"></wysiwyg>
+        <wysiwyg textarea-id="content" textarea-class="form-control content-modal"  textarea-height="230px" textarea-width="350px" textarea-name="textareaContent" textarea-required enable-bootstrap-title="true" textarea-menu="adminCtrl.customMenu" ng-model="adminCtrl.newCard.content"></wysiwyg>
         
         </div>
        <!--  <div class="form-group">
         <label>Order: </label>  <input  type="number" ng-model="addNewCardModal.newCard.order" /> 
         </div> -->
 
-            <button  class="btn btn-sm" ng-click="adminCtrl.toggleAddNewCardModal()">
+            <button  class="btn btn-sm btn-warning" ng-click="adminCtrl.toggleAddNewCardModal()">
               Close
             </button>
-            <button  class="btn btn-sm" ng-click="adminCtrl.processAddNewCard()" style="margin-right:20px;">
+            <button  class="btn btn-sm btn-primary" ng-click="adminCtrl.processAddNewCard()" style="margin-right:20px;">
               Save
             </button>
       </form>
@@ -56,10 +56,10 @@
         </div>
      
 
-        <button  class="btn btn-sm" ng-click="adminCtrl.closeEditCardModal()">
+        <button  class="btn btn-sm btn-warning" ng-click="adminCtrl.closeEditCardModal()">
           Close
         </button>
-        <button  class="btn btn-sm" ng-click="adminCtrl.updateCard()" style="margin-right:20px;">
+        <button  class="btn btn-sm btn-primary" ng-click="adminCtrl.updateCard()" style="margin-right:20px;">
           Save
         </button>
   </form>
@@ -81,10 +81,10 @@
           </div>
        
 
-          <button  class="btn btn-sm" ng-click="adminCtrl.closeHTMLCardModal()">
+          <button  class="btn btn-sm btn-warning" ng-click="adminCtrl.closeHTMLCardModal()">
             Close
           </button>
-          <button  class="btn btn-sm" ng-click="adminCtrl.saveHTMLCardModal()" style="margin-right:20px;">
+          <button  class="btn btn-sm btn-primary" ng-click="adminCtrl.saveHTMLCardModal()" style="margin-right:20px;">
             Save
           </button>
     </form>
@@ -176,7 +176,7 @@
                 <videoplayer></videoplayer>
               </div>
             <!-- <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button> -->
-               <button ng-click="adminCtrl.toggleAddNewCardModal()" class="btn btn-default">Add new card</button>
+               <button ng-click="adminCtrl.toggleAddNewCardModal()" class="btn btn-default btn-primary">Add new card</button>
 
           </div>
         </div>

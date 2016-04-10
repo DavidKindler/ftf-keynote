@@ -13,6 +13,7 @@
         this.currentUrl = location.origin+"/#/card"
         // console.log (this.currentUrl)
         this.newCard={};
+        // this.showWYSIWYGCardModal = false;
         this.showAddNewCardModal = false;
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
@@ -20,7 +21,7 @@
                           ['bold', 'italic', 'underline'],
                           ['format-block'],
                           // ['font'],
-                          ['font-size'],
+                          // ['font-size'],
                           // ['font-color', 'hilite-color'],
                           ['remove-format'],
                           // ['ordered-list', 'unordered-list', 'outdent', 'indent'],
@@ -65,16 +66,20 @@
         
         this.toggleAddNewCardModal = function(){
             this.newCard = {}; 
+            this.newCard.content = "";
             this.showAddNewCardModal = !this.showAddNewCardModal;
+            // this.showEditCardModal = !this.showEditCardModal;
         };
         this.toggleEditCardModal = function(card){
           // console.log ('clicked on ',this)
           this.newCard = card;
+          // this.newCard.content = "";
           this.showEditCardModal = !this.showEditCardModal;
         };
         this.toggleHTMLCardModal = function(card){
           // console.log ('clicked on ',this)
           this.newCard = card;
+          // this.newCard.content = card.content;
           this.showHTMLCardModal = !this.showHTMLCardModal;
         };
 
@@ -95,6 +100,7 @@
                }
              });
           this.newCard = {};
+          this.newCard.content = "";
           this.showAddNewCardModal = !this.showAddNewCardModal;
         };
 
@@ -119,6 +125,7 @@
               }
             });
             this.newCard = {};
+            this.newCard.content = "";
             this.showEditCardModal = !this.showEditCardModal;
             // $state.go('admin');
         };
@@ -148,6 +155,7 @@
               }
             });
             this.newCard = {};
+            this.newCard.content = "";
             this.showHTMLCardModal = !this.showHTMLCardModal;
             // $state.go('admin');
         };
