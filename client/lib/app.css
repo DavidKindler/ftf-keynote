@@ -274,25 +274,12 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
 
 
 .ma-add-new-card-container, .ma-edit-card-container {min-width:400px;  max-width:800px; padding: 10px;}
-.content-modal {width: 360px; height: 300px;}
+
 
 
 
 .item-container {margin-bottom: 20px;}
 
-.item {/*height:225px;*/ /*height:100px;*/ display: block; position: relative;
-  max-width: 350px;
-  width: 350px;
-  max-height: 250px;
-  height: 250px;
-  /*margin: 5px 5px;*/
-  background: #fff;
-  border: 1px solid #CCD6D8;
-  padding: 5px;
-  border-radius: 2px;
-  box-shadow: 2px 2px 5px rgba(204, 204, 204, 0.5);
-  position: relative;
-}
 
 
 
@@ -795,36 +782,55 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 /* /////////////CARD CONTENT HTML MARKUP////////////////// */
 
-.item .caption {
+/*.content-modal {width: 360px; height: 300px;}*/
+
+#content, .item {
+  display: block; 
+  position: relative;
+  max-width: 350px;
+  width: 350px;
+  max-height: 250px;
+  height: 250px;
+  background: #fff;
+  border: 1px solid #CCD6D8;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px rgba(204, 204, 204, 0.5);
+  position: relative;
+  overflow:hidden;
+}
+
+
+.item .caption, .content-modal {
   min-height: 1px;
-  padding: 5px;
   overflow: hidden;
   font-size: 14px;
   position: relative;
   height:220px;
 }
-.item .caption h2,
-.item .caption .h2 {
+#content h1, #content h2, #content h3,#content .h1, #content .h2, #content .h3,
+.item .caption h1, .item .caption h2, .item .caption h3,
+.item .caption .h1, .item .caption .h2, .item .caption .h3 {
   color: #e66a08;
   font-weight: 600;
   font-size: 19px;
   margin: 0px;
 }
-.item .caption p {
+.item .caption p, #content p {
   margin: 2px 0px;
 }
-.item .caption img {
+.item .caption img, #content img {
   width: 100%;
   max-height: 125px;
 }
-.item .caption .center {
+.item .caption .center, #content .center {
   text-align: center;
 }
-.item .caption .block-of-text {
+.item .caption .block-of-text, #content .block-of-text {
   height: 200px;
   position: relative;
 }
-.item .caption .block-of-text div {
+.item .caption .block-of-text div, #content .block-of-text div {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
