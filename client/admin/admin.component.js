@@ -17,18 +17,18 @@
         this.showAddNewCardModal = false;
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
-        this.customMenu = [
-                          ['bold', 'italic', 'underline'],
-                          ['format-block'],
-                          // ['font'],
-                          // ['font-size'],
-                          // ['font-color', 'hilite-color'],
-                          ['remove-format'],
-                          // ['ordered-list', 'unordered-list', 'outdent', 'indent'],
-                          ['left-justify', 'center-justify', 'right-justify'],
-                          [/*'code',*/ 'quote', 'paragraph'],
-                          ['link', 'image', 'hero']
-                      ];
+        // this.customMenu = [
+        //                   ['bold', 'italic', 'underline'],
+        //                   ['format-block'],
+        //                   // ['font'],
+        //                   // ['font-size'],
+        //                   // ['font-color', 'hilite-color'],
+        //                   ['remove-format'],
+        //                   // ['ordered-list', 'unordered-list', 'outdent', 'indent'],
+        //                   ['left-justify', 'center-justify', 'right-justify'],
+        //                   [/*'code',*/ 'quote', 'paragraph'],
+        //                   ['link', 'image', 'hero']
+        //               ];
 
 
         this.helpers({
