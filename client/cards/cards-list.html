@@ -1,3 +1,19 @@
+<script type="text/javascript" src="//www.nxp.com/shared/js/webanalytics.js" ></script>
+<script type="text/javascript" src="//assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60.js"></script>    
+    <script>
+      var LANG_CD_LIST = "zh-Hans,ja,ko";
+      var URL_DOMAIN = "www.nxp.com";
+      var URL_MAJOR_DOMAIN = "nxp.com";
+      var CACHE_URL_DOMAINS = ["cache.nxp.com", "style.nxp.com", "image.nxp.com"];
+
+      var digitalData = {};
+      digitalData.pageInfo = {};
+      digitalData.pageInfo.pageLoadRule = "FTFTakeover";
+      digitalData.siteInfo = {};
+      digitalData.siteInfo.lang = "en"; //ja,zh-Hans
+      digitalData.siteInfo.sitePlatform = "full";
+    </script>
+
 <bsnxpnav></bsnxpnav>
 <div class="row cbp-af-header" id="video-container-outer">
         <videoplayer></videoplayer>
@@ -11,7 +27,8 @@
     <section class="col-sm-9">
         <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
         <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">             <div class="item" id="{{card._id}}" >
+        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">             
+            <div class="item dtmFTFDiv" data-dtmSection="Content Card" id="{{card._id}}"  cardid="{{card._id}}" >
                 <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
@@ -47,8 +64,8 @@
 
     <section class="col-sm-3">
         <!-- <p>VideoTime: {{videoTime}}</p> -->
-      <div id="affixTweets"  >
-        <div class="tweets" ng-controller="tweetsCtrl" >
+      <div id="affixTweets "  >
+        <div class="tweets dtmFTFDiv" data-dtmSection="Twitter Feed" ng-controller="tweetsCtrl" >
             <h2>#NXPFTF</h2>
             <div class="tweets-container">
             <div class="tweet-row" ng-repeat="tweet in livetweets | orderBy:'-createdAt'" >
@@ -115,3 +132,7 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
     } // load top nav elements
 })
 </script>
+
+<script type="text/javascript" src="http://style.nxp.com/files/js/elqNow/elqwebanalytics.js"></script>
+<script type="text/javascript">if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }</script>
+<script type="text/javascript" src="http://style.nxp.com/files/abstract/misc/blueconic.js"></script>
