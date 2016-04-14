@@ -17,30 +17,16 @@
         this.showAddNewCardModal = false;
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
-        // this.customMenu = [
-        //                   ['bold', 'italic', 'underline'],
-        //                   ['format-block'],
-        //                   // ['font'],
-        //                   // ['font-size'],
-        //                   // ['font-color', 'hilite-color'],
-        //                   ['remove-format'],
-        //                   // ['ordered-list', 'unordered-list', 'outdent', 'indent'],
-        //                   ['left-justify', 'center-justify', 'right-justify'],
-        //                   [/*'code',*/ 'quote', 'paragraph'],
-        //                   ['link', 'image', 'hero']
-        //               ];
-        // this.froalaOptions = {
- //            buttons : ["html", "inlineStyle", "paragraphFormat", "bold", "italic", "underline", "align",
- //            "insertUnorderedList", "insertImage","insertLink","insertVideo"],
- //            paragraphFormatSelection: true,
- //            paragraphFormat : { 
- //              N: 'Normal',
- //              h1 : 'Heading 1'
- //            },
- //            inlineStyles : {
- //              'H1' : 'font-size:24px; font-color: orange;'
- //            }
- //          }
+       
+        this.froalaOptions = {
+            
+            buttons:['formatBlock', 'bold', 'italic', 'underline', 'align', 'insertUnorderedList','createLink', 'insertImage', 'insertVideo',  'undo', 'redo', 'html'],
+            // formatBlockSelection: true,
+            blockTags : { 
+                  N: 'Normal',
+                  H1 : 'Heading 1'
+            }
+          }
 
         this.helpers({
           cards:function() {

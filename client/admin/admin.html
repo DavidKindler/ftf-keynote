@@ -65,7 +65,7 @@
 
          <!-- <div text-angular ng-model="adminCtrl.newCard.content" class="content-modal" ta-toolbar="[['h1','p'],['bold','italics', 'underline'],['ul','ol'],['justifyLeft','justifyCenter','justifyRight'],['html','insertImage','insertLink'],['undo','redo','clear', 'class-a']]"></div> -->
 
-         <textarea froala="froalaOptions" ng-model="adminCtrl.newCard.content"></textarea>
+         <textarea froala="adminCtrl.froalaOptions" ng-model="adminCtrl.newCard.content" froala-event-focus="editorOnFocus"></textarea>
 
       </div>
      
