@@ -29,7 +29,18 @@
         //                   [/*'code',*/ 'quote', 'paragraph'],
         //                   ['link', 'image', 'hero']
         //               ];
-
+        // this.froalaOptions = {
+ //            buttons : ["html", "inlineStyle", "paragraphFormat", "bold", "italic", "underline", "align",
+ //            "insertUnorderedList", "insertImage","insertLink","insertVideo"],
+ //            paragraphFormatSelection: true,
+ //            paragraphFormat : { 
+ //              N: 'Normal',
+ //              h1 : 'Heading 1'
+ //            },
+ //            inlineStyles : {
+ //              'H1' : 'font-size:24px; font-color: orange;'
+ //            }
+ //          }
 
         this.helpers({
           cards:function() {
