@@ -1,0 +1,22 @@
+{
+  "name": "ftf-keynote",
+  "version": "1.0.0",
+  "description": "FTF Keynote Homepage Takeover",
+  "main": "index.js",
+  "dependencies": {
+    "jshint": "^2.9.1",
+    "meteor-node-stubs": "^0.2.3",
+    "ngclipboard": "^1.1.1",
+    "rangy": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://r12306c@sw-stash.freescale.net/scm/ebiz/ftf-keynote.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

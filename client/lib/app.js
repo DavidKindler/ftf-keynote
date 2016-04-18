@@ -1,3 +1,5 @@
+import ngclipboard from 'ngclipboard';
+
 angular.module('ftfKeynoteApp', [
   'angular-meteor',
   'ui.router',
@@ -7,7 +9,8 @@ angular.module('ftfKeynoteApp', [
   'froala',
   'socialLinks',
   'updateMeta',
-  'ngEncodeTweet'
+  'ngEncodeTweet',
+  'ngclipboard'
   // 'ngSanitize'
 ])
 .filter('html', function($sce) {

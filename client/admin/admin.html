@@ -192,6 +192,27 @@
             <!-- <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button> -->
                <button ng-click="adminCtrl.toggleAddNewCardModal()" class="btn btn-default btn-primary">Add new card</button>
 
+              <section>
+              <div class="form-group">
+              <label for="imageURLInput"></label>
+                <input class="form-control" type="text" id="imageURLInput" style="widtH:300px;" ng-model="image">
+                <button class="btn btn-md btn-primary" type="submit" ng-click="adminCtrl.addImage(image)">Add Image URL</button>
+              </div>
+                <h3>Images</h3>
+              <ul class="list-group">
+                        <li class="list-group-item image-list-group" ng-repeat="image in adminCtrl.images" id="{{image.id}}">
+                          <div class="row">
+                            <div class="col-xs-12">{{image.imageURL}} </div>
+                            <div class="col-sm-7"><img class="imgItem" src="{{image.imageURL}}"></div>
+                            <div class="col-xs-5">
+                              <button ngclipboard data-clipboard-text="{{image.imageURL}}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Copy Image URL">Copy</button>
+                              <!-- <button  ng-click="adminCtrl.copyImage(image)" class="btn btn-xs btn-primary">Copy</button> -->
+                              <button ng-click="adminCtrl.removeImage(image)" class="btn btn-xs btn-warning">Delete</button>
+                            </div>
+                          </div>
+                        </li>
+                        </ul>
+              </section>
           </div>
         </div>
 

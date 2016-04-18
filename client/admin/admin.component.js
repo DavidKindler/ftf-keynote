@@ -10,6 +10,7 @@
         $reactive(this).attach($scope);
         this.subscribe('users');
         this.subscribe('cards');
+        this.subscribe('images');
         this.currentUrl = location.origin+"/#/card"
         // console.log (this.currentUrl)
         this.newCard={};
@@ -29,10 +30,13 @@
           }
 
         this.helpers({
+          images: function(){
+            return ImagesURL.find({});
+          },
           cards:function() {
             return Cards.find({},{sort:{time:-1}});
           },
-           card: () => {
+           card: function() {
             return Cards.findOne({_id: $scope.card});
           },
           users: function() {
@@ -218,6 +222,33 @@
                   }
                 });
 
+        }
+
+        this.addImage=function(newImage){
+          // console.log (newImage)
+          Meteor.call('ImageURLAdd',newImage,
+            function (error, result){
+              if (error){
+                console.error(error)
+              } else {
+                console.info(result)
+              }
+            })
+        }
+
+        this.removeImage=function(image){
+          Meteor.call('ImageURLRemove',image,
+            function (error,result){
+              if (error){
+                console.error(error)
+              } else {
+                console.info(result)
+              }
+            })
+        }
+
+        this.copyImage=function(image){
+          console.log ('image url is',image);
         }
 
       }

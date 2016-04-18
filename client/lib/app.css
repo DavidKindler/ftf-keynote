@@ -855,6 +855,8 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
   transform: translateY(-50%);
 }
 
+.image-list-group { font-size:10px; width:300px;}
+.image-list-group img { height:50px;}
 
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 @media screen and (max-width: 768px) {#header #fsl-logo img {
