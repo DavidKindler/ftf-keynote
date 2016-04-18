@@ -858,6 +858,8 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 .image-list-group { font-size:10px; width:300px;}
 .image-list-group img { height:50px;}
 
+.froala-popup.froala-image-popup div.f-popup-line.drop-upload {display: none;}
+
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 @media screen and (max-width: 768px) {#header #fsl-logo img {
       width: 150px;

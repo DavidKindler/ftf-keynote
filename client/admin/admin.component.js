@@ -26,7 +26,12 @@
             blockTags : { 
                   N: 'Normal',
                   H1 : 'Heading 1'
-            }
+            },
+            // imagePaste: false,
+            // imageInsert: false,
+            imageInsertButtons: ['imageByURL'],
+            insertImageButtons: ['imageByURL']
+            // imageAllowDragAndDrop: false
           }
 
         this.helpers({
