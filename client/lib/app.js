@@ -5,7 +5,7 @@ angular.module('ftfKeynoteApp', [
   'ui.router',
   'accounts.ui',
   'ui.bootstrap',
-  // 'textAngular',
+  'ngAnimate',
   'froala',
   'socialLinks',
   'updateMeta',

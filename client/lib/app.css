@@ -784,6 +784,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 .showHTML-modal {width: 360px; height: 300px;}
 .modal-dialog {width: 800px;}
+.modal-dialog.detail {width: 380px;}
 .btn-toolbar  {margin-bottom: 5px;}
 
 .ta-editor.ta-html, .ta-scroll-window.form-control {

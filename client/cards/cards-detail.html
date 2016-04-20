@@ -1,11 +1,11 @@
 
-<update-title title="{{cardOne.content}}"></update-title>
-<update-meta property="og:title" content="{{cardOne.content}}"></update-meta>
-<update-meta property="og:url" content="http://www.nxp.com/{{cardOne._id}}"></update-meta>
+<update-title title="{{cardOne.title}}"></update-title>
+<update-meta property="og:title" content="{{cardOne.title}}"></update-meta>
+<update-meta property="og:url" content="http://www.nxp.com/#/card/{{cardOne._id}}"></update-meta>
 <update-meta property="og:type" content="website"></update-meta>
-<update-meta property="og:description" content="{{cardOne.content}}"></update-meta>
-<update-meta property="og:image" content="{{cardOne.time}}"></update-meta>
-<update-meta name="description" content="{{cardOne.content}}."></update-meta>
+<update-meta property="og:description" content="{{cardOne.description}}"></update-meta>
+<update-meta property="og:image" content="{{cardOne.image}}"></update-meta>
+<update-meta name="description" content="{{cardOne.description}}."></update-meta>
 
 <bsnxpnav></bsnxpnav>
 <div class="row" id="video-container-outer">
@@ -17,13 +17,13 @@
 </div>
 
 <div id="cardModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog detail">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <div><span ng-bind-html="cardOne.content | html"></span></div>
+        <div class="item"><span ng-bind-html="cardOne.content | html" class="caption"></span></div>
         <!-- <p>{{cardOne.time}}</p>
         <p>{{cardOne.public}}</p> -->
       </div>
@@ -34,12 +34,12 @@
 
 
 
- <div class="col-sm-12">
+ <div class="col-sm-offset-2 col-sm-9" id="slide-row">
       
 
-        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">
+        <article class="col-sm-6 item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">
              <div class="item dtmFTFDiv" data-dtmSection="Content Card" id="{{card._id}}"  cardid="{{card._id}}" >
-                <div class="thumbnail" >
+                <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
                         <div ><span ng-bind-html="card.content | html"></span></div>
@@ -73,4 +73,13 @@
 
     <script>
       $('#cardModal').modal('show');
+
+      $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
+          if (typeof NXP.top_nav != 'undefined') {
+                $('.navbar-collapse').html(NXP.top_nav);
+                $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li><li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li>')
+          } // load top nav elements
+      });
+
+
     </script>
