@@ -44,23 +44,25 @@ angular.module('ftfKeynoteApp')
   .state('admin', {
     url: '/admin',
     template: '<admin></admin>'
-    // templateUrl: 'client/admin/admin.view.ng.html',
-    // ,controller: 'AdminCtrl'
-    // resolve: {
-    //     currentUser: ($q) => {
-    //       if (Meteor.userId() == null) {
-    //         return $q.reject('AUTH_REQUIRED');
-    //       }
-    //       else {
-    //         return $q.resolve();
-    //       }
-    //     }
-    //   }
+     
   })
-  .state('users',{
-    url: '/users',
-    template: '<users></users>'
-  })
+  // .state('users',{
+  //   url: '/users',
+  //   template: '<users></users>',
+  //    resolve: {
+  //       "currentUser": ["$meteor", function($meteor){
+  //         return $meteor.requireValidUser(function(user) {
+  //           console.log ('edit card?')
+  //           // if (_.contains(user.roles, 'admin') ) {
+  //           if (_.intersection(user.roles,['admin','manage-users']).length > 0 ) {
+  //            return true;
+  //           }
+
+  //           return 'UNAUTHORIZED';
+  //         });
+  //       }]
+  //     }
+  // })
 
   // .state('tweets-list', {
   //   url: '/tweets-list',

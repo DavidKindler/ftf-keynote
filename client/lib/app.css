@@ -1,3 +1,7 @@
+admin .alert {
+    margin-top: 50px;
+}
+
 .container-fluid {background-color: #f1f1f1; font-family: Arial, sans-serif;}
 body {background-color: #f1f1f1;}
 .animate-repeat {

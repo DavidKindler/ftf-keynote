@@ -4,9 +4,9 @@
   Please log in!
 </div>
 
-<div  ng-show="adminCtrl.isLoggedIn" >
- 
+<div class="alert alert-info" ng-show="!adminCtrl.isCardAdmin && adminCtrl.isLoggedIn" >Not authorized for this page</div>
 
+<div  ng-show="adminCtrl.isCardAdmin" >
   <modal title="Add a new card" visible="adminCtrl.showAddNewCardModal" data-backdrop="static">
     <form  role="form">
       <!-- <h4>Create a new card</h4> -->

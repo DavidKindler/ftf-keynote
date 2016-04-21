@@ -18,6 +18,9 @@ angular.module('ftfKeynoteApp')
           },
           isLoggedIn: function(){
             return Meteor.userId() !== null;
+          },
+          isAdminUser: function() {
+            return Roles.userIsInRole(Meteor.user(), ['admin','manage-users']);
           }
         });
    

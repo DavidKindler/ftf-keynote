@@ -35,6 +35,9 @@
           }
 
         this.helpers({
+          isCardAdmin: function() {
+            return Roles.userIsInRole(Meteor.user(), ['edit-cards','manage-users','admin']);
+          },
           images: function(){
             return ImagesURL.find({});
           },

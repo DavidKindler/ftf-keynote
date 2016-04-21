@@ -20,3 +20,20 @@ Meteor.publish('images', function() {
   // Counts.publish(this, 'numberOfTweets', Tweets.find({}), {noReady: true});
   return ImagesURL.find({});
 });
+
+
+// Authorized users can manage user accounts
+Meteor.publish("users", function () {
+  var user = Meteor.users.findOne({_id:this.userId});
+
+  if (Roles.userIsInRole(user, ["admin","manage-users"])) {
+    // console.log('publishing users', this.userId)
+    return Meteor.users.find({});
+    // return Meteor.users.find({}, {fields: {emails: 1, profile: 1, roles: 1}});
+  } 
+
+  this.stop();
+  return;
+});
+
+

@@ -4,7 +4,7 @@
   Please log in!
 </div>
 
-<div  ng-show="adminUsersCtrl.isLoggedIn" >
+<div  ng-show="adminUsersCtrl.isAdminUser" >
 <h2>Admin page</h2>
 
   <ul>
@@ -13,4 +13,56 @@
       <div>{{ user.emails[0].address }}</div>
     </li>
   </ul>
-	</div>
+
+<modal>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+	 	<div class="modal-body">
+	 		
+	 	</div>
+	 	<div class="modal-footer">
+			
+		</div>
+	
+			</div>
+		</div>
+</modal>
+
+
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                          
+                <tr ng-repeat="user in adminUsersCtrl.users">
+                    <td>
+                        
+                            <span data-toggel="modal" ng-click="deleteUser(user)" class="glyphicon glyphicon-trash clickable"></span>
+                            <span data-toggle="modal" ng-click="editUser(user)" class="glyphicon glyphicon-pencil clickable"></span>
+                            <span data-toggle="modal" href="#infoaccount" class="glyphicon glyphicon-info-sign clickable"></span>
+                        
+                    </td>
+                    <td >
+                        
+                           {{user.profile.name}}
+                        
+                    </td>
+                    <td>{{user.emails[0].address }}</td>
+                    <td>{{user.roles}}</td>
+                </tr>
+            
+                
+            
+        </tbody>
+    </table>
+
+
+</div>
