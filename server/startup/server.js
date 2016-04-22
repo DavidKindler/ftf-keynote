@@ -97,10 +97,10 @@ Meteor.methods({
         subject: 'New FTF2016 user created.',
         text: 'New user created in FTF Keynote app.  Please verify user '+user.emails[0].address
       }
-      // Meteor.defer( function(){
+      Meteor.defer( function(){
        var result = Email.send(emailObj);
        console.log ('sendEmailNow result to',admin.emails[0].address,'for',user.emails[0].address)
-      // });
+      });
     })
 
   }

@@ -29,11 +29,14 @@
                 
                 <div class="item-footer">
                  <ul class="list-inline">
-                   <li class="facebook"><a class="social-icon" social-facebook custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
-                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
-                  <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{adminCtrl.currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
+                   <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
+
+                  <!--  <li class="facebook"><a class="social-icon" social-facebook2 custom-url="{{currentUrl}}/{{card._id}}" caption="#NXPFTF Check out what is happening at NXP FTF 2016"  title="{{card.title}}" description="{{card.description}}" image="{{card.image}}"><facebook-icon></facebook-icon></a></li> -->
+                   
+                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
+                  <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
                   <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
-                  <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{currentUrl}}/{{card._id}}">
+                  <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.title}} {{card.description}} {{currentUrl}}/{{card._id}}">
                     <email-icon></email-icon></a></li>
                  </ul>
                </div>
