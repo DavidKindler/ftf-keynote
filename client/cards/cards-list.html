@@ -120,3 +120,21 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 })
 </script>
 
+<script>
+  jQuery(document).ready(function($) {
+    $.getScript('http://style.nxp.com/files/js/elqNow/elqwebanalytics.js')
+      .done(function(script,textStatus){
+        console.log ('loaded elqwebanalytics');
+      });
+    $.getScript('http://style.nxp.com/files/abstract/misc/blueconic.js')
+      .done(function(script,textStatus){
+        console.log ('loaded blueconic');
+      });
+    $.getScript('http://style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.ftf16.js')
+      .done(function(script,textStatus){
+        console.log ('loaded custom.mapping.ftf16');
+      });
+    if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }
+   });
+
+</script>
