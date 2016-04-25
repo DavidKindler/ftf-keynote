@@ -18,7 +18,9 @@
         this.showAddNewCardModal = false;
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
-       
+
+         $.FroalaEditor.DEFAULTS.key = 'NkziA-8xdvC3D-17ngD2zuv==';
+
         this.froalaOptions = {
             
             buttons:['formatBlock', 'bold', 'italic', 'underline', 'align', 'insertUnorderedList','createLink', 'insertImage', 'insertVideo',  'undo', 'redo', 'html'],
@@ -35,6 +37,9 @@
           }
 
         this.helpers({
+          getActivationKey: function(){
+            return 'NkziA-8xdvC3D-17ngD2zuv==';
+          },
           isCardAdmin: function() {
             return Roles.userIsInRole(Meteor.user(), ['edit-cards','manage-users','admin']);
           },

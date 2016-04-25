@@ -51,7 +51,7 @@
 
     <section class="col-sm-3">
         <!-- <p>VideoTime: {{videoTime}}</p> -->
-      <div id="affixTweets "  >
+      <div id="affixTweets"  >
         <div class="tweets dtmFTFDiv" data-dtmSection="Twitter Feed" ng-controller="tweetsCtrl" >
             <h2>#NXPFTF</h2>
             <div class="tweets-container">
@@ -81,36 +81,38 @@ $(window).resize(function(){
     console.log('WindowWidth2',windowWidth);
     console.log ('scroll pos2',scrollPos);
     if (windowWidth<768) {
-      $('.affix').css('position','relative');
+      $('#affixTweets').removeClass('affix');
     } else
     {
-      if (scrollPos >=300){
-        $('.affix').css({'position':'fixed','top':'140px'});
+      if (scrollPos >=330){
+        $('#affixTweets').addClass('affix');
       }  else {
-        $('.affix').css('position','relative');
+        $('#affixTweets').removeClass('affix');
       }
     }
 });
 
 $(window).scroll(function(){
     var scrollPos = $(document).scrollTop();
-    // var windowWidth = $(window).width();
-    console.log('WindowWidth',windowWidth);
-    console.log (scrollPos)
+    var windowWidth = $(window).width();
+    // console.log('WindowWidth',windowWidth);
+    // console.log ('scrollPos',scrollPos)
     if (scrollPos >= 330  ) { 
-        console.log ('scrollPos is >= 330')
+      if (windowWidth>768) { $('#affixTweets').addClass('affix'); }
+        // console.log ('scrollPos is >= 330')
         // $('#video-container-outer').addClass('video-container-shrunk');
-       $('.cbp-af-header').addClass("cbp-af-header-shrink");
-        $('#slide-row').css('margin-top','510px')
+      $('.cbp-af-header').addClass("cbp-af-header-shrink");
+      $('#slide-row').css('margin-top','510px');
     } else {
-        console.log ('scrollPos is <= 330')
-        $('.cbp-af-header').removeClass("cbp-af-header-shrink");
-        // $('#video-container-outer').removeClass('video-container-shrunk');
-        $('#slide-row').css('margin-top','20px')
+      $('#affixTweets').removeClass('affix');
+        // console.log ('scrollPos is <= 330')
+      $('.cbp-af-header').removeClass("cbp-af-header-shrink");
+      // $('#video-container-outer').removeClass('video-container-shrunk');
+      $('#slide-row').css('margin-top','20px');
     }
 });
 
-$('#affixTweets').affix({ offset: {top: 400} })
+// $('#affixTweets').affix({ offset: {top: 400} })
 
 $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
