@@ -122,8 +122,66 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 })
 </script>
 
+<!-- <script src="//www.freescale.com/files/brightcove/analytics/src/lib/VisitorAPI.js"></script>
+<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Media.js"></script>
+<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Integrate.js"></script>
+<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AppMeasurement.js"></script>
+<script src="//www.freescale.com/files/brightcove/analytics/src/lib/VideoHeartbeat.js"></script>
+<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AdobeAnalyticsPlugin.js"></script>
+<script src="//style.nxp.com/files/brightcove/analytics/src/videojs.analytic.omniture.ftf16.js"></script>
+
+ -->
 <script>
   jQuery(document).ready(function($) {
+    $.getScript('http://players.brightcove.net/4089003392001/SycMTy4e_default/index.min.js')
+      .done(function(script,textStatus){
+        console.log ('loaded index.min.js');
+      });
+
+    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/VisitorAPI.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded script 1');
+    //   });
+
+    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Media.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded script 2');
+    //   });
+
+
+    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Integrate.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded script 3');
+    //   });
+    
+    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AppMeasurement.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded script 4');
+    //   });
+    
+    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/VideoHeartbeat.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded script 5');
+    //   });    
+      
+    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AdobeAnalyticsPlugin.js')
+    //     .done(function(script,textStatus){
+    //       console.log ('loaded script 6');
+    //     });   
+
+    // $.getScript('http://style.nxp.com/files/brightcove/analytics/src/videojs.analytic.omniture.ftf16.js')
+    //     .done(function(script,textStatus){
+    //       console.log ('loaded script 7');
+    //     });   
+
+    // $.getScript('http://style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.ftf16.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded analytics.custom.mapping.ftf16.js');
+    //   });
+    $.getScript('http://players.brightcove.net/videojs-social/dist/videojs-social.min.js')
+      .done(function(script,textStatus){
+        console.log ('loaded videojs-social.min.js');
+      });
     $.getScript('http://style.nxp.com/files/js/elqNow/elqwebanalytics.js')
       .done(function(script,textStatus){
         console.log ('loaded elqwebanalytics');
@@ -140,3 +198,4 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
    });
 
 </script>
+

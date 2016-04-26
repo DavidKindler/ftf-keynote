@@ -19,7 +19,7 @@
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
 
-         $.FroalaEditor.DEFAULTS.key = 'NkziA-8xdvC3D-17ngD2zuv==';
+         // $.FroalaEditor.DEFAULTS.key = 'NkziA-8xdvC3D-17ngD2zuv==';
 
         this.froalaOptions = {
             

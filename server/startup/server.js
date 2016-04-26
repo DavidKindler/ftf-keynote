@@ -10,14 +10,14 @@ if (Meteor.isServer) {
         //     encodeURIComponent('remotesmtp.freescale.net') + ':' + '25';
 
         
-        smtp = {
-           username: 'nxp.ftf@gmail.com',   // eg: server@gentlenode.com
-           password: 'Freescale1',   // eg: 3eeP1gtizk5eziohfervU
-           server:   'smtp.gmail.com',  // eg: mail.gandi.net
-           port: 465
-         }
+        // smtp = {
+        //    username: 'nxp.ftf@gmail.com',   // eg: server@gentlenode.com
+        //    password: 'Freescale1',   // eg: 3eeP1gtizk5eziohfervU
+        //    server:   'smtp.gmail.com',  // eg: mail.gandi.net
+        //    port: 465
+        //  }
 
-         process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+        //  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
         if (Meteor.users.find().fetch().length === 0) {
 
