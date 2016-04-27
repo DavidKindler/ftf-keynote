@@ -18,6 +18,10 @@
         this.showAddNewCardModal = false;
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
+        // this.showVideoCodeModal = false;
+
+        // this.videoCode = VideoCodeHTML;
+        // console.log ('videoCODE',this.videoCode);
 
          // $.FroalaEditor.DEFAULTS.key = 'NkziA-8xdvC3D-17ngD2zuv==';
 
@@ -96,7 +100,21 @@
           // this.newCard.content = card.content;
           this.showHTMLCardModal = !this.showHTMLCardModal;
         };
-
+        // this.toggleVideoCodeModal = function(videoCode){
+        //   this.videoCodeTemp = this.videoCode;
+        //     this.showVideoCodeModal = !this.showVideoCodeModal;
+        // };
+        // this.closeVideoCodeModal = function(){
+        //   this.showVideoCodeModal = !this.showVideoCodeModal;
+        // };
+        // this.saveVideoCodeModal = function(){
+        //   this.videoCode = this.videoCodeTemp;
+        //   // VideoCodeHTML = this.videoCodeTemp;
+        //   this.showVideoCodeModal = !this.showVideoCodeModal;
+        //   // VideoCodeHTML.$apply();
+        //   // VideoCodeService.$apply();
+        // };
+        
         this.processAddNewCard = function(){
           // console.log ('form clicked on', this.newCard);
           // this.newCard.order = Cards.find().count()+1;

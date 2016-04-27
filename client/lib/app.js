@@ -1,4 +1,6 @@
 import ngclipboard from 'ngclipboard';
+window.videoCode = null;
+
 
 angular.module('ftfKeynoteApp', [
   'angular-meteor',

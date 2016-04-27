@@ -7,7 +7,6 @@
 
 <div class="container-wrapper">
 <div id="slide-row" class="row" >
-
     <section class="col-sm-9">
         <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
         <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
@@ -71,6 +70,8 @@
   </div>
 
 
+
+
 <script>
 
 var windowWidth = $(window).width();
@@ -78,8 +79,8 @@ var windowWidth = $(window).width();
 $(window).resize(function(){
     var windowWidth = $(window).width();
     var scrollPos = $(document).scrollTop();
-    console.log('WindowWidth2',windowWidth);
-    console.log ('scroll pos2',scrollPos);
+    // console.log('WindowWidth2',windowWidth);
+    // console.log ('scroll pos2',scrollPos);
     if (windowWidth<768) {
       $('#affixTweets').removeClass('affix');
     } else
@@ -103,9 +104,11 @@ $(window).scroll(function(){
         // $('#video-container-outer').addClass('video-container-shrunk');
       $('.cbp-af-header').addClass("cbp-af-header-shrink");
       $('#slide-row').css('margin-top','510px');
+      $('#video-container').css('height','auto');
     } else {
       $('#affixTweets').removeClass('affix');
         // console.log ('scrollPos is <= 330')
+      $('#video-container').css('height','500px');
       $('.cbp-af-header').removeClass("cbp-af-header-shrink");
       // $('#video-container-outer').removeClass('video-container-shrunk');
       $('#slide-row').css('margin-top','20px');
@@ -132,11 +135,22 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 
  -->
 <script>
+
   jQuery(document).ready(function($) {
-    $.getScript('http://players.brightcove.net/4089003392001/SycMTy4e_default/index.min.js')
-      .done(function(script,textStatus){
-        console.log ('loaded index.min.js');
-      });
+      Meteor.call('meteorSettings', null,
+             function (error, result) {
+               if(error){
+                 console.error('ERROR', error);
+               }else{
+                 console.info('videoplayer updating',result);
+                 window.videoCode = result.public.videoCodeHTML
+                 $('#video-container').html(window.videoCode);
+               }
+             });
+  });
+
+  jQuery(document).ready(function($) {
+
 
     // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/VisitorAPI.js')
     //   .done(function(script,textStatus){
@@ -178,6 +192,13 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
     //   .done(function(script,textStatus){
     //     console.log ('loaded analytics.custom.mapping.ftf16.js');
     //   });
+
+
+    $.getScript('http://players.brightcove.net/4089003392001/SycMTy4e_default/index.min.js')
+      .done(function(script,textStatus){
+        console.log ('loaded index.min.js');
+      });
+
     $.getScript('http://players.brightcove.net/videojs-social/dist/videojs-social.min.js')
       .done(function(script,textStatus){
         console.log ('loaded videojs-social.min.js');

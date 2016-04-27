@@ -1,5 +1,43 @@
 if (Meteor.isServer) {
   Meteor.startup(function () {
+        // this needs to be run on the server
+        // var environment, settings;
+
+        // environment = process.env.METEOR_ENV || "development";
+
+        // settings = {
+        //   development: {
+        //     public: {
+        //       videoCode : "<h1>Development video code</h1>"
+        //       },
+        //     private: {}
+        //   },
+        //   staging: {
+        //     public: {
+        //       videoCode: "<h1>Staging video code</h1>"
+        //     },
+        //     private: {}
+        //   },
+        //   production: {
+        //     public: {
+        //       videoCode: "<h1>Production video code</h1>"
+        //     },
+        //     private: {}
+        //   }
+        // };
+
+        // if (!process.env.METEOR_SETTINGS) {
+        //   console.log("No METEOR_SETTINGS passed in, using locally defined settings.");
+        //   if (environment === "production") {
+        //     Meteor.settings = settings.production;
+        //   } else if (environment === "staging") {
+        //     Meteor.settings = settings.staging;
+        //   } else {
+        //     Meteor.settings = settings.development;
+        //   }
+        //   console.log("Using [ " + environment + " ] Meteor.settings");
+        // }
+        console.log ('Meteor settings: ',Meteor.settings)
         ////////////////////////////////////////////////////////////////////
         // Create Test Users
         // //
@@ -103,7 +141,9 @@ Meteor.methods({
       });
     })
 
-  }
-
-
+  },
+  meteorSettings: function(param){
+      console.log ('settings: %j',Meteor.settings);
+        return Meteor.settings;
+      }
 });

@@ -29,7 +29,7 @@ Meteor.methods({
         highestCard = Cards.findOne({},{sort:{order:-1}, limit:1})
         newCard.order = highestCard.order+1
         Cards.insert(newCard);
-      return "Newc card added";
+      return "New card added";
     },
     CardDelete: function(card){
         cardorder = card.order;
