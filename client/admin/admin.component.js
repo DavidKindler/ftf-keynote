@@ -62,10 +62,10 @@
           isLoggedIn: function() {
             return Meteor.userId() !== null;
           },
-          videoTime: function() {
-            // console.log ('admin videotime',Session.get('videoTime'))
-            return Session.get('videoTime');
-          },
+          // videoTime: function() {
+          //   // console.log ('admin videotime',Session.get('videoTime'))
+          //   return Session.get('videoTime');
+          // },
           availableOptions: function(){
             return [{id: '1', name: 'Keynote'}, {id: '2', name: 'Speaker 2'} ]
           },
