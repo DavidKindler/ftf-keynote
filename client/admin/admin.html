@@ -44,7 +44,7 @@
         <div class="row">
         <div class="form-group col-sm-6">
           
-          <textarea froala ng-model="adminCtrl.newCard.content"></textarea>
+          <textarea froala="adminCtrl.froalaOptions" ng-model="adminCtrl.newCard.content" froala-event-focus="editorOnFocus"></textarea>
 
         </div>
         <div class="col-sm-6">
@@ -259,25 +259,25 @@
         <div class="col-xs-2">
           <div id="admin-static">
             <h3>Admin Area</h3>
-            <h4>Event:</h4>
-             <select class="form-control" name="mySelect" id="mySelect"
+            <!-- <h4>Event:</h4> -->
+             <!-- <select class="form-control" name="mySelect" id="mySelect"
                  ng-options="option.name for option in adminCtrl.availableOptions track by option.id"
                  ng-model="adminCtrl.selectedOption"></select>
-            <br>
-              <div id="admin-video-container">
+            <br> -->
+              <!-- <div id="admin-video-container">
                 <videoplayer></videoplayer>
-              </div>
+              </div> -->
 <!--               <h5>Video code</h5>
  -->              
-              <button ng-click="adminCtrl.toggleVideoCodeModal()" class="btn btn-default btn-primary btn-xs">Show Video Code</button>
-<br><br>
+            <!--   <button ng-click="adminCtrl.toggleVideoCodeModal()" class="btn btn-default btn-primary btn-xs">Show Video Code</button> -->
             <!-- <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button> -->
                <button ng-click="adminCtrl.toggleAddNewCardModal()" class="btn btn-default btn-primary">Add new card</button>
 
               <section>
               <div class="form-group">
               <label for="imageURLInput"></label>
-                <input class="form-control" type="text" id="imageURLInput" style="widtH:300px;" ng-model="image">
+                <input class="form-control" type="text" id="imageURLInput" style="width:300px; margin-bottom:4px;" ng-model="image"> 
+
                 <button class="btn btn-md btn-primary" type="submit" ng-click="adminCtrl.addImage(image)">Add Image URL</button>
               </div>
                 <h3>Images</h3>

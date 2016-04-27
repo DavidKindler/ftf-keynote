@@ -83,12 +83,15 @@ $(window).resize(function(){
     // console.log ('scroll pos2',scrollPos);
     if (windowWidth<768) {
       $('#affixTweets').removeClass('affix');
+      // $('#video-container').css({'height':'100px'});
     } else
     {
       if (scrollPos >=330){
         $('#affixTweets').addClass('affix');
+        $('#video-container').css('height','250px');
       }  else {
         $('#affixTweets').removeClass('affix');
+        $('#video-container').css('height','500px');
       }
     }
 });
@@ -99,16 +102,28 @@ $(window).scroll(function(){
     // console.log('WindowWidth',windowWidth);
     // console.log ('scrollPos',scrollPos)
     if (scrollPos >= 330  ) { 
-      if (windowWidth>768) { $('#affixTweets').addClass('affix'); }
+      if (windowWidth>768) { 
+        $('#affixTweets').addClass('affix'); 
+        $('#video-container').css({'height':'100px'});
+      } else {
+        // $('#video-container').css({'height':'100px', 'width':'100px', 'margin':'0px'});
+
+      }
         // console.log ('scrollPos is >= 330')
         // $('#video-container-outer').addClass('video-container-shrunk');
+      // $('#video-container').css({'height':'100px'});
       $('.cbp-af-header').addClass("cbp-af-header-shrink");
       $('#slide-row').css('margin-top','510px');
-      $('#video-container').css('height','auto');
+      
     } else {
       $('#affixTweets').removeClass('affix');
+
         // console.log ('scrollPos is <= 330')
-      $('#video-container').css('height','500px');
+      if (windowWidth>768) { 
+        $('#video-container').css('height','500px');
+      } else {
+        $('#video-container').css('height','250px');
+      }
       $('.cbp-af-header').removeClass("cbp-af-header-shrink");
       // $('#video-container-outer').removeClass('video-container-shrunk');
       $('#slide-row').css('margin-top','20px');
@@ -136,18 +151,18 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
  -->
 <script>
 
-  jQuery(document).ready(function($) {
-      Meteor.call('meteorSettings', null,
-             function (error, result) {
-               if(error){
-                 console.error('ERROR', error);
-               }else{
-                 console.info('videoplayer updating',result);
-                 window.videoCode = result.public.videoCodeHTML
-                 $('#video-container').html(window.videoCode);
-               }
-             });
-  });
+  // jQuery(document).ready(function($) {
+  //     Meteor.call('meteorSettings', null,
+  //            function (error, result) {
+  //              if(error){
+  //                console.error('ERROR', error);
+  //              }else{
+  //                console.info('videoplayer updating',result);
+  //                window.videoCode = result.public.videoCodeHTML
+  //                $('#video-container').html(window.videoCode);
+  //              }
+  //            });
+  // });
 
   jQuery(document).ready(function($) {
 
