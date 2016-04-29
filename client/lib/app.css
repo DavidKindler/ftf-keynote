@@ -13,9 +13,10 @@ body {background-color: #f1f1f1;}
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter,
 .animate-repeat.ng-leave {
+  -webkit-transition:all linear .7s;
   transition:all linear .7s;
+  -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
 }
 
 .animate-repeat.ng-leave.ng-leave-active,
@@ -23,8 +24,8 @@ body {background-color: #f1f1f1;}
 .animate-repeat.ng-enter {
   opacity:0;
   max-height:0;
+  -webkit-animation: slide-in 0.5s forwards;
    animation: slide-in 0.5s forwards;
-    -webkit-animation: slide-in 0.5s forwards;
 }
 
 .animate-repeat.ng-leave,
@@ -45,13 +46,13 @@ body {background-color: #f1f1f1;}
 }*/
 
 .slide-in {
-    animation: slide-in 0.5s forwards;
     -webkit-animation: slide-in 0.5s forwards;
+    animation: slide-in 0.5s forwards;
 }
 
 .slide-out {
-    animation: slide-out 0.5s forwards;
     -webkit-animation: slide-out 0.5s forwards;
+    animation: slide-out 0.5s forwards;
 }
     
 @keyframes slide-in {
@@ -125,15 +126,16 @@ div#admin-video-container #fslPlayer { max-height:200px; max-width: 364px;}
 #video-container-outer.video-container-shrunk #video-container.outer-container {
   float:left;
   margin-left: 120px;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
 #video-container-outer.video-container-shrunk + .row {
   margin-top: 200px;
   -webkit-transition: 1s ease-in-out;
-    -moz-transition: 1s ease-in-out;
-    -o-transition: 1s ease-in-out;
-    transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 
 }
 
@@ -143,6 +145,7 @@ div#admin-video-container #fslPlayer { max-height:200px; max-width: 364px;}
 
 }
 #video-container-outer.video-container-shrunk .video-shrunk-header {
+    -webkit-transition: opacity 1s ease 1s;
     transition: opacity 1s ease 1s;
     opacity: 1;
 }
@@ -187,8 +190,10 @@ div#admin-video-container #fslPlayer { max-height:200px; max-width: 364px;}
   height: auto;
   position: fixed;
   top: auto;
+  -webkit-transform-origin: top left;
   transform-origin: top left;
   /*transform: scale(0.2);*/
+  -webkit-transform: scale(0.12);
   transform: scale(0.12);
   left:inherit;
 }
@@ -198,7 +203,7 @@ div#admin-video-container #fslPlayer { max-height:200px; max-width: 364px;}
 div#nxp-ftf-video-headline-text {
   opacity:0;
   height: 0px; 
-   -webkit-transition: all .5s;
+  -webkit-transition: all .5s;
   -moz-transition: all .5s;
   transition: all .5s linear;
 }
@@ -873,7 +878,8 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 .froala-popup.froala-image-popup div.f-popup-line.drop-upload {display: none;}
 
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
-@media screen and (max-width: 768px) {#header #fsl-logo img {
+@media screen and (max-width: 768px) {
+  #header #fsl-logo img {
       width: 150px;
     }
     #header #header .dropdown-menu {
@@ -922,7 +928,11 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
       /*margin-left:-20px;*/
       width:150px;
     }
-    .cbp-af-header.cbp-af-header-shrink video { transform: scale(0.3); margin-top:10px; margin-left:10px;}
+    .cbp-af-header.cbp-af-header-shrink video { 
+      -webkit-transform: scale(0.3); 
+      transform: scale(0.3); 
+      margin-top:10px; 
+      margin-left:10px;}
 }
 
 .ratio {display:block;width:100%;height:auto;}

@@ -21,7 +21,7 @@ angular.module('ftfKeynoteApp')
   // $reactive(this).attach($scope);
   $scope.subscribe('publicCards');
   // $scope.$log = $log;
-  $scope.currentUrl = location.origin+"/#/card";
+  $scope.currentUrl = 'http://www.nxp.com/event/ftf2016/day1/card';
   // $scope.videoCode = VideoCodeService.videoCode;
   // $log.debug('stateparams:',$stateParams);
   // $scope.subscribe('cards');

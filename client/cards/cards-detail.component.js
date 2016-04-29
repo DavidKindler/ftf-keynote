@@ -1,54 +1,3 @@
-/*  angular.module('ftfKeynoteApp')
-  .controller('cardDetailCtrl', function($scope, $stateParams) {
-    $scope.helpers({
-      card: function() {
-        return Cards.findOne({ _id: $stateParams.cardId }); 
-      }
-    })
-  })
-  .directive('cardDetails', function () {
-    return {
-      // restrict: 'E',
-      templateUrl: 'client/cards/cards-detail.html'
-      //, controllerAs: 'cardDetails'
-      // ,
-      // controller: function ($scope, $stateParams, $reactive, $state) {
-      //   $reactive(this).attach($scope);
-      //   this.subscribe('cards');
-      //   // this.helpers({
-      //   //   card: () => {
-      //   //     return Cards.findOne({_id: $stateParams.cardId});
-      //   //   }
-      //   // });
-      // }
-    }
-  });
-*/
-
-
-// angular.module('ftfKeynoteApp')
-// .directive('cardDetail', function() {
-//   return {
-//     return: "AE",
-//     templateUrl: 'card-detail.html',
-//     controllerAs: 'cardDetailCtrl',
-//     controller: function($scope,$stateParams){
-//       this.cardId = $stateParams,cardId;
-//       $scope.subscribe('cards');
-//       $scope.helpers({
-//         cardOne: function() {
-//           return Cards.findOne({ _id: this.cardId }); 
-//         },
-//         cards: () => {
-//                  return Cards.find({}) 
-//               },
-//       })        
-//     }
-//   }  
-
-// });
-  
-
 angular.module('ftfKeynoteApp')
 .controller('CardDetailCtrl', function($scope, $stateParams, $log) {
   // $scope.$log = $log;
@@ -58,7 +7,7 @@ angular.module('ftfKeynoteApp')
   // console.log ($rootScope.Xcards);
   $scope.subscribe('cards');
   $scope.id = $stateParams.cardId;
-  $scope.currentUrl = location.origin+"/#/card"
+  $scope.currentUrl = 'http://www.nxp.com/event/ftf2016/day1/card';
  
   $scope.helpers({
     cardOne: function() {

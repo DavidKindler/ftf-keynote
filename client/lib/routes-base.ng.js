@@ -3,7 +3,7 @@
 angular.module('ftfKeynoteApp')
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-  $locationProvider.html5Mode(false);
+  $locationProvider.html5Mode(true);
 
  $stateProvider
   .state('cards', {
@@ -12,83 +12,19 @@ angular.module('ftfKeynoteApp')
     templateUrl: 'client/cards/cards-list.html',
     controller: 'cardsList'    
   })
-  // .state('cardDetails', {
-  //   url: '/cards/:cardId',
-  //   template: '<card-details></card-details>'
-  // })
-  // .state('cardList', {
-  //   url: '/card',
-  //   // templateUrl: 'client/cards/cards-list.html',
-  //   // controller: 'CardDetailCtrl'
-  //   template: '<cards-list></cards-list>'
-  //   // ,
-  //   // resolve: {
-  //   //   currentUser: ['$meteor', function($meteor) {
-  //   //     // return $meteor.requireUser();
-  //   //     return Meteor.user();
-  //   //   }]
-  //   // }
-  // })
+  
   .state('cardDetails', {
     url: '/card/:cardId',
     templateUrl: 'client/cards/cards-detail.html',
     controller: 'CardDetailCtrl'
-    // ,
-    // resolve: {
-    //   currentUser: ['$meteor', function($meteor) {
-    //     // return $meteor.requireUser();
-    //     return Meteor.user();
-    //   }]
-    // }
+   
   })
   .state('admin', {
     url: '/admin',
     template: '<admin></admin>'
      
   })
-  // .state('users',{
-  //   url: '/users',
-  //   template: '<users></users>',
-  //    resolve: {
-  //       "currentUser": ["$meteor", function($meteor){
-  //         return $meteor.requireValidUser(function(user) {
-  //           console.log ('edit card?')
-  //           // if (_.contains(user.roles, 'admin') ) {
-  //           if (_.intersection(user.roles,['admin','manage-users']).length > 0 ) {
-  //            return true;
-  //           }
-
-  //           return 'UNAUTHORIZED';
-  //         });
-  //       }]
-  //     }
-  // })
-
-  // .state('tweets-list', {
-  //   url: '/tweets-list',
-  //   templateUrl: 'client/tweets/tweets-list.view.ng.html',
-  //   controller: 'TweetsListCtrl'
-  // })
-  // .state('tweets-admin', {
-  //   url: '/tweets-admin',
-  //   templateUrl: 'client/tweets/tweet-admin.view.ng.html',
-  //   controller: 'TweetAdminCtrl'
-  //   // ,
-  //   // resolve: {
-  //   //     currentUser: ($q) => {
-  //   //       if (Meteor.userId() == null) {
-  //   //         return $q.reject('AUTH_REQUIRED');
-  //   //       }
-  //   //       else {
-  //   //         return $q.resolve();
-  //   //       }
-  //   //     }
-  //   //   }
-  // });
-  // .state('404', {
-  //   url: '/404',
-  //   templateUrl: 'client/404/404.view.ng.html'
-  // })
+  
   $urlRouterProvider.otherwise('/');
  })
 .run(['$rootScope', '$state', function($rootScope, $state, $location) {

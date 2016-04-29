@@ -149,6 +149,9 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 <script src="//style.nxp.com/files/brightcove/analytics/src/videojs.analytic.omniture.ftf16.js"></script>
 
  -->
+<!-- <script type="text/javascript" src="//www.nxp.com/shared/js/webanalytics.js" ></script> -->
+<!-- <script type="text/javascript" src="//assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60-staging.js"></script>-->
+
 <script>
 
   // jQuery(document).ready(function($) {
@@ -164,8 +167,20 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
   //            });
   // });
 
-  jQuery(document).ready(function($) {
 
+
+
+  jQuery(document).ready(function($) {
+    $.getScript('http://www.nxp.com/shared/js/webanalytics.js')
+      .done(function(script,textStatus){
+        console.log ('loaded webanalytics.js');
+      });
+
+    // $.getScript('http://assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60-staging.js')
+    //   .done(function(script,textStatus){
+    //     console.log ('loaded assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60-staging.js');
+    //     if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }
+    //   });
 
     // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/VisitorAPI.js')
     //   .done(function(script,textStatus){
@@ -212,6 +227,12 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
     $.getScript('http://players.brightcove.net/4089003392001/SycMTy4e_default/index.min.js')
       .done(function(script,textStatus){
         console.log ('loaded index.min.js');
+        // # Show poster at the end of the video
+        $('video').on('ended',function(){
+          $('video')[0].autoplay=false
+          $('video')[0].load();
+          console.log ('VIDEO HAS ENDED')
+        });
       });
 
     $.getScript('http://players.brightcove.net/videojs-social/dist/videojs-social.min.js')
@@ -231,6 +252,11 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
         console.log ('loaded custom.mapping.ftf16');
       });
     if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }
+
+
+
+
+    
    });
 
 </script>

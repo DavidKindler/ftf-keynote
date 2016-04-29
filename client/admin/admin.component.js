@@ -11,7 +11,8 @@
         this.subscribe('users');
         this.subscribe('cards');
         this.subscribe('images');
-        this.currentUrl = location.origin+"/#/card"
+        // this.currentUrl = location.origin+"/#/card"
+        this.currentUrl = 'http://www.nxp.com/event/ftf2016/day1/card';
         // console.log (this.currentUrl)
         this.newCard={};
         // this.showWYSIWYGCardModal = false;
@@ -210,7 +211,7 @@
         }
 
         this.setPublic = function(card) {
-          this.delayToPublish=10; // In seconds
+          this.delayToPublish=20; // In seconds
           if (confirm("This card will be published in 20 seconds.  Okay?"))
           {
             card.countdown = Math.round(this.delayToPublish);

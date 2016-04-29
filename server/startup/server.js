@@ -37,7 +37,8 @@ if (Meteor.isServer) {
         //   }
         //   console.log("Using [ " + environment + " ] Meteor.settings");
         // }
-        console.log ('Meteor settings: ',Meteor.settings)
+        // console.log ('Meteor settings: ',Meteor.settings)
+        // videoCodeHTML = Meteor.settings.public.videoCodeHTML;
         ////////////////////////////////////////////////////////////////////
         // Create Test Users
         // //
@@ -141,9 +142,10 @@ Meteor.methods({
       });
     })
 
-  },
-  meteorSettings: function(param){
-      console.log ('settings: %j',Meteor.settings);
-        return Meteor.settings;
-      }
+  }
+  // ,
+  // meteorSettings: function(param){
+  //     console.log ('settings: %j',videoCodeHTML);
+  //       return videoCodeHTML;
+  //     }
 });
