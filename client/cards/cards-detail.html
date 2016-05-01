@@ -230,9 +230,9 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
     //   });
 
 
-    $.getScript('http://players.brightcove.net/4089003392001/SycMTy4e_default/index.min.js')
+    $.getScript('http://style.nxp.com/files/brightcove/ftf16_player.min.js')
       .done(function(script,textStatus){
-        console.log ('loaded index.min.js');
+        console.log ('loaded ftf16_player');
         // # Show poster at the end of the video
         $('video').on('ended',function(){
           $('video')[0].autoplay=false
