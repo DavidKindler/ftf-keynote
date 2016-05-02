@@ -10,6 +10,9 @@ import ngclipboard from 'ngclipboard';
 //           }
 //         )
 
+    
+
+
 angular.module('ftfKeynoteApp', [
   'angular-meteor',
   'ui.router',
