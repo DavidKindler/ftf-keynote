@@ -879,6 +879,12 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 @media screen and (max-width: 768px) {
+/*.container-fluid {  padding-left: 0px; padding-right: 0px; }*/
+
+div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {margin-left:0px; padding-top: 7px;}
+div#nxp-ftf-video-headline-text img {height:20px;}
+
+
   #header #fsl-logo img {
       width: 150px;
     }
@@ -916,7 +922,9 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
     .logo-img img {margin-left:15px;}
 
-    .item {margin:0px auto;}
+    .item {margin:0px auto; width:auto; height:auto; max-height: none;}
+    .item .caption {height:250px;}
+
     #video-container {
       width:auto; 
       /*padding-left:20px;*/
