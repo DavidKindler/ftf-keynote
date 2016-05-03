@@ -905,7 +905,7 @@ div#nxp-ftf-video-headline-text img {height:20px;}
     .nav-container {width:auto;}
     .container-wrapper {width:100%;}
 
-    .tweets {width:100%;}
+    .tweets {width:70%; margin:0 auto;}
 
     #header #navbar-collapse-nxp.navbar-collapse {
       background-color: #ededf0;
