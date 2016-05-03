@@ -3,7 +3,6 @@
         <videoplayer></videoplayer>
        <!-- <div id="nxp-ftf-video-headline-text" ><img src="/images/NXP_logo_SOLID_WHITE.png"> FTF 2016</div> -->
 </div>
- 
 
 <div class="container-wrapper">
 <div id="slide-row" class="row" >
@@ -32,7 +31,7 @@
 
                   <!--  <li class="facebook"><a class="social-icon" social-facebook2 custom-url="{{currentUrl}}/{{card._id}}" caption="#NXPFTF Check out what is happening at NXP FTF 2016"  title="{{card.title}}" description="{{card.description}}" image="{{card.image}}"><facebook-icon></facebook-icon></a></li> -->
                    
-                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
+                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="The world's cities are getting smarter and more connected. Find out how. Watch streaming #NXPFTF keynote now {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
                   <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
                   <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
                   <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.title}} {{card.description}} {{currentUrl}}/{{card._id}}">
@@ -135,8 +134,9 @@ $(window).scroll(function(){
 $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
           $('.navbar-collapse').html(NXP.top_nav);
-          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li><li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li>')
+          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li><li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li>')
     } // load top nav elements
+    $('#header .dropdown-menu a').attr('target', '_blank');
 })
 </script>
 
@@ -254,7 +254,9 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
     if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }
 
 
-
+    $('.container-wrapper').delegate('a','click',function(){
+          $(this).attr('target', '_blank');
+    })
 
     
    });

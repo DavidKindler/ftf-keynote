@@ -12,7 +12,7 @@ angular.module('ftfKeynoteApp')
   $scope.helpers({
     cardOne: function() {
       // console.log (Cards.findOne({_id:'Z7JW8DySD42g7LANT'}));
-      return Cards.findOne({ _id: $scope.id }); 
+      // return Cards.findOne({ _id: $scope.id }); 
       // return Cards.findOne({ _id: $stateParams.cardId }); 
 	},
     cards: function() {
