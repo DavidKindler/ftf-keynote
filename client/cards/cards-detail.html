@@ -1,11 +1,11 @@
-
+<!-- 
 <update-title title="{{cardOne.title}}"></update-title>
 <update-meta property="og:title" content="{{cardOne.title}}"></update-meta>
 <update-meta property="og:url" content="{{currentUrl}}/{{cardOne._id}}"></update-meta>
 <update-meta property="og:type" content="website"></update-meta>
 <update-meta property="og:description" content="{{cardOne.description}}"></update-meta>
 <update-meta property="og:image" content="{{cardOne.image}}"></update-meta>
-<update-meta name="description" content="{{cardOne.description}}"></update-meta>
+<update-meta name="description" content="{{cardOne.description}}"></update-meta> -->
 
 
 <bsnxpnav></bsnxpnav>
@@ -54,7 +54,7 @@
                 <div class="item-footer">
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
-                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
+                    <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="The world's cities are getting smarter and more connected. Find out how. Replay #NXPFTF keynote {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
                   <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
                   <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
                   <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.title}} {{card.description}} {{currentUrl}}/{{card._id}}">
@@ -70,7 +70,7 @@
     </div>
 
     <script>
-      $('#cardModal').modal('show');
+      // $('#cardModal').modal('show');
 
       // $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
       //     if (typeof NXP.top_nav != 'undefined') {
@@ -147,7 +147,7 @@ $(window).scroll(function(){
 $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
           $('.navbar-collapse').html(NXP.top_nav);
-          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li><li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li>')
+          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li><li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li>')
     } // load top nav elements
 })
 </script>

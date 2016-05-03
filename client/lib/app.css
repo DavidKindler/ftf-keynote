@@ -788,7 +788,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.175);
   }
 
-.logo-img img {height:22px; margin-top:3px;}
+.logo-img img {height:22px; margin-top:4px;}
 
 #header #navbar-collapse-nxp.navbar-collapse {float:left; margin-left: 20px;}
 li.productsmenu div.dropdown-menu {left:-150px;}

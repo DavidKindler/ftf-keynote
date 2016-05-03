@@ -1,4 +1,39 @@
-// 'use strict';
+// Router.route('/(.*)',function(){
+//   document.title="adasdsa"
+// })
+// Router.plugin('seo', {
+//   // only: ['cardDetails'],
+//   // defaults : { 
+//   //   'title' : "DEAULT TITLE",
+//   //   'description': 'DEFAULT DESCRIPTION'
+//   // }
+// });
+// Router.route('/(.*)', {
+//   name: 'main',
+//   template: 'main'
+//  });
+// Router.route('/cards/:_id',function(){
+//   var cardOne = 'some card info here'
+//   this.render('showCard', {data:cardOne});
+// })
+
+
+// Router.route('/(.*)', {
+//   data: function(){
+//     return {
+//       title : 'dynamic title'
+//     }
+//   },
+//   seo: {
+//     title: function(){
+//       return 'Found this'+this.data().title + '.  DOES THIS WORK??'
+//     }
+//   }
+// }
+//   // this.render('index');
+
+// );
+
 
 angular.module('ftfKeynoteApp')
 
@@ -7,6 +42,14 @@ angular.module('ftfKeynoteApp')
 
 
  $stateProvider
+ // .state('main', {
+ //      url: '/',
+ //      templateUrl: 'client/app/main/main.ng.html',
+ //      controller: 'MainCtrl',
+ //      resolve: {
+ //        currentUser: waitForUser
+ //      }
+ //    })
   .state('cards', {
     url: '/',
     // template: '<cards-list></cards-list>',
@@ -14,11 +57,13 @@ angular.module('ftfKeynoteApp')
     controller: 'cardsList'
   })
   
-  .state('cardDetails', {
+  .state('card', {
     url: '/card/:cardId',
     templateUrl: 'client/cards/cards-detail.html',
     controller: 'CardDetailCtrl'
   })
+
+  
   .state('admin', {
     url: '/admin',
     template: '<admin></admin>'
@@ -57,6 +102,7 @@ angular.module('ftfKeynoteApp')
         $state.go('admin');
         break;
     }
+    // $state.go('cards');
   });
 
 }]);

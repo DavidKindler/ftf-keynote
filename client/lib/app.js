@@ -21,7 +21,7 @@ angular.module('ftfKeynoteApp', [
   'ngAnimate',
   'froala',
   'socialLinks',
-  'updateMeta',
+  // 'updateMeta',
   'ngEncodeTweet',
   'ngclipboard'
   // 'ngSanitize'
