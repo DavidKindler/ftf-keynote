@@ -34,7 +34,7 @@
                     <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="The world's cities are getting smarter and more connected. Find out how. Watch streaming #NXPFTF keynote now {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
                   <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
                   <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
-                  <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.title}} {{card.description}} {{currentUrl}}/{{card._id}}">
+                  <li  class="email" ><a id="email" class="social-icon"  data-text="The world's cities are getting smarter and more connected. Find out how. Watch the NXP FTF keynote &body=The world's cities are getting smarter and more connected. Find out how. Watch the NXP FTF keynote. %0A%0A {{card.title}} {{card.description}}%0A%0A{{currentUrl}}/{{card._id}}">
                     <email-icon></email-icon></a></li>
                  </ul>
                </div>
@@ -140,89 +140,13 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 })
 </script>
 
-<!-- <script src="//www.freescale.com/files/brightcove/analytics/src/lib/VisitorAPI.js"></script>
-<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Media.js"></script>
-<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Integrate.js"></script>
-<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AppMeasurement.js"></script>
-<script src="//www.freescale.com/files/brightcove/analytics/src/lib/VideoHeartbeat.js"></script>
-<script src="//www.freescale.com/files/brightcove/analytics/src/lib/AdobeAnalyticsPlugin.js"></script>
-<script src="//style.nxp.com/files/brightcove/analytics/src/videojs.analytic.omniture.ftf16.js"></script>
-
- -->
-<!-- <script type="text/javascript" src="//www.nxp.com/shared/js/webanalytics.js" ></script> -->
-<!-- <script type="text/javascript" src="//assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60-staging.js"></script>-->
 
 <script>
 
-  // jQuery(document).ready(function($) {
-  //     Meteor.call('meteorSettings', null,
-  //            function (error, result) {
-  //              if(error){
-  //                console.error('ERROR', error);
-  //              }else{
-  //                console.info('videoplayer updating',result);
-  //                window.videoCode = result.public.videoCodeHTML
-  //                $('#video-container').html(window.videoCode);
-  //              }
-  //            });
-  // });
-
-
-
+  
 
   jQuery(document).ready(function($) {
-    // $.getScript('http://www.nxp.com/shared/js/webanalytics.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded webanalytics.js');
-    //   });
-
-    // $.getScript('http://assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60-staging.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60-staging.js');
-    //     if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }
-    //   });
-
-    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/VisitorAPI.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded script 1');
-    //   });
-
-    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Media.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded script 2');
-    //   });
-
-
-    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AppMeasurement_Module_Integrate.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded script 3');
-    //   });
     
-    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AppMeasurement.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded script 4');
-    //   });
-    
-    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/VideoHeartbeat.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded script 5');
-    //   });    
-      
-    // $.getScript('http://www.nxp.com/files/brightcove/analytics/src/lib/AdobeAnalyticsPlugin.js')
-    //     .done(function(script,textStatus){
-    //       console.log ('loaded script 6');
-    //     });   
-
-    // $.getScript('http://style.nxp.com/files/brightcove/analytics/src/videojs.analytic.omniture.ftf16.js')
-    //     .done(function(script,textStatus){
-    //       console.log ('loaded script 7');
-    //     });   
-
-    // $.getScript('http://style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.ftf16.js')
-    //   .done(function(script,textStatus){
-    //     console.log ('loaded analytics.custom.mapping.ftf16.js');
-    //   });
-
 
     $.getScript('http://style.nxp.com/files/brightcove/ftf16_player.min.js')
       .done(function(script,textStatus){
@@ -254,11 +178,16 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
     // if (typeof _satellite !== "undefined") { _satellite.pageBottom(); }
 
 
-    $('.container-wrapper').delegate('a','click',function(){
+    $('.container-wrapper').delegate('a','click',function(e){
+        if ( $(this).is('#email') != true ) { 
           $(this).attr('target', '_blank');
-    })
+        } else {
+          e.preventDefault();
+          t = $(this).attr('data-text')
+          window.location.href="mailto:?subject="+t
+        }
+      });
 
-    
    });
 
 </script>
