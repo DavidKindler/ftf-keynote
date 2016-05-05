@@ -45,7 +45,8 @@
                         </div> -->
                     </div>
                 
-                <div class="item-footer"  ng-show="{{card.pageurl}}" >
+                <!-- <div class="item-footer"  ng-show="{{card.pageurl}}" > -->
+                <div class="item-footer"  ng-show="{{card.pageurl!=null}}" >
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
 
@@ -179,7 +180,10 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
           $('video')[0].autoplay=false
           $('video')[0].load();
           console.log ('VIDEO HAS ENDED')
-          $('#videomodal').modal('show');
+          setTimeout(function(){
+            $('#videomodal').modal('show');
+          },5000);
+
         });
       });
 
