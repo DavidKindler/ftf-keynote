@@ -45,7 +45,7 @@
                         </div> -->
                     </div>
                 
-                <div class="item-footer">
+                <div class="item-footer"  ng-show="{{card.pageurl}}" >
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
 
@@ -134,6 +134,7 @@ $(window).scroll(function(){
       // $('#video-container').css({'height':'100px'});
       $('.cbp-af-header').addClass("cbp-af-header-shrink");
       $('#slide-row').css('margin-top','510px');
+      // $('.cbp-af-header.cbp-af-header-shrink #fslPlayer').css({'height':'100px!important','width':'100px!important'})
       
     } else {
       $('#affixTweets').removeClass('affix');

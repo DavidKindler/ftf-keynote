@@ -9,22 +9,9 @@
 <div  ng-show="adminCtrl.isCardAdmin" >
   <modal title="Add a new card" visible="adminCtrl.showAddNewCardModal" data-backdrop="static">
     <form  role="form">
-      <!-- <h4>Create a new card</h4> -->
-       <!-- <div class="form-group">
-        <label>Event: </label>  
-           <select name="mySelect" id="mySelect"
-                 ng-options="option.name for option in adminCtrl.availableOptions track by option.id"
-                 ng-model="adminCtrl.selectedOption"></select>
-        </div>
-       <div class="form-group">
-        <label>Title: </label>  
-        <input ng-model="adminCtrl.newCard.title"  /> <br>
-        <label>Description:</label>
-        <input ng-model="adminCtrl.newCard.description" /> <br>
-        <label>Image url:</label>
-        <input ng-model="adminCtrl.newCard.image"/> <br> -->
 
         <div class="form-horizontal">
+            <b>Social Sharing information</b>
         <div class="form-group">
                 <label class="col-sm-2 control-label">Title: </label>  
                 <div class="col-sm-10"><input  class="form-control" ng-model="adminCtrl.newCard.title"  /> </div>
@@ -36,6 +23,10 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Image url:</label>
           <div class="col-sm-10"><input class="form-control"  ng-model="adminCtrl.newCard.image" /></div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Page url:</label>
+          <div class="col-sm-10"><input class="form-control"  ng-model="adminCtrl.newCard.pageurl" /></div>
         </div>
       </div>
 
@@ -77,6 +68,7 @@
   <form role="form">
     <!-- <h4>Edit Card</h4> -->
       <div class="form-horizontal">
+          <b>Social Sharing information</b>
         <div class="form-group">
                 <label class="col-sm-2 control-label">Title: </label>  
                 <div class="col-sm-10"><input  class="form-control" ng-model="adminCtrl.newCard.title"  /> </div>
@@ -88,6 +80,10 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Image url:</label>
           <div class="col-sm-10"><input class="form-control"  ng-model="adminCtrl.newCard.image" /></div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Page url:</label>
+          <div class="col-sm-10"><input class="form-control"  ng-model="adminCtrl.newCard.pageurl" /></div>
         </div>
       </div>
       <div class="row">
@@ -125,19 +121,9 @@
 
   <modal title="Edit html" visible="adminCtrl.showHTMLCardModal" data-backdrop="static">
     <form role=form>
-          <!-- <div class="form-group">
-              <label>Title: </label>  
-              <input ng-model="adminCtrl.newCard.title"  /> <br>
-              <label>Description:</label>
-              <input ng-model="adminCtrl.newCard.description" /> <br>
-              <label>Image url:</label>
-              <input ng-model="adminCtrl.newCard.image"/>  <br>
-
-              <textarea class="showHTML-modal" id="edit" ng-model="adminCtrl.newCard.content"> </textarea> 
-
-          </div> -->
-       
+         
           <div class="form-horizontal">
+            <b>Social Sharing information</b>
             <div class="form-group">
                     <label class="col-sm-2 control-label">Title: </label>  
                     <div class="col-sm-10"><input  class="form-control" ng-model="adminCtrl.newCard.title"  /> </div>
@@ -149,6 +135,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Image url:</label>
               <div class="col-sm-10"><input class="form-control"  ng-model="adminCtrl.newCard.image" /></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Page url:</label>
+              <div class="col-sm-10"><input class="form-control"  ng-model="adminCtrl.newCard.pageurl" /></div>
             </div>
           </div>
 
@@ -196,7 +186,7 @@
                             <div><span ng-bind-html="card.content | html"></span></div>
                         </div>
                     
-                       <footer class="item-footer">
+                        <footer class="item-footer" ng-show="{{card.pageurl}}">
                          <ul class="list-inline">
                            <li class="facebook"><a class="social-icon" social-facebook custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
                             <li class="twitter"><a custom-url="{{adminCtrl.currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{adminCtrl.currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>
@@ -229,7 +219,7 @@
                        <div><span ng-bind-html="card.content | html"></span></div>
                         </div>
                     
-                       <footer class="item-footer">
+                       <footer class="item-footer" ng-show="{{card.pageurl}}">
                          <ul class="list-inline">
                            <li class="facebook"><a class="social-icon" social-facebook custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
                             <li class="twitter"><a custom-url="{{adminCtrl.currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="#NXPFTF Check out what is happening at NXP FTF 2016 url: {{adminCtrl.currentUrl}}/{{card._id}} {{card.content}}"  > <twitter-icon></twitter-icon></a> </li>

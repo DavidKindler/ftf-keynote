@@ -225,7 +225,10 @@ div#admin-video-container video {
   height:100px!important;
   float:left!important;
 }
-
+.cbp-af-header.cbp-af-header-shrink #fslPlayer  {
+  width:150px!important;
+  height:100px!important;
+}
 div#nxp-ftf-video-headline-text {
   opacity:0;
   height: 0px; 
@@ -244,6 +247,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
   color:white;
   padding-top: 20px;
   position: fixed;
+  margin-left:25%;
 }
 
 .tweets-container {max-height: 600px; overflow-y:auto; }
@@ -907,6 +911,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 .froala-popup.froala-image-popup div.f-popup-line.drop-upload {display: none;}
 
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
+
 @media screen and (max-width: 992px) {
     div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
       /*margin-left:0px; padding-top: 7px;*/
@@ -921,12 +926,15 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
       width:auto; 
       height: 250px;
     }
+    #video-container-outer #fslPlayer { 
+      margin-left:15px;
+    }
     #video-container-outer video {
     /*#video-container-outer #fslPlayer {*/
       /*height:100px; */
       float:left;
       /*width:150px;*/
-      margin-left:15px;
+      /*margin-left:15px;*/
     }
     .cbp-af-header.cbp-af-header-shrink video { 
       /*-webkit-transform: scale(0.3); */
@@ -938,10 +946,12 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 @media screen and (max-width:768px) {
   #header #navbar-collapse-nxp.navbar-collapse {background-color: inherit;}
-  /*.nav-container {width:auto;}*/
+  
+
 }
 
 @media screen and (max-width: 992px) {
+  div.cbp-af-header-shrink div#nxp-ftf-video-headline-text { margin-left:40%; }
   #header .nav-link a {display: none;}
   #header #fsl-logo img { width: 150px;  }
   .nav-container {width:auto;}
@@ -988,5 +998,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 }
 
 @media screen and (max-width:476px) {
-  div#nxp-ftf-video-headline-text img { height:auto; width:90%;}
+  div#nxp-ftf-video-headline-text img { 
+    height:auto; width:90%;
+  }
 }
