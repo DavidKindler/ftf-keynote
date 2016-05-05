@@ -101,8 +101,7 @@ body {background-color: #f1f1f1;}
 }
 
 #video-container {
-  /*width:888px; */
-  width:795px; 
+  width:888px; 
   margin:0px auto; 
   height:500px;
 }
@@ -119,21 +118,16 @@ body {background-color: #f1f1f1;}
 }
 
 /*#video-container {background-color: black;}*/
-#video-container-outer video {
-/*#video-container-outer #fslPlayer {*/
+#video-container-outer #fslPlayer {
   /*height: 500px;*/
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   transition: all 1s;
 }
 
-div#admin-video-container video {
-/*div#admin-video-container #fslPlayer {*/
- max-height:200px; max-width: 364px;
-}
+div#admin-video-container #fslPlayer { max-height:200px; max-width: 364px;}
 
-#video-container-outer.video-container-shrunk video {
-/*#video-container-outer.video-container-shrunk #fslPlayer {*/
+#video-container-outer.video-container-shrunk #fslPlayer {
   height: 100px;
   width: 180px;
   margin-left:35px;
@@ -192,10 +186,6 @@ div#admin-video-container video {
   height: 100px;
   width:100%;
   top:auto;
-  right: 0px;
-  left: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
 }
 
 
@@ -203,7 +193,6 @@ div#admin-video-container video {
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
   transition: all .5s linear;
-  float:left;
 }
 
 .cbp-af-header.cbp-af-header-shrink video {
@@ -214,17 +203,12 @@ div#admin-video-container video {
   -webkit-transform-origin: top left;
   transform-origin: top left;
   /*transform: scale(0.2);*/
-  /*-webkit-transform: scale(0.12);*/
-  /*transform: scale(0.12);*/
+  -webkit-transform: scale(0.12);
+  transform: scale(0.12);
   left:inherit;
 }
 
-.cbp-af-header.cbp-af-header-shrink video {
-/*.cbp-af-header.cbp-af-header-shrink #fslPlayer {*/
-  width:150px!important; 
-  height:100px!important;
-  float:left!important;
-}
+.cbp-af-header.cbp-af-header-shrink #fslPlayer {width:150px!important; float:left!important;}
 
 div#nxp-ftf-video-headline-text {
   opacity:0;
@@ -243,7 +227,6 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
   font-size:36px;
   color:white;
   padding-top: 20px;
-  position: fixed;
 }
 
 .tweets-container {max-height: 600px; overflow-y:auto; }
@@ -909,9 +892,9 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 @media screen and (max-width: 992px) {
     div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
-      /*margin-left:0px; padding-top: 7px;*/
+      margin-left:0px; padding-top: 7px;
     }
-    /*div#nxp-ftf-video-headline-text img {height:20px;}*/
+    div#nxp-ftf-video-headline-text img {height:20px;}
     .container { margin: 0px auto; }
     .container-wrapper {width:100%;}
     .tweets {width:70%; margin:0 auto;}
@@ -921,18 +904,16 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
       width:auto; 
       height: 250px;
     }
-    #video-container-outer video {
-    /*#video-container-outer #fslPlayer {*/
-      /*height:100px; */
+    #video-container-outer #fslPlayer {
+      height:100px; 
       float:left;
-      /*width:150px;*/
-      margin-left:15px;
+      width:150px;
     }
     .cbp-af-header.cbp-af-header-shrink video { 
-      /*-webkit-transform: scale(0.3); */
-      /*transform: scale(0.3); */
-      /*margin-top:10px; */
-      /*margin-left:10px;*/
+      -webkit-transform: scale(0.3); 
+      transform: scale(0.3); 
+      margin-top:10px; 
+      margin-left:10px;
     }
 }
 
@@ -975,18 +956,14 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
       .navbar-collapse.collapse { display: none!important;  } 
       .navbar-collapse.collapse.in { display:block!important; }
       .cbp-af-header.cbp-af-header-shrink video {
-          /*-webkit-transform: scale(0.18);*/
-          /*transform: scale(0.18);*/
+          -webkit-transform: scale(0.18);
+          transform: scale(0.18);
       }      
 }
 
-@media screen and (min-width:479px) and (max-width: 769px) {
+@media screen and (min-width:479) and (max-width: 769px) {
   .cbp-af-header.cbp-af-header-shrink video {
-      /*-webkit-transform: scale(0.2);*/
-      /*transform: scale(0.2);*/
+      -webkit-transform: scale(0.2);
+      transform: scale(0.2);
   }
-}
-
-@media screen and (max-width:476px) {
-  div#nxp-ftf-video-headline-text img { height:auto; width:90%;}
 }

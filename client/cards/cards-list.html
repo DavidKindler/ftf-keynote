@@ -1,15 +1,35 @@
 <bsnxpnav></bsnxpnav>
 <div class="row cbp-af-header" id="video-container-outer">
         <videoplayer></videoplayer>
-       <!-- <div id="nxp-ftf-video-headline-text" ><img src="/images/NXP_logo_SOLID_WHITE.png"> FTF 2016</div> -->
+      
+</div>
+ <div id="videomodal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog-video">
+  <!-- <div class="modal-dialog"> -->
+    <div class="modal-content">
+      <div class="modal-body">
+        <h2>Top 5 links </h2>
+        <img src="http://www.nxp.com/files/graphic/banner/tn_pu/UNWIND-AFTER-ALL-THE-TRAINING-TN.jpg" alt="" class="img-responsive">
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+          <li><a href="#">Link 5</a></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container-wrapper">
 <div id="slide-row" class="row" >
-    <section class="col-sm-9">
-        <!-- <div class="col-sm-6 animate-repeat slide"  ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <!-- <div class="col-sm-6 animate-repeat slide" ui-sref="cardDetails({ cardId: card._id })" ng-repeat="card in cardsList.cards | published:cardsList.videoTime | orderBy:'-time'"> -->
-        <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">             
+    <section class="col-md-9">
+       <section class="row">
+        <article class="col-md-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">             
             <div class="item dtmFTFDiv" data-dtmSection="Content Card" id="{{card._id}}"  cardid="{{card._id}}" >
                 <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
@@ -43,11 +63,10 @@
                 
             </div>
         </article>
+      </section>
+    </section>  <!-- <section class="col-md-9"> -->
 
-
-    </section>  <!-- <section class="col-sm-9"> -->
-
-    <section class="col-sm-3">
+    <section class="col-md-3">
         <!-- <p>VideoTime: {{videoTime}}</p> -->
       <div id="affixTweets"  >
         <div class="tweets dtmFTFDiv" data-dtmSection="Twitter Feed" ng-controller="tweetsCtrl" >
@@ -80,7 +99,8 @@ $(window).resize(function(){
     var scrollPos = $(document).scrollTop();
     // console.log('WindowWidth2',windowWidth);
     // console.log ('scroll pos2',scrollPos);
-    if (windowWidth<768) {
+    if (windowWidth<991) {
+    // if (windowWidth<768) {
       $('#affixTweets').removeClass('affix');
       // $('#video-container').css({'height':'100px'});
     } else
@@ -101,7 +121,8 @@ $(window).scroll(function(){
     // console.log('WindowWidth',windowWidth);
     // console.log ('scrollPos',scrollPos)
     if (scrollPos >= 330  ) { 
-      if (windowWidth>768) { 
+      if (windowWidth>992) { 
+      // if (windowWidth>768) { 
         $('#affixTweets').addClass('affix'); 
         $('#video-container').css({'height':'100px'});
       } else {
@@ -118,7 +139,8 @@ $(window).scroll(function(){
       $('#affixTweets').removeClass('affix');
 
         // console.log ('scrollPos is <= 330')
-      if (windowWidth>768) { 
+      if (windowWidth>992) { 
+      // if (windowWidth>768) { 
         $('#video-container').css('height','500px');
       } else {
         $('#video-container').css('height','250px');
@@ -156,6 +178,7 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
           $('video')[0].autoplay=false
           $('video')[0].load();
           console.log ('VIDEO HAS ENDED')
+          $('#videomodal').modal('show');
         });
       });
 

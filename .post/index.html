@@ -51,13 +51,70 @@
   </div>
 </nav>
 </div>
-
+<div class="row cbp-af-header" id="video-container-outer">
   <div ng-include="'video.html'"></div>
+  </div>
 </div>
 
 <div class="container-fluid" ng-view></div>
 
 <script>
+
+var windowWidth = $(window).width();
+
+$(window).resize(function(){
+    var windowWidth = $(window).width();
+    var scrollPos = $(document).scrollTop();
+    // console.log('WindowWidth2',windowWidth);
+    // console.log ('scroll pos2',scrollPos);
+    if (windowWidth<768) {
+      $('#affixTweets').removeClass('affix');
+      // $('#video-container').css({'height':'100px'});
+    } else
+    {
+      if (scrollPos >=330){
+        $('#affixTweets').addClass('affix');
+        $('#video-container').css('height','250px');
+      }  else {
+        $('#affixTweets').removeClass('affix');
+        $('#video-container').css('height','500px');
+      }
+    }
+});
+
+$(window).scroll(function(){
+    var scrollPos = $(document).scrollTop();
+    var windowWidth = $(window).width();
+    // console.log('WindowWidth',windowWidth);
+    // console.log ('scrollPos',scrollPos)
+    if (scrollPos >= 330  ) { 
+      if (windowWidth>768) { 
+        $('#affixTweets').addClass('affix'); 
+        $('#video-container').css({'height':'100px'});
+      } else {
+        // $('#video-container').css({'height':'100px', 'width':'100px', 'margin':'0px'});
+
+      }
+        // console.log ('scrollPos is >= 330')
+        // $('#video-container-outer').addClass('video-container-shrunk');
+      // $('#video-container').css({'height':'100px'});
+      $('.cbp-af-header').addClass("cbp-af-header-shrink");
+      $('#slide-row').css('margin-top','510px');
+      
+    } else {
+      $('#affixTweets').removeClass('affix');
+
+        // console.log ('scrollPos is <= 330')
+      if (windowWidth>768) { 
+        $('#video-container').css('height','500px');
+      } else {
+        $('#video-container').css('height','250px');
+      }
+      $('.cbp-af-header').removeClass("cbp-af-header-shrink");
+      // $('#video-container-outer').removeClass('video-container-shrunk');
+      $('#slide-row').css('margin-top','20px');
+    }
+});
 $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
           $('.navbar-collapse').html(NXP.top_nav);
@@ -71,27 +128,24 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 <div class="videoplayer">
 
 <div id="video-container" class="outer-container text-center">
-  <video id="fslPlayer" data-video-id="ref:RF-SAGE-VIDEO" data-account="4089003392001" class="video-js"
-    data-setup='{"autoplay":false}' 
-    data-player="f5dae957-1421-47f2-9de8-90cf42d311ae" data-embed="default"
-    data-delayanalytics="true"
-    controls width="100%" height="100%"
-    poster="http://media.w3.org/2010/05/sintel/poster.png">
-    <source type="video/mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" id="mp4">
-    <source type="video/webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" id="webm">
-    <source type="video/ogg" src="http://media.w3.org/2010/05/sintel/trailer.ogv" id="ogv"> 
+  <video id="fslPlayer" 
+    data-video-id="ref:RF-SAGE-VIDEO" 
+    data-account="4089003392001" 
+    class="video-js"
+    data-player="SycMTy4e" 
+    data-embed="default"
+    controls preload="auto" autoplay width="100%" height="100%"
+    muted
+    poster="http://cache.nxp.com/videos/poster/NXP-FTF-2016-PROMO.jpg"
+    >
     <p>Your user agent does not support the HTML5 Video element.</p>
-  </video>
-<!--     
-		<script src="//players.brightcove.net/4089003392001/f5dae957-1421-47f2-9de8-90cf42d311ae_default/index.min.js"></script>
-    <script src="//style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.preroll.js"></script>
-    <script src="//players.brightcove.net/videojs-social/dist/videojs-social.min.js"></script>
-    <script type="text/javascript" src="//style.nxp.com/v1.36/search/javascript/nxpvid_bumper.js"></script>
-    <script>videojs('fslPlayer',{"autoplay":false}).nxpvidBumper("RF-SAGE-VIDEO", true);</script>
- -->
+  </video>  
+  
+  <div id="nxp-ftf-video-headline-text" ><img src="NXP-FTF-LOGO.png"></div>
 </div>
 
 </div>
+
 
 </script>
 
@@ -112,7 +166,7 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 	  <div ng-controller="CardController">  
 
 <div class="container-wrapper">
-<div id="slide-row" class="row" >
+ <div class="col-sm-offset-1 col-sm-9" id="slide-row">
     <article class="col-sm-6 animate-repeat slide item-container" ng-repeat="card in data  | orderBy:'-order' | filter:{public:true}">             <div class="item" id="{{card._id}}" >
                 <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
@@ -152,14 +206,13 @@ $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){
 <update-meta name="description" content="{{cardOne.description}}"></update-meta>
 
 
-  <!-- <div ng-if="cardOne">Card Details for {{cardOne._id}} Content is: <span ng-bind-html="cardOne.content | html"></span></div> -->
+  <div ng-if="cardOne">Card Details for {{cardOne._id}} Content is: <span ng-bind-html="cardOne.content | html"></span></div> -->
   
   <div ng-controller="CardDetailController">  
 
-<!--     <div class="col-sm-6" ng-repeat="card in data" >
+    <div class="col-sm-6" ng-repeat="card in data" >
       <div class="item" id="{{card._id}}" ><span ng-bind-html="card.content | html"></span> </div>
     </div>
- -->
 
     <div class="container-wrapper">
     <div id="slide-row" class="row" >

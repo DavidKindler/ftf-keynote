@@ -1,3 +1,10 @@
+admin .alert {
+    margin-top: 50px;
+}
+
+
+.ratio {display:block;width:100%;height:auto;}
+
 .container-fluid {background-color: #f1f1f1; font-family: Arial, sans-serif;}
 body {background-color: #f1f1f1;}
 .animate-repeat {
@@ -6,12 +13,20 @@ body {background-color: #f1f1f1;}
   box-sizing:border-box;
 }
 
+.animate-repeat.ng-enter-stagger,
+.animate-repeat.ng-leave-stagger,
+.animate-repeat.ng-move-stagger {
+  /* 200ms will be applied between each sucessive enter operation */ 
+  -webkit-transition-delay:0.1s;
+  transition-delay:0.1s;
+}
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter,
 .animate-repeat.ng-leave {
+  -webkit-transition:all linear .7s;
   transition:all linear .7s;
+  -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
 }
 
 .animate-repeat.ng-leave.ng-leave-active,
@@ -19,8 +34,8 @@ body {background-color: #f1f1f1;}
 .animate-repeat.ng-enter {
   opacity:0;
   max-height:0;
+  -webkit-animation: slide-in 0.5s forwards;
    animation: slide-in 0.5s forwards;
-    -webkit-animation: slide-in 0.5s forwards;
 }
 
 .animate-repeat.ng-leave,
@@ -41,13 +56,13 @@ body {background-color: #f1f1f1;}
 }*/
 
 .slide-in {
-    animation: slide-in 0.5s forwards;
     -webkit-animation: slide-in 0.5s forwards;
+    animation: slide-in 0.5s forwards;
 }
 
 .slide-out {
-    animation: slide-out 0.5s forwards;
     -webkit-animation: slide-out 0.5s forwards;
+    animation: slide-out 0.5s forwards;
 }
     
 @keyframes slide-in {
@@ -85,8 +100,13 @@ body {background-color: #f1f1f1;}
   transform: translateX(0%);*/
 }
 
-#video-container {width:888px; margin:0px auto;}
-#admin-video-container #video-container {width:auto; margin:0px;}
+#video-container {
+  /*width:888px; */
+  width:795px; 
+  margin:0px auto; 
+  height:500px;
+}
+#admin-video-container #video-container {width:auto; margin:0px; height:auto;}
 #admin-video-container div#nxp-ftf-video-headline-text {display: none;}
 
 #video-container-outer.video-container-shrunk {
@@ -99,16 +119,16 @@ body {background-color: #f1f1f1;}
 }
 
 /*#video-container {background-color: black;}*/
-#video-container-outer video#fslPlayer {
-  height: 500px;
+#video-container-outer #fslPlayer {
+  /*height: 500px;*/
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   transition: all 1s;
 }
 
-div#admin-video-container video#fslPlayer { max-height:200px; max-width: 364px;}
+div#admin-video-container #fslPlayer { max-height:200px; max-width: 364px;}
 
-#video-container-outer.video-container-shrunk video#fslPlayer {
+#video-container-outer.video-container-shrunk #fslPlayer {
   height: 100px;
   width: 180px;
   margin-left:35px;
@@ -117,15 +137,16 @@ div#admin-video-container video#fslPlayer { max-height:200px; max-width: 364px;}
 #video-container-outer.video-container-shrunk #video-container.outer-container {
   float:left;
   margin-left: 120px;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
 #video-container-outer.video-container-shrunk + .row {
   margin-top: 200px;
   -webkit-transition: 1s ease-in-out;
-    -moz-transition: 1s ease-in-out;
-    -o-transition: 1s ease-in-out;
-    transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 
 }
 
@@ -135,6 +156,7 @@ div#admin-video-container video#fslPlayer { max-height:200px; max-width: 364px;}
 
 }
 #video-container-outer.video-container-shrunk .video-shrunk-header {
+    -webkit-transition: opacity 1s ease 1s;
     transition: opacity 1s ease 1s;
     opacity: 1;
 }
@@ -162,13 +184,17 @@ div#admin-video-container video#fslPlayer { max-height:200px; max-width: 364px;}
 
 .cbp-af-header.cbp-af-header-shrink {
   position: fixed;
-  /*height: 100px;*/
+  height: 100px;
   width:100%;
   top:auto;
+  right: 0px;
+  left: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 
-video {
+#fslPlayer, video {
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
   transition: all .5s linear;
@@ -179,15 +205,24 @@ video {
   height: auto;
   position: fixed;
   top: auto;
+  -webkit-transform-origin: top left;
   transform-origin: top left;
-  transform: scale(0.2);
+  /*transform: scale(0.2);*/
+  /*-webkit-transform: scale(0.12);*/
+  /*transform: scale(0.12);*/
+  left:inherit;
 }
 
+.cbp-af-header.cbp-af-header-shrink #fslPlayer {
+  width:150px!important; 
+  height:100px!important;
+  float:left!important;
+}
 
 div#nxp-ftf-video-headline-text {
   opacity:0;
   height: 0px; 
-   -webkit-transition: all .5s;
+  -webkit-transition: all .5s;
   -moz-transition: all .5s;
   transition: all .5s linear;
 }
@@ -197,7 +232,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
   /*display:block;*/
   opacity: 1;
   height:100px;
-  margin-left: 100px;
+  margin-left: 175px;
   font-size:36px;
   color:white;
   padding-top: 20px;
@@ -211,7 +246,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
     /*padding-top: 0px;*/
     display: table;
     /*width: 95%;*/
-    width:250px;
+    /*width:250px;*/
     background-color: white;
     border-radius: 2px;
     border-color: 1px solid #d7d7d7;
@@ -274,25 +309,12 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
 
 
 .ma-add-new-card-container, .ma-edit-card-container {min-width:400px;  max-width:800px; padding: 10px;}
-.content-modal {width: 360px; height: 300px;}
+
 
 
 
 .item-container {margin-bottom: 20px;}
 
-.item {/*height:225px;*/ /*height:100px;*/ display: block; position: relative;
-  max-width: 350px;
-  width: 350px;
-  max-height: 250px;
-  height: 250px;
-  /*margin: 5px 5px;*/
-  background: #fff;
-  border: 1px solid #CCD6D8;
-  padding: 5px;
-  border-radius: 2px;
-  box-shadow: 2px 2px 5px rgba(204, 204, 204, 0.5);
-  position: relative;
-}
 
 
 
@@ -348,6 +370,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
 } */
 
 .affix {top:140px;}
+#affixTweets.affix {width:235px;}
 
 #stretch {
     height: 500px;  
@@ -785,7 +808,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.175);
   }
 
-.logo-img img {height:22px; margin-top:3px;}
+.logo-img img {height:22px; margin-top:4px;}
 
 #header #navbar-collapse-nxp.navbar-collapse {float:left; margin-left: 20px;}
 li.productsmenu div.dropdown-menu {left:-150px;}
@@ -795,36 +818,74 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 /* /////////////CARD CONTENT HTML MARKUP////////////////// */
 
+.showHTML-modal {width: 360px; height: 300px;}
+.modal-dialog {width: 800px;}
+.modal-dialog.detail {width: 380px;}
+.btn-toolbar  {margin-bottom: 5px;}
+.modal-dialog-video {width:80%; margin:60px auto;}
+
+.ta-editor.ta-html, .ta-scroll-window.form-control {
+    max-height: 220px;
+    min-height:220px;
+    height: auto;
+    overflow: hidden;
+    max-width: 350px;
+    min-width: 350px;
+    width: auto;
+}
+.ta-scroll-window > .ta-bind {
+    padding: 10px;
+}
+
+#content, .item, .froala-box {
+  display: block; 
+  position: relative;
+  max-width: 350px;
+  width: 350px;
+  max-height: 260px;
+  height: 260px;
+  background: #fff;
+  border: 1px solid #CCD6D8;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px rgba(204, 204, 204, 0.5);
+  position: relative;
+  overflow:hidden;
+}
+
+/*.content-modal {height: }*/
+
 .item .caption {
   min-height: 1px;
-  padding: 5px;
   overflow: hidden;
   font-size: 14px;
   position: relative;
   height:220px;
 }
-.item .caption h2,
-.item .caption .h2 {
+
+.froala-view h1, .froala-view h2, .froala-view h3,.froala-view .h1, .froala-view .h2, .froala-view .h3,
+.item .caption h1, .item .caption h2, .item .caption h3,
+.item .caption .h1, .item .caption .h2, .item .caption .h3 {
   color: #e66a08;
   font-weight: 600;
   font-size: 19px;
   margin: 0px;
 }
-.item .caption p {
+.item .caption p, .froala-view p {
   margin: 2px 0px;
 }
-.item .caption img {
+.item .caption img, .froala-view img {
   width: 100%;
   max-height: 125px;
 }
-.item .caption .center {
+.item .caption .center, .froala-view .center {
   text-align: center;
 }
-.item .caption .block-of-text {
+.item .caption .block-of-text, .froala-view .block-of-text {
   height: 200px;
   position: relative;
 }
-.item .caption .block-of-text div {
+.item .caption .block-of-text div, .froala-view .block-of-text div {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -832,48 +893,91 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
   transform: translateY(-50%);
 }
 
-.item {margin:0px auto;}
+.image-list-group { font-size:10px; width:300px;}
+.image-list-group img { height:50px;}
 
+.froala-popup.froala-image-popup div.f-popup-line.drop-upload {display: none;}
 
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
-@media screen and (max-width: 768px) {#header #fsl-logo img {
-      width: 150px;
+@media screen and (max-width: 992px) {
+    div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
+      /*margin-left:0px; padding-top: 7px;*/
     }
-    #header #header .dropdown-menu {
-      width: auto;
-    }
-
-    #header .navbar-default .navbar-nav > li > a {
-      color: #007088;
-    }
-    #header .dropdown-menu {
-      width: auto;
-    }
-
-    .container {
-      margin: 0px auto;
-    }
-    .nav-container {width:auto;}
+    /*div#nxp-ftf-video-headline-text img {height:20px;}*/
+    .container { margin: 0px auto; }
     .container-wrapper {width:100%;}
-
-    .tweets {width:100%;}
-
-    #header #navbar-collapse-nxp.navbar-collapse {
-      background-color: #ededf0;
+    .tweets {width:70%; margin:0 auto;}
+    .item {margin:0px auto; width:auto; height:auto; max-height: none;}
+    .item .caption {height:240px;}
+    #video-container {
+      width:auto; 
+      height: 250px;
     }
+    #video-container-outer #fslPlayer {
+      /*height:100px; */
+      float:left;
+      /*width:150px;*/
+      margin-left:15px;
+    }
+    .cbp-af-header.cbp-af-header-shrink video { 
+      /*-webkit-transform: scale(0.3); */
+      /*transform: scale(0.3); */
+      /*margin-top:10px; */
+      /*margin-left:10px;*/
+    }
+}
+
+@media screen and (max-width:768px) {
+  #header #navbar-collapse-nxp.navbar-collapse {background-color: inherit;}
+  /*.nav-container {width:auto;}*/
+}
+
+@media screen and (max-width: 992px) {
+  #header .nav-link a {display: none;}
+  #header #fsl-logo img { width: 150px;  }
+  .nav-container {width:auto;}
+  li.productsmenu div.dropdown-menu { left:-65px;}
+  #header #navbar-collapse-nxp.navbar-collapse {float:none; margin-left: 0px;}
+  .logo-img img {margin-left:15px;}
+  #header #navbar-collapse-nxp.navbar-collapse { background-color: #ededf0; }
+  #header .navbar-default .navbar-nav>li>a {    color: #007088; }
+  .navbar-nav > li {float:none;}
+
+     #header .dropdown-menu {
+      width: auto;
+      position: relative;
+    }
+   
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse.in {    overflow-y: auto; }
+    li.productsmenu div.dropdown-menu {left:0px;}
+    li.applicationsmenu div.dropdown-menu {left:0px;}
+    li.trainingmenu div.dropdown-menu {left:0px;}
+    li.aboutmenu div.dropdown-menu {left:0px;}
     
-    #header #navbar-collapse-nxp.navbar-collapse {float:none; margin-left: 0px;}
-    
-    #header .nav-link a {display: none;}
+}
 
-    /*#header .nav-link a {display: block; background-color: #EDEDF0; color: #007088; 
-    border: 0;
-    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.175);
-    }*/
+@media screen and (min-width:768px) and (max-width:992px) {
+      .navbar-collapse.collapse { display: none!important;  } 
+      .navbar-collapse.collapse.in { display:block!important; }
+      .cbp-af-header.cbp-af-header-shrink video {
+          /*-webkit-transform: scale(0.18);*/
+          /*transform: scale(0.18);*/
+      }      
+}
 
-    .logo-img img {margin-left:15px;}
+@media screen and (min-width:479px) and (max-width: 769px) {
+  .cbp-af-header.cbp-af-header-shrink video {
+      /*-webkit-transform: scale(0.2);*/
+      /*transform: scale(0.2);*/
+  }
+}
 
-    .item {margin:0px auto;}
-    #video-container {width:auto; padding-left:20px;}
-    #video-container-outer video#fslPlayer {height:250px; margin-left:-20px;}
+@media screen and (max-width:476px) {
+  div#nxp-ftf-video-headline-text img { height:auto; width:90%;}
 }
