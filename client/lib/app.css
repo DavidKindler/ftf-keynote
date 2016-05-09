@@ -2,6 +2,7 @@ admin .alert {
     margin-top: 50px;
 }
 
+hr {margin:7px 0px;}
 
 .ratio {display:block;width:100%;height:auto;}
 
@@ -759,16 +760,7 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
 #header #user-actions.dropdown-menu li a:hover.selected {
   color: #19191a;
 }
-#header .flag {
-  background: url(//www.nxp.com/files/graphic/icons/nav-sprites.png) no-repeat;
-  vertical-align: middle;
-  width: 21px;
-  height: 18px;
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  position: relative;
-}
+
 #header .flag-en {
   background-position: 3px -752px;
 }
@@ -910,6 +902,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 .froala-popup.froala-image-popup div.f-popup-line.drop-upload {display: none;}
 
+.centerVideoModalContent {display:table; margin-right:auto; margin-left:auto;}
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 
 @media screen and (max-width: 992px) {

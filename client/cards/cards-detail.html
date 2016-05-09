@@ -1,5 +1,5 @@
 
-<update-meta http-equiv="refresh" content="2;url={{cardOne.pageurl}}" ></update-meta>
+<update-meta http-equiv="refresh" content="1;url={{cardOne.pageurl}}" ></update-meta>
 <update-link rel="canonical" href="{{currentUrl}}/{{cardOne._id}}"></update-link>
 <update-meta name="description" content="{{cardOne.description}}"></update-meta>
 <update-title title="{{cardOne.title}}"></update-title>
@@ -11,7 +11,8 @@
 <update-meta itemprop="name" content="{{cardOne.title}}"></update-meta>
 <update-meta itemprop="description" content="{{cardOne.description}}"></update-meta>
 <update-meta itemprop="image" content="{{cardOne.image}}"></update-meta>
-
+  <!-- <p>You will be redirected shortly.  Click <a href="{{cardOne.pageurl}}">here</a> if you are not.</p> -->
+<!-- 
 <bsnxpnav></bsnxpnav>
 <div class="row cbp-af-header" id="video-container-outer">
         <videoplayer></videoplayer>
@@ -31,17 +32,17 @@
         <article class="col-sm-6 item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">
              <div class="item dtmFTFDiv" data-dtmSection="Content Card" id="{{card._id}}"  cardid="{{card._id}}" >
                 <div class="cardContent" >
-                    <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
+                    <div class="caption" ui-sref="cardDetails({ cardId: card._id })">
                     <div class="caption" >
                         <div ><span ng-bind-html="card.content | html"></span></div>
                         
-                        <!-- <div class="title text-center">
+                        <div class="title text-center">
                             public: {{card.public}}
                         </div>
                         
                         <div class="text-center">
                                 sync time: {{card.time}}
-                        </div> -->
+                        </div>
                     </div>
                 
                 <div class="item-footer">
@@ -61,119 +62,120 @@
         </article>
 
     </div>
-
-    <script>
-
-
-var windowWidth = $(window).width();
-
-$(window).resize(function(){
-    var windowWidth = $(window).width();
-    var scrollPos = $(document).scrollTop();
-    // console.log('WindowWidth2',windowWidth);
-    // console.log ('scroll pos2',scrollPos);
-    if (windowWidth<768) {
+ -->
+  <!--   <script>
+  
+  
+  var windowWidth = $(window).width();
+  
+  $(window).resize(function(){
+  var windowWidth = $(window).width();
+  var scrollPos = $(document).scrollTop();
+  // console.log('WindowWidth2',windowWidth);
+  // console.log ('scroll pos2',scrollPos);
+  if (windowWidth<768) {
+    $('#affixTweets').removeClass('affix');
+    // $('#video-container').css({'height':'100px'});
+  } else
+  {
+    if (scrollPos >=330){
+      $('#affixTweets').addClass('affix');
+      $('#video-container').css('height','250px');
+    }  else {
       $('#affixTweets').removeClass('affix');
-      // $('#video-container').css({'height':'100px'});
-    } else
-    {
-      if (scrollPos >=330){
-        $('#affixTweets').addClass('affix');
-        $('#video-container').css('height','250px');
-      }  else {
-        $('#affixTweets').removeClass('affix');
-        $('#video-container').css('height','500px');
-      }
+      $('#video-container').css('height','500px');
     }
-});
-
-$(window).scroll(function(){
-    var scrollPos = $(document).scrollTop();
-    var windowWidth = $(window).width();
-    // console.log('WindowWidth',windowWidth);
-    // console.log ('scrollPos',scrollPos)
-    if (scrollPos >= 330  ) { 
-      if (windowWidth>768) { 
-        $('#affixTweets').addClass('affix'); 
-        $('#video-container').css({'height':'100px'});
-      } else {
-        // $('#video-container').css({'height':'100px', 'width':'100px', 'margin':'0px'});
-
-      }
-        // console.log ('scrollPos is >= 330')
-        // $('#video-container-outer').addClass('video-container-shrunk');
-      // $('#video-container').css({'height':'100px'});
-      $('.cbp-af-header').addClass("cbp-af-header-shrink");
-      $('#slide-row').css('margin-top','510px');
-      
+  }
+  });
+  
+  $(window).scroll(function(){
+  var scrollPos = $(document).scrollTop();
+  var windowWidth = $(window).width();
+  // console.log('WindowWidth',windowWidth);
+  // console.log ('scrollPos',scrollPos)
+  if (scrollPos >= 330  ) { 
+    if (windowWidth>768) { 
+      $('#affixTweets').addClass('affix'); 
+      $('#video-container').css({'height':'100px'});
     } else {
-      $('#affixTweets').removeClass('affix');
-
-        // console.log ('scrollPos is <= 330')
-      if (windowWidth>768) { 
-        $('#video-container').css('height','500px');
-      } else {
-        $('#video-container').css('height','250px');
-      }
-      $('.cbp-af-header').removeClass("cbp-af-header-shrink");
-      // $('#video-container-outer').removeClass('video-container-shrunk');
-      $('#slide-row').css('margin-top','20px');
+      // $('#video-container').css({'height':'100px', 'width':'100px', 'margin':'0px'});
+  
     }
-});
-
-
-$.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
-    if (typeof NXP.top_nav != 'undefined') {
-          $('.navbar-collapse').html(NXP.top_nav);
-          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li><li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li>')
-    } // load top nav elements
-})
-
-
-  jQuery(document).ready(function($) {
-
-   
-
-    $.getScript('http://style.nxp.com/files/brightcove/ftf16_player.min.js')
-      .done(function(script,textStatus){
-        console.log ('loaded ftf16_player');
-        // # Show poster at the end of the video
-        $('video').on('ended',function(){
-          $('video')[0].autoplay=false
-          $('video')[0].load();
-          console.log ('VIDEO HAS ENDED')
-        });
-      });
-
-    $.getScript('http://players.brightcove.net/videojs-social/dist/videojs-social.min.js')
-      .done(function(script,textStatus){
-        console.log ('loaded videojs-social.min.js');
-      });
-    $.getScript('http://style.nxp.com/files/js/elqNow/elqwebanalytics.js')
-      .done(function(script,textStatus){
-        console.log ('loaded elqwebanalytics');
-      });
-    $.getScript('http://style.nxp.com/files/abstract/misc/blueconic.js')
-      .done(function(script,textStatus){
-        console.log ('loaded blueconic');
-      });
-    $.getScript('http://style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.ftf16.js')
-      .done(function(script,textStatus){
-        console.log ('loaded custom.mapping.ftf16');
-      });
-
-     
-    $('.container-wrapper').delegate('a','click',function(e){
-        if ( $(this).is('#email') != true ) { 
-          $(this).attr('target', '_blank');
-        } else {
-          e.preventDefault();
-          t = $(this).attr('data-text')
-          window.location.href="mailto:?subject="+t
-        }
-      });
-
+      // console.log ('scrollPos is >= 330')
+      // $('#video-container-outer').addClass('video-container-shrunk');
+    // $('#video-container').css({'height':'100px'});
+    $('.cbp-af-header').addClass("cbp-af-header-shrink");
+    $('#slide-row').css('margin-top','510px');
     
-   });
-
-</script>
+  } else {
+    $('#affixTweets').removeClass('affix');
+  
+      // console.log ('scrollPos is <= 330')
+    if (windowWidth>768) { 
+      $('#video-container').css('height','500px');
+    } else {
+      $('#video-container').css('height','250px');
+    }
+    $('.cbp-af-header').removeClass("cbp-af-header-shrink");
+    // $('#video-container-outer').removeClass('video-container-shrunk');
+    $('#slide-row').css('margin-top','20px');
+  }
+  });
+  
+  
+  $.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
+  if (typeof NXP.top_nav != 'undefined') {
+        $('.navbar-collapse').html(NXP.top_nav);
+        $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li><li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li>')
+  } // load top nav elements
+  })
+  
+  
+    jQuery(document).ready(function($) {
+  
+     
+  
+  $.getScript('http://style.nxp.com/files/brightcove/ftf16_player.min.js')
+    .done(function(script,textStatus){
+      console.log ('loaded ftf16_player');
+      // # Show poster at the end of the video
+      $('video').on('ended',function(){
+        $('video')[0].autoplay=false
+        $('video')[0].load();
+        console.log ('VIDEO HAS ENDED')
+      });
+    });
+  
+  $.getScript('http://players.brightcove.net/videojs-social/dist/videojs-social.min.js')
+    .done(function(script,textStatus){
+      console.log ('loaded videojs-social.min.js');
+    });
+  $.getScript('http://style.nxp.com/files/js/elqNow/elqwebanalytics.js')
+    .done(function(script,textStatus){
+      console.log ('loaded elqwebanalytics');
+    });
+  $.getScript('http://style.nxp.com/files/abstract/misc/blueconic.js')
+    .done(function(script,textStatus){
+      console.log ('loaded blueconic');
+    });
+  $.getScript('http://style.nxp.com/files/brightcove/analytics/src/analytics.custom.mapping.ftf16.js')
+    .done(function(script,textStatus){
+      console.log ('loaded custom.mapping.ftf16');
+    });
+  
+   
+  $('.container-wrapper').delegate('a','click',function(e){
+      if ( $(this).is('#email') != true ) { 
+        $(this).attr('target', '_blank');
+      } else {
+        e.preventDefault();
+        t = $(this).attr('data-text')
+        window.location.href="mailto:?subject="+t
+      }
+    });
+  
+  
+     });
+  
+  </script>
+   -->

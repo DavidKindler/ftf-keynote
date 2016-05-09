@@ -71,10 +71,6 @@
     }
   ])
 
-// 'https://www.facebook.com/dialog/feed?app_id=440562362759234&caption=mycaption&description=Awesome%20desc&display=popup&e2e=%7B%7D&link=http%3A%2F%2Fwww.phaninder.com&locale=en_US&name=Link%20name&next=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D42%23cb%3Df28e04308d6ffdc%26domain%3Drun.plnkr.co%26origin%3Dhttp%253A%252F%252Frun.plnkr.co%252Ff1cb99abf0cffe%26relation%3Dopener%26frame%3Df96f25ebd772d8%26result%3D%2522xxRESULTTOKENxx%2522&picture=https%3A%2F%2Frawgit.com%2Fpasupulaphani%2Fangular-socialsharing%2Fgh-pages-gen%2Fapp%2Fimages%2FThirsty-Planet.png&sdk=joey
-// '
-
-
   .directive('socialTwitter', [
     'socialLinker', function(linker) {
       return {

@@ -7,7 +7,8 @@ Meteor.startup(function() {
          'timestamp' : new Date(),
          'event' : {id: '1', name: 'Keynote'},
          'order':1,
-        'public': true
+        'public': false,
+        'published' : false
       },
       {
         'content': 'card 2',
@@ -15,13 +16,23 @@ Meteor.startup(function() {
         'timestamp' : new Date(),
          'event' : {id: '1', name: 'Keynote'},
          'order':2,
-        'public': true
+        'public': false,
+        'published' : false
       }
     ];
     cards.forEach(function(card) {
       Cards.insert(card);
     });
   }
+  if (FinalModal.find().count() == 0) {  
+    var finalModal = '<h2>Top 5 links </h2><img src="http://cache.nxp.com/files/graphic/banner/tn_pu/UNWIND-AFTER-ALL-THE-TRAINING-TN.jpg" alt="" class="img-responsive"><ul><li><a href="#">Link 1</a></li><li><a href="#">Link 2</a></li><li><a href="#">Link 3</a></li><li><a href="#">Link 4</a></li><li><a href="#">Link 5</a></li></ul>';
+    FinalModal.insert ( { 
+      'content' : finalModal, 
+      'timestamp' : new Date(), 
+      'public' : true 
+    })
+  }
+
 });
 
 Meteor.methods({
@@ -43,7 +54,7 @@ Meteor.methods({
         for (var i =cardorder+1; i<= Cards.find().count(); i++){
           Cards.update({'order':i }, {$set: {'order':i+1}})
         }
-        newCard = {owner: Meteor.userId(), public: false, timestamp: new Date(), order: cardorder+1}
+        newCard = {owner: Meteor.userId(), 'public': false, 'published': false, timestamp: new Date(), order: cardorder+1}
         Cards.insert(newCard);
       return "Card inserted above "+cardorder;
     },
@@ -51,7 +62,7 @@ Meteor.methods({
         for (var i =cardorder; i<= Cards.find().count(); i++){
           Cards.update({'order':i }, {$set: {'order':i+1}})
         }
-        newCard = {owner: Meteor.userId(), public: false, timestamp: new Date(), order: cardorder}
+        newCard = {owner: Meteor.userId(), 'public': false, 'published' : false,timestamp: new Date(), order: cardorder}
             Cards.insert(newCard);
       return "Card inserted below "+cardorder;
     }

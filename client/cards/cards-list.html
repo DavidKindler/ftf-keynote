@@ -3,20 +3,13 @@
         <videoplayer></videoplayer>
       
 </div>
+
  <div id="videomodal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog-video">
   <!-- <div class="modal-dialog"> -->
     <div class="modal-content">
-      <div class="modal-body">
-        <h2>Top 5 links </h2>
-        <img src="http://www.nxp.com/files/graphic/banner/tn_pu/UNWIND-AFTER-ALL-THE-TRAINING-TN.jpg" alt="" class="img-responsive">
-        <ul>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          <li><a href="#">Link 3</a></li>
-          <li><a href="#">Link 4</a></li>
-          <li><a href="#">Link 5</a></li>
-        </ul>
+     <div class="modal-body dtmFTFDiv" data-dtmSection="Top 5 Links"> 
+         <div ng-bind-html="finalmodal.content | html" class="centerVideoModalContent"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
@@ -29,20 +22,14 @@
 <div id="slide-row" class="row" >
     <section class="col-md-9">
        <section class="row">
-        <article class="col-md-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-order' | filter:{public:true}">             
+        <article class="col-md-6 animate-repeat slide item-container" ng-repeat="card in cards  | orderBy:'-timestamp' | filter:{public:true}">             
             <div class="item dtmFTFDiv" data-dtmSection="Content Card" id="{{card._id}}"  cardid="{{card._id}}" >
                 <div class="cardContent" >
                     <!-- <div class="caption" ui-sref="cardDetails({ cardId: card._id })"> -->
                     <div class="caption" >
                         <div><span ng-bind-html="card.content | html"></span></div>
                         
-                       <!--  <div class="title text-center">
-                            public: {{card.public}}
-                        </div>
-                        
-                        <div class="text-center">
-                                sync time: {{card.time}}
-                        </div> -->
+                       
                     </div>
                 
                 <!-- <div class="item-footer"  ng-show="{{card.pageurl}}" > -->
@@ -50,7 +37,6 @@
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
 
-                  <!--  <li class="facebook"><a class="social-icon" social-facebook2 custom-url="{{currentUrl}}/{{card._id}}" caption="#NXPFTF Check out what is happening at NXP FTF 2016"  title="{{card.title}}" description="{{card.description}}" image="{{card.image}}"><facebook-icon></facebook-icon></a></li> -->
                    
                     <li class="twitter"><a custom-url="{{currentUrl}}/{{card._id}}" class="social-icon" social-twitter status="The world's cities are getting smarter and more connected. Find out how. Watch streaming #NXPFTF keynote now {{currentUrl}}/{{card._id}} {{card.title}} {{card.description}}"  > <twitter-icon></twitter-icon></a> </li>
                   <li class="googleplus"><a class="social-icon" social-gplus custom-url="{{currentUrl}}/{{card._id}}" ><googleplus-icon></googleplus-icon></a></li>
@@ -155,7 +141,7 @@ $(window).scroll(function(){
 
 // $('#affixTweets').affix({ offset: {top: 400} })
 
-$.getScript("http://www.nxp.com/files/header/newco-nav.js", function(){  
+$.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
           $('.navbar-collapse').html(NXP.top_nav);
           $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li><li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li>')

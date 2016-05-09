@@ -174,12 +174,20 @@
 
   </modal>
 
+  <modal title="Edit final video modal" visible="adminCtrl.showFinalVideoModal" data-backdrop="static">
+    <form role=form>
+                   
+         <textarea  style="width:80%; min-height:250px;" ng-model="adminCtrl.finalmodal.content"> </textarea>
+         <button class="btn btn-sm btn-primary" ng-click="adminCtrl.closeFinalVideoModal()" >Close</button>
+         <button class="btn btn-sm btn-primary" ng-click="adminCtrl.saveFinalVideoModal()" style="margin-right:20px;">Save</button>
+    </form>
+  </modal>
 
   <div class="container">
       <div class="row">
         <div class="col-xs-5">
-          <h3>Published Cards <span class="small">(descending order)</span></h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-order' | filter:{public:true}" class="item-container"> 
+          <h3>Published Cards <span class="small">(timestamp order)</span></h3>
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'-timestamp' | filter:{published:true}" class="item-container"> 
                 <div class="item" id="{{card._id}}" >
                     <div class="cardContent" >
                         <div class="caption" >
@@ -194,7 +202,7 @@
                           <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
                           <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{adminCtrl.currentUrl}}/{{card._id}}">
                             <email-icon></email-icon></a></li>
-                            <li class="small"><em>Card order: {{card.order}}</em></li>
+                            
                          </ul>
                        </footer>
                 </div>
@@ -202,8 +210,10 @@
                 </div>
                 <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleEditCardModal(card)"><i class="fa fa-pencil"></i></button>
                  <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleHTMLCardModal(card)"><i class="fa fa-code"></i></button>
-                <button class="btn btn-xs btn-warning" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.unpublishCard(card)">Unpublish</button>
-
+                <span class="alert" ng-hide="card.public" ng-show="card.published">Publishing {{card.countdown}}</span>
+                <button class="btn btn-xs btn-warning" ng-show="card.public"  ng-click="adminCtrl.unpublishCard(card)">Unpublish</button>
+                  <div class="small"><em>Timestamp: {{card.timestamp | date:'medium'}}&nbsp;&nbsp; Order: {{card.order}}</em></div>
+                  <div class="small"><em><a ng-href="{{adminCtrl.currentUrl}}/{{card._id}}">{{adminCtrl.currentUrl}}/{{card._id}}</a></em></div>
             </div>
 
 
@@ -212,7 +222,7 @@
         </div>
         <div class="col-xs-5">
           <h3>Unpublished Cards <span class="small">(ascending order)</span></h3>
-            <div  ng-repeat="card in adminCtrl.cards | orderBy:'order' | filter:{public:false}" class="item-container">
+            <div  ng-repeat="card in adminCtrl.cards | orderBy:'order' | filter:{published:false}" class="item-container">
                 <div class="item" id="{{card._id}}" data-public="{{card.public}}" data-event="{{card.event.name}}" data-sort="{{card.order}}">
                     <div class="cardContent" >
                         <div class="caption" >
@@ -227,20 +237,21 @@
                           <li class="linkedin"><a class="social-icon" social-linkedin custom-url="{{adminCtrl.currentUrl}}/{{card._id}}"><linkedin-icon></linkedin-icon></a></li>
                           <li class="email" target-blank><a class="social-icon" href="mailto:?subject=Check out what I found at NXP FTF 2016&body={{card.content}} {{adminCtrl.currentUrl}}/{{card._id}}">
                             <email-icon></email-icon></a></li>
-                            <li class="small"><em>Card order: {{card.order}}</em></li>
                          </ul>
                          
                        </footer>
                 </div>
                 </div>
-            <button class="btn btn-xs btn-danger" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.removeCard(card)"><span class="fa fa-trash"></span></button>
-            <button class="btn btn-xs btn-info" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleEditCardModal(card)"><i class="fa fa-pencil"></i></button>
-             <button class="btn btn-xs" ng-show="adminCtrl.isLoggedIn"  ng-click="adminCtrl.toggleHTMLCardModal(card)"><i class="fa fa-code"></i></button>
-              <button class="btn btn-xs btn-warning" ng-disabled="card.countdown" ng-click="adminCtrl.setPublic(card)" ng-show="!card.public" data-toggle="confirmation">Publish {{card.countdown}}</button>
+            <button class="btn btn-xs btn-danger"   ng-click="adminCtrl.removeCard(card)"><span class="fa fa-trash"></span></button>
+            <button class="btn btn-xs btn-info"  ng-click="adminCtrl.toggleEditCardModal(card)"><i class="fa fa-pencil"></i></button>
+             <button class="btn btn-xs" ng-click="adminCtrl.toggleHTMLCardModal(card)"><i class="fa fa-code"></i></button>
+              <button class="btn btn-xs btn-warning"  ng-click="adminCtrl.setPublic(card)" ng-show="!card.published" data-toggle="confirmation">Publish</button>
               &nbsp; &nbsp; 
              
               <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardAbove(card)">Add Card <span class="arrow-down"></span></button>
                <button class="btn btn-xs btn-info"  ng-click="adminCtrl.addCardBelow(card)">Add Card <span class="arrow-up"></span></button>
+                 <div class="small"><em>Timestamp: {{card.timestamp | date:'medium'}}&nbsp;&nbsp; Order: {{card.order}}</em></div>
+                 <div class="small"><em><a ng-href="{{adminCtrl.currentUrl}}/{{card._id}}">{{adminCtrl.currentUrl}}/{{card._id}}</a></em></div>
             </div>
 
 
@@ -262,7 +273,9 @@
             <!--   <button ng-click="adminCtrl.toggleVideoCodeModal()" class="btn btn-default btn-primary btn-xs">Show Video Code</button> -->
             <!-- <button class="btn btn-primary" style="margin-top:8px;"  ng-click="adminCtrl.openAddNewCardModal()">Add new card</button> -->
                <button ng-click="adminCtrl.toggleAddNewCardModal()" class="btn btn-default btn-primary">Add new card</button>
-
+               <hr>
+               <button ng-click="adminCtrl.toggleFinalVideoModal()" class="btn btn-default btn-primary">Update Final Modal</button>
+                  <hr>
               <section>
               <div class="form-group">
               <label for="imageURLInput"></label>
@@ -270,6 +283,7 @@
 
                 <button class="btn btn-md btn-primary" type="submit" ng-click="adminCtrl.addImage(image)">Add Image URL</button>
               </div>
+              <hr>
                 <h3>Images</h3>
               <ul class="list-group">
                         <li class="list-group-item image-list-group" ng-repeat="image in adminCtrl.images" id="{{image.id}}">

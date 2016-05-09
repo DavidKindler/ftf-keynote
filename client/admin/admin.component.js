@@ -11,6 +11,8 @@
         this.subscribe('users');
         this.subscribe('cards');
         this.subscribe('images');
+        this.subscribe('finalmodal');
+
         // this.currentUrl = location.origin+"/#/card"
         this.currentUrl = 'http://www.nxp.com/event/ftf2016/day1/card';
         // console.log (this.currentUrl)
@@ -19,12 +21,20 @@
         this.showAddNewCardModal = false;
         this.showEditCardModal = false;
         this.showHTMLCardModal = false;
+        this.showFinalVideoModal = false;
         // this.showVideoCodeModal = false;
 
         // this.videoCode = VideoCodeHTML;
         // console.log ('videoCODE',this.videoCode);
 
          // $.FroalaEditor.DEFAULTS.key = 'NkziA-8xdvC3D-17ngD2zuv==';
+        // this.choicePopover = {
+        //    template: '<div class="form-group"><button ng-click="choicePopover.publish()" popover-is-open="popoverIsOpen" class="btn btn-sm btn-warning">Confirm publication of card</button> </div>',
+        //    publish : function(){
+        //      alert ("got it") 
+        //      $scope.popoverIsOpen = false
+        //    }
+        //  };
 
         this.froalaOptions = {
             
@@ -70,6 +80,9 @@
           availableOptions: function(){
             return [{id: '1', name: 'Keynote'}, {id: '2', name: 'Speaker 2'} ]
           },
+          finalmodal : function(){ 
+            return FinalModal.findOne({'public': true}) 
+          },
           selectedOption: function() { return {id: '1', name: 'Keynote'} }
         });
        
@@ -77,7 +90,8 @@
           if (confirm("Are you sure you want to unpublish this card?")){ 
             Cards.update({_id: card._id}, {
                         $set: {
-                          'public': false
+                          'public': false,
+                          'published' : false
                         }
                       })
           }
@@ -101,20 +115,13 @@
           // this.newCard.content = card.content;
           this.showHTMLCardModal = !this.showHTMLCardModal;
         };
-        // this.toggleVideoCodeModal = function(videoCode){
-        //   this.videoCodeTemp = this.videoCode;
-        //     this.showVideoCodeModal = !this.showVideoCodeModal;
-        // };
-        // this.closeVideoCodeModal = function(){
-        //   this.showVideoCodeModal = !this.showVideoCodeModal;
-        // };
-        // this.saveVideoCodeModal = function(){
-        //   this.videoCode = this.videoCodeTemp;
-        //   // VideoCodeHTML = this.videoCodeTemp;
-        //   this.showVideoCodeModal = !this.showVideoCodeModal;
-        //   // VideoCodeHTML.$apply();
-        //   // VideoCodeService.$apply();
-        // };
+        this.toggleFinalVideoModal = function(){
+          // console.log ('clicked on ',this)
+          // this.newCard = card;
+          // this.newCard.content = card.content;
+          this.showFinalVideoModal = !this.showFinalVideoModal;
+        };
+
         
         this.processAddNewCard = function(){
           // console.log ('form clicked on', this.newCard);
@@ -123,6 +130,7 @@
           this.newCard.event = this.selectedOption;
           this.newCard.public = false;
           this.newCard.timestamp =  new Date();
+          this.newCard.published = false;
           // Cards.insert(this.newCard);
           Meteor.call('CardAddNew', this.newCard,
              function (error, result) {
@@ -148,6 +156,7 @@
                 'time': this.newCard.time,
                 'public' : this.newCard.public,
                 'order':this.newCard.order
+                 // 'timestamp' : new Date()
               }
             }, 
             (error) => {
@@ -195,15 +204,30 @@
             // $state.go('admin');
         };
 
+
         this.closeHTMLCardModal = function(){
           this.showHTMLCardModal = !this.showHTMLCardModal;
+        }
+
+        this.saveFinalVideoModal = function() {
+          // console.log (this.finalmodal)
+            FinalModal.update({_id: this.finalmodal._id}, {
+              $set: { 'content': this.finalmodal.content, 'timestamp' : new Date() }
+            });
+
+            this.showFinalVideoModal = !this.showFinalVideoModal;
+        };
+
+        this.closeFinalVideoModal = function(){
+          this.showFinalVideoModal = !this.showFinalVideoModal;
         }
 
         function delayPublish (card){
           // console.log ('publish card: ', card);
           Cards.update({_id: card._id}, {
             $set: {
-              'public': true
+              'public': true,
+              'timestamp' : new Date()
             }
           })
         }
@@ -216,6 +240,7 @@
           this.delayToPublish=20; // In seconds
           if (confirm("This card will be published in 20 seconds.  Okay?"))
           {
+            Cards.update({_id: card._id}, {$set: { 'published': true, 'timestamp' : new Date()} })
             card.countdown = Math.round(this.delayToPublish);
             $timeout(delayPublish, this.delayToPublish*1000, true, card);
             countdownTimer(card);          

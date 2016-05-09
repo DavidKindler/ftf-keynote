@@ -57,11 +57,11 @@ angular.module('ftfKeynoteApp')
     controller: 'cardsList'
   })
   
-  .state('card', {
-    url: '/card/:cardId',
-    templateUrl: 'client/cards/cards-detail.html',
-    controller: 'CardDetailCtrl'
-  })
+  // .state('card', {
+  //   url: '/card/:cardId',
+  //   templateUrl: 'client/cards/cards-detail.html',
+  //   controller: 'CardDetailCtrl'
+  // })
 
   
   .state('admin', {

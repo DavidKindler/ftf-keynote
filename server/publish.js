@@ -4,6 +4,10 @@ Meteor.publish("cards", function () {
   return Cards.find({});
 });
 
+Meteor.publish("finalmodal", function () {
+  return FinalModal.find({});
+});
+
 Meteor.publish("publicCards", function () {
   let selector = {
     $and: [{"public": true}, {"public": {$exists: true}} ]
