@@ -27,7 +27,7 @@
         // this.videoCode = VideoCodeHTML;
         // console.log ('videoCODE',this.videoCode);
 
-         // $.FroalaEditor.DEFAULTS.key = 'NkziA-8xdvC3D-17ngD2zuv==';
+         // $.FroalaEditor.DEFAULTS.key = 'eD-17ieovpH3kC-16wD6jef==';
         // this.choicePopover = {
         //    template: '<div class="form-group"><button ng-click="choicePopover.publish()" popover-is-open="popoverIsOpen" class="btn btn-sm btn-warning">Confirm publication of card</button> </div>',
         //    publish : function(){
@@ -53,7 +53,7 @@
 
         this.helpers({
           getActivationKey: function(){
-            return 'NkziA-8xdvC3D-17ngD2zuv==';
+            return 'eD-17ieovpH3kC-16wD6jef==';
           },
           isCardAdmin: function() {
             return Roles.userIsInRole(Meteor.user(), ['edit-cards','manage-users','admin']);

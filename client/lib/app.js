@@ -11,7 +11,7 @@ import ngclipboard from 'ngclipboard';
 //         )
 
     
-
+ // $.FroalaEditor.DEFAULTS.key = 'eD-17ieovpH3kC-16wD6jef==';
 
 angular.module('ftfKeynoteApp', [
   'angular-meteor',
