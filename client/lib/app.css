@@ -903,6 +903,33 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 .froala-popup.froala-image-popup div.f-popup-line.drop-upload {display: none;}
 
 .centerVideoModalContent {display:table; margin-right:auto; margin-left:auto;}
+
+/* Center big play button on video */
+.bc-player-SycMTy4e_default .vjs-big-play-button {
+    border-radius: 6px;
+    width: 100px !important;
+    height: 70px !important;
+    background: #f36f06;
+    top: 42% !important;
+    left: auto !important;
+    position: relative !important;
+    margin: -35px auto 0 auto;
+    opacity: 0.9;
+}
+
+.bc-player-SycMTy4e_default .vjs-big-play-button:before {
+    content: '\e001';
+    color: #fafafa;
+    display: block;
+    font-family: VideoJS;
+    font-size: 40px;
+    line-height: 60px;
+    margin: 33px auto;
+    opacity: .8;
+    text-align: center;
+    width: 23px;
+}
+
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 
 @media screen and (max-width: 992px) {
