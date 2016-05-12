@@ -4,7 +4,7 @@
       
 </div>
 
- <div id="videomodal" class="modal fade" tabindex="-1" role="dialog">
+ <div id="videomodal" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog-video">
   <!-- <div class="modal-dialog"> -->
     <div class="modal-content">
@@ -12,7 +12,7 @@
          <div ng-bind-html="finalmodal.content | html" class="centerVideoModalContent"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+        <button type="button" id="closefinalvideomodal" class="btn btn-md" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@ $(window).scroll(function(){
 $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
           $('.navbar-collapse').html(NXP.top_nav);
-          $('ul.nav.navbar-nav').append('<li class="dropdown"><a href="//www.nxp.com/ruhp" class="dropdown-toggle">MY ACCOUNT</a></li><li class="dropdown"><a href="//www.nxp.com/search" class="dropdown-toggle">SEARCH</a></li>')
+          $('ul.nav.navbar-nav').append('<li class="dropdown dtmMegaMenu" data-dtmname="MYACCOUNT"><a href="//www.nxp.com/ruhp" class="dropdown-toggle" target="_blank">MY ACCOUNT</a></li><li class="dropdown dtmMegaMenu" data-dtmname="SEARCH"><a href="//www.nxp.com/search" class="dropdown-toggle" target="_blank" >SEARCH</a></li>')
     } // load top nav elements
     $('#header .dropdown-menu a').attr('target', '_blank');
 })
@@ -164,11 +164,32 @@ $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){
         // # Show poster at the end of the video
         $('video').on('ended',function(){
           $('video')[0].autoplay=false
+          // $('video')[0].attr('poster','//image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg')
           $('video')[0].load();
+          $('#fslPlayer').fadeOut('slow', function(){
+              $(this).html('<img src="http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg" class="img-responsive" style="margin-top:10%">')
+          }).fadeIn('slow');
+          //http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg
           console.log ('VIDEO HAS ENDED')
           setTimeout(function(){
             $('#videomodal').modal('show');
           },5000);
+          $('#videomodal a').click(function(e){
+            e.preventDefault();
+            console.log ('You clicked on me!',$(this).attr('href'))
+            window.open($(this).attr('href'));
+            setTimeout(function(){ 
+              window.location='http://www.nxp.com'
+            },60000)
+
+          })
+          $('#closefinalvideomodal').click(function(e){
+              console.log ('closed out final video modal')
+              // e.preventDefault();
+              setTimeout(function(){ 
+                window.location='http://www.nxp.com'
+              },60000)
+          })
 
         });
       });

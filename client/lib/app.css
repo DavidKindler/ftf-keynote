@@ -906,7 +906,6 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 .centerVideoModalContent {display:table; margin-right:auto; margin-left:auto;}
 
-
 /* Center big play button on video */
 .bc-player-SycMTy4e_default .vjs-big-play-button {
     border-radius: 6px;
@@ -933,8 +932,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
     width: 23px;
 }
 
-
-
+.cbp-af-header-shrink .bc-player-SycMTy4e_default .vjs-big-play-button {top:17px!important;}
 
 /*///////////////////////////////////////////////////////////////*/
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
@@ -942,6 +940,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 
 
 @media screen and (max-width: 992px) {
+
 
     #video-container-outer.cbp-af-header-shrink video { margin-left:15px; } 
     /*div.cbp-af-header-shrink div#nxp-ftf-video-headline-text { margin-left:0px; padding-top: 7px; }*/
