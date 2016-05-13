@@ -38,11 +38,12 @@
 
         this.froalaOptions = {
             
-            buttons:['formatBlock', 'bold', 'italic', 'underline', 'align', 'insertUnorderedList','createLink', 'insertImage', 'insertVideo',  'undo', 'redo', 'html'],
+            buttons:['formatBlock','bold', 'italic', 'underline', 'align', 'insertUnorderedList','createLink', 'insertImage', 'insertVideo',  'undo', 'redo',  'html'],
             // formatBlockSelection: true,
             blockTags : { 
                   N: 'Normal',
                   H1 : 'Heading 1'
+
             },
             // imagePaste: false,
             // imageInsert: false,

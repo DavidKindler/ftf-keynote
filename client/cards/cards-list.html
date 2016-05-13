@@ -4,16 +4,14 @@
       
 </div>
 
- <div id="videomodal" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+ <div id="videomodal" class="modal fade" tabindex="-1" role="dialog"  >
   <div class="modal-dialog-video">
   <!-- <div class="modal-dialog"> -->
     <div class="modal-content">
      <div class="modal-body dtmFTFDiv" data-dtmSection="Top 5 Links"> 
          <div ng-bind-html="finalmodal.content | html" class="centerVideoModalContent"></div>
       </div>
-      <div class="modal-footer">
-        <button type="button" id="closefinalvideomodal" class="btn btn-md" data-dismiss="modal">Close</button>
-      </div>
+      <button type="button" id="closefinalvideomodal" class="btn btn-md pull-right" data-dismiss="modal" >Close</button>
     </div>
   </div>
 </div>
@@ -144,7 +142,7 @@ $(window).scroll(function(){
 $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){  
     if (typeof NXP.top_nav != 'undefined') {
           $('.navbar-collapse').html(NXP.top_nav);
-          $('ul.nav.navbar-nav').append('<li class="dropdown dtmMegaMenu" data-dtmname="MYACCOUNT"><a href="//www.nxp.com/ruhp" class="dropdown-toggle" target="_blank">MY ACCOUNT</a></li><li class="dropdown dtmMegaMenu" data-dtmname="SEARCH"><a href="//www.nxp.com/search" class="dropdown-toggle" target="_blank" >SEARCH</a></li>')
+          $('ul.nav.navbar-nav').append('<li class="dropdown dtmMegaMenu" data-dtmname="MYACCOUNT"><a href="//www.nxp.com/ruhp/myAccount.html" class="dropdown-toggle" target="_blank">MY ACCOUNT</a></li><li class="dropdown dtmMegaMenu" data-dtmname="SEARCH"><a href="//www.nxp.com/search" class="dropdown-toggle" target="_blank" >SEARCH</a></li>')
     } // load top nav elements
     $('#header .dropdown-menu a').attr('target', '_blank');
 })
@@ -173,24 +171,16 @@ $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){
           console.log ('VIDEO HAS ENDED')
           setTimeout(function(){
             $('#videomodal').modal('show');
+            setTimeout(function(){ 
+                window.location='http://www.nxp.com'
+              },60000)
+            console.log ('Page will refresh in 60 seconds')
           },5000);
           $('#videomodal a').click(function(e){
             e.preventDefault();
-            console.log ('You clicked on me!',$(this).attr('href'))
+            // console.log ('You clicked on me!',$(this).attr('href'))
             window.open($(this).attr('href'));
-            setTimeout(function(){ 
-              window.location='http://www.nxp.com'
-            },60000)
-
           })
-          $('#closefinalvideomodal').click(function(e){
-              console.log ('closed out final video modal')
-              // e.preventDefault();
-              setTimeout(function(){ 
-                window.location='http://www.nxp.com'
-              },60000)
-          })
-
         });
       });
 
