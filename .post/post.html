@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" >
+<head>
+ <!-- <script>document.write("<base href='http://" + document.location.host + "/' />")</script> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="refresh" content="" />
+  <!-- <base href="/"> -->
+  <meta name="DCSext.language_option" content="en" />
+  <meta name="DCSext.en_ti" content="Welcome to NXP Semiconductors" />
+  <meta name="fragment" content="!" />
+  <title>NXP.com FTF Keynote</title>
+  <meta name="description" content="The world's cities are getting smarter and more connected. Find out how. Watch #NXPFTF keynote.">
+  <meta name="keywords" content="NXP, NXP Semiconductors, NXP Solutions, NXP Applications, Analog, DSP, Digital Signal Processing, Power Management, Microcontroller, Sensors, RF, Processors, ICs, SOCs">
+
+  <meta property="og:url"           content="http://www.nxp.com/ftf/" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="NXP FTF 2016 Keynote" />
+  <meta property="og:description"   content="The world's cities are getting smarter and more connected. Find out how. Watch #NXPFTF keynote." />
+  <meta property="og:image"         content="http://events.nxp.com/images/video-poster.png" />
+
+  <meta itemprop="name" content="NXP.com FTF Keynote">
+  <meta itemprop="description" content="The world's cities are getting smarter and more connected. Find out how. Watch #NXPFTF keynote.">
+  <meta itemprop="image" content="http://cache.nxp.com/videos/poster/NXP-FTF-2016-PROMO.jpg">
+  <script src='//style.nxp.com/webapp/visitorIdLookup.jsp'></script>
+  <script type="text/javascript" src="//style.nxp.com/shared/js/webanalytics.js" ></script>
+
+<script type="text/javascript" src="//assets.adobedtm.com/f2bd0c145f764c0e7b6dae5f9269061e38fabacd/satelliteLib-2fb7098ae4e0938976f1eee822973607d3f48c60.js"></script>    
+<script>
+      var LANG_CD_LIST = "zh-Hans,ja,ko";
+      var URL_DOMAIN = "www.nxp.com";
+      var URL_MAJOR_DOMAIN = "nxp.com";
+      var CACHE_URL_DOMAINS = ["cache.nxp.com", "style.nxp.com", "image.nxp.com"];
+
+      var digitalData = {};
+      digitalData.pageInfo = {};
+      digitalData.pageInfo.pageLoadRule = "FTFTakeover";
+      digitalData.siteInfo = {};
+      digitalData.siteInfo.lang = "en"; //ja,zh-Hans
+      digitalData.siteInfo.sitePlatform = "full";
+      digitalData.pageInfo.ftfReferrer = getAdobeCookie('ftf_analytics_referrer');
+      digitalData.pageInfo.ftfURL = getAdobeCookie('ftf_analytics_url');
+      digitalData.pageInfo.contentFinding= getContentFinding(digitalData.pageInfo.ftfReferrer, digitalData.pageInfo.ftfURL, false);
+
+      
+
+</script>
+    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+<script>
+  angular.module("updateMeta",[]),function(){function t(t){function e(e,n,r){if(!document)return t.error("updateMeta: document is not available!"),void 0;if(!e)return t.error('updateMeta: Either of "name", "httpEquiv", "property" or "charset" must be provided!'),void 0;var o=document.querySelector(e);o&&o.setAttribute&&o.setAttribute(n,r)}return{restrict:"E",scope:{charset:"@",name:"@",content:"@",httpEquiv:"@",scheme:"@",property:"@",itemprop:"@"},link:function(t){var n;t.name&&(n='meta[name="'+t.name+'"]'),t.httpEquiv&&(n='meta[http-equiv="'+t.httpEquiv+'"]'),t.property&&(n='meta[property="'+t.property+'"]'),t.itemprop&&(n='meta[itemprop="'+t.itemprop+'"]'),t.$watch("content",function(r){"undefined"!=typeof r&&e(n,"content",t.content)}),t.$watch("charset",function(n){"undefined"!=typeof n&&e("meta[charset]","charset",t.charset)})}}}t.$inject=["$log"],angular.module("updateMeta").directive("updateMeta",t)}(),function(){function t(){return{restrict:"E",scope:{title:"@"},link:function(t){t.$watch("title",function(t){"undefined"!=typeof t&&document&&(document.title=t)})}}}t.$inject=["$log"],angular.module("updateMeta").directive("updateTitle",t)}();
+  angular.module('FTFEventPost', ['ngRoute','updateMeta'])
+  .run(['$route', function() {}])
+  .config(function($routeProvider){
+    $routeProvider.
+        when('/', {
+            templateUrl: 'card-detail.html',
+            controller: 'CardDetailController'
+        }).
+        when('/:cardId', {
+            templateUrl: 'card-detail.html',
+            controller: 'CardDetailController'
+        }).
+        when('/card/:cardId', {
+            templateUrl: 'card-detail.html',
+            controller: 'CardDetailController'
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+  })
+  .controller('CardDetailController', ['$scope', '$http', '$templateCache', '$route', '$routeParams', 
+    function($scope, $http, $templateCache,  $routeParams, $route, $dialog) {
+      $scope.method = 'GET';
+      $scope.url = 'cards.json';
+      $scope.$route = $route;
+      $scope.cardId = $route.cardId;
+      // console.log ($scope.$routeParams, $scope.$route, $scope.cardId)
+      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+          then(function(response) {
+            $scope.status = response.status;
+            $scope.data = response.data;
+            $scope.cardOne = $scope.data.filter(function( obj ) {
+              return obj._id == $scope.cardId;
+            })[0] || {'content': 'NO DATA'};
+             if ($scope.cardOne.content != "NO DATA") {
+              top.location.href=$scope.cardOne.pageurl;
+             } else {
+              top.location.href='http://www.nxp.com/ftf';
+             }
+          }, function(response) {
+            $scope.data = response.data || "Request failed";
+            $scope.status = response.status;
+        });
+       
+
+  }])
+
+</script>
+</head>
+<body ng-app="FTFEventPost">
+
+<script type="text/ng-template" id="card-detail.html">
+<div >
+<update-link rel="canonical" href="{{currentUrl}}/{{cardOne._id}}"></update-link>
+<update-meta name="description" content="{{cardOne.description}}"></update-meta>
+<update-title title="{{cardOne.title}}"></update-title>
+<update-meta property="og:title" content="{{cardOne.title}}"></update-meta>
+<update-meta property="og:url" content="{{currentUrl}}/{{cardOne._id}}"></update-meta>
+<update-meta property="og:type" content="website"></update-meta>
+<update-meta property="og:description" content="{{cardOne.description}}"></update-meta>
+<update-meta property="og:image" content="{{cardOne.image}}"></update-meta>
+<update-meta itemprop="name" content="{{cardOne.title}}"></update-meta>
+<update-meta itemprop="description" content="{{cardOne.description}}"></update-meta>
+<update-meta itemprop="image" content="{{cardOne.image}}"></update-meta>
+</div>
+</script>
+
+
+<div ng-view></div>
+
+
+
+</body>
+</html>

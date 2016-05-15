@@ -165,7 +165,7 @@ $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){
           // $('video')[0].attr('poster','//image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg')
           $('video')[0].load();
           $('#fslPlayer').fadeOut('slow', function(){
-              $(this).html('<img src="http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg" class="img-responsive" style="margin-top:10%">')
+              $(this).html('<img src="http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg" class="img-responsive" style="margin-top:4%">')
           }).fadeIn('slow');
           //http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg
           console.log ('VIDEO HAS ENDED')
@@ -173,14 +173,19 @@ $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){
             $('#videomodal').modal('show');
             setTimeout(function(){ 
                 top.location.href='http://www.nxp.com'
-              },60000)
-            console.log ('Page will refresh in 60 seconds')
+              },60000*5)
+            console.log ('Page will refresh in 5 minutes')
           },5000);
-          $('#videomodal a').click(function(e){
-            e.preventDefault();
+          $('#closefinalvideomodal').click(function(e){
+              e.preventDefault();
             // console.log ('You clicked on me!',$(this).attr('href'))
-            window.open($(this).attr('href'));
-          })
+              top.location.href='http://www.nxp.com'
+          });
+          // $('#videomodal a').click(function(e){
+          //   e.preventDefault();
+          //   // console.log ('You clicked on me!',$(this).attr('href'))
+          //   window.open($(this).attr('href'));
+          // })
         });
       });
 
