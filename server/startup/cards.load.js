@@ -61,7 +61,7 @@ Meteor.methods({
         }
         newCard = {owner: Meteor.userId(), 'public': false, 'published': false, timestamp: new Date(), order: cardorder+1}
         Cards.insert(newCard);
-      return "Card inserted above "+cardorder;
+      return "Card inserted below "+cardorder;
     },
     CardAddBelow: function (cardorder) {
         for (var i =cardorder; i<= Cards.find().count(); i++){
@@ -69,7 +69,7 @@ Meteor.methods({
         }
         newCard = {owner: Meteor.userId(), 'public': false, 'published' : false,timestamp: new Date(), order: cardorder}
             Cards.insert(newCard);
-      return "Card inserted below "+cardorder;
+      return "Card inserted above "+cardorder;
     }
   });
 

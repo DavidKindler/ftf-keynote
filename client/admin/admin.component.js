@@ -88,65 +88,86 @@
         });
        
         this.unpublishCard = function(card) {
-          if (confirm("Are you sure you want to unpublish this card?")){ 
-            Cards.update({_id: card._id}, {
-                        $set: {
-                          'public': false,
-                          'published' : false
-                        }
-                      })
+          if (this.checkNetwork() ) {
+            if (confirm("Are you sure you want to unpublish this card?")){ 
+              Cards.update({_id: card._id}, {
+                          $set: {
+                            'public': false,
+                            'published' : false
+                          }
+                        })
+            }
           }
         };
-        
+        this.checkNetwork = function(){
+          if(Meteor.status().connected) {
+            return true
+          } else {
+            alert ("Network disconnected.  Operation failed.")
+            return false
+          }
+        };
+
         this.toggleAddNewCardModal = function(){
-            this.newCard = {}; 
-            this.newCard.content = "";
-            this.showAddNewCardModal = !this.showAddNewCardModal;
-            // this.showEditCardModal = !this.showEditCardModal;
+            if (this.checkNetwork() ) {
+              this.newCard = {}; 
+              this.newCard.content = "";
+              this.showAddNewCardModal = !this.showAddNewCardModal;
+              // this.showEditCardModal = !this.showEditCardModal;
+            }
         };
         this.toggleEditCardModal = function(card){
           // console.log ('clicked on ',this)
           this.newCard = card;
           // this.newCard.content = "";
-          this.showEditCardModal = !this.showEditCardModal;
+          if (this.checkNetwork() ) {
+            this.showEditCardModal = !this.showEditCardModal;
+          }
         };
         this.toggleHTMLCardModal = function(card){
           // console.log ('clicked on ',this)
           this.newCard = card;
           // this.newCard.content = card.content;
-          this.showHTMLCardModal = !this.showHTMLCardModal;
+          if (this.checkNetwork() ) {
+            this.showHTMLCardModal = !this.showHTMLCardModal;
+          }
         };
         this.toggleFinalVideoModal = function(){
           // console.log ('clicked on ',this)
           // this.newCard = card;
           // this.newCard.content = card.content;
-          this.showFinalVideoModal = !this.showFinalVideoModal;
+          if (this.checkNetwork() ) {
+            this.showFinalVideoModal = !this.showFinalVideoModal;
+          }
         };
 
         
         this.processAddNewCard = function(){
-          // console.log ('form clicked on', this.newCard);
-          // this.newCard.order = Cards.find().count()+1;
-          this.newCard.owner = Meteor.userId();
-          this.newCard.event = this.selectedOption;
-          this.newCard.public = false;
-          this.newCard.timestamp =  new Date();
-          this.newCard.published = false;
-          // Cards.insert(this.newCard);
-          Meteor.call('CardAddNew', this.newCard,
-             function (error, result) {
-               if(error){
-                 console.error(error);
-               }else{
-                 console.info(result);
-               }
-             });
-          this.newCard = {};
-          this.newCard.content = "";
-          this.showAddNewCardModal = !this.showAddNewCardModal;
+          if (this.checkNetwork() ) {
+            // console.log ('form clicked on', this.newCard);
+            // this.newCard.order = Cards.find().count()+1;
+            this.newCard.owner = Meteor.userId();
+            this.newCard.event = this.selectedOption;
+            this.newCard.public = false;
+            this.newCard.timestamp =  new Date();
+            this.newCard.published = false;
+            // Cards.insert(this.newCard);
+            Meteor.call('CardAddNew', this.newCard,
+               function (error, result) {
+                 if(error){
+                   console.error(error);
+                 }else{
+                   console.info(result);
+                 }
+               });
+            this.newCard = {};
+            this.newCard.content = "";
+            this.showAddNewCardModal = !this.showAddNewCardModal;
+          }
         };
 
         this.updateCard = function() {
+          if (this.checkNetwork() ) {
             Cards.update({_id: this.newCard._id}, {
               $set: {
                 'title':this.newCard.title,
@@ -172,10 +193,13 @@
             this.newCard.content = "";
             this.showEditCardModal = !this.showEditCardModal;
             // $state.go('admin');
+          }
         };
 
         this.closeEditCardModal = function(){
-          this.showEditCardModal = !this.showEditCardModal;
+           if (this.checkNetwork() ) {
+            this.showEditCardModal = !this.showEditCardModal;
+          }
         }
 
         this.saveHTMLCardModal = function() {
@@ -211,12 +235,13 @@
         }
 
         this.saveFinalVideoModal = function() {
-          // console.log (this.finalmodal)
+          if (this.checkNetwork() ) {
             FinalModal.update({_id: this.finalmodal._id}, {
               $set: { 'content': this.finalmodal.content, 'timestamp' : new Date() }
             });
 
             this.showFinalVideoModal = !this.showFinalVideoModal;
+          }
         };
 
         this.closeFinalVideoModal = function(){
@@ -238,19 +263,24 @@
         }
 
         this.setPublic = function(card) {
-          this.delayToPublish=20; // In seconds
-          if (confirm("This card will be published in 20 seconds.  Okay?"))
-          {
-            Cards.update({_id: card._id}, {$set: { 'published': true, 'timestamp' : new Date()} })
-            card.countdown = Math.round(this.delayToPublish);
-            $timeout(delayPublish, this.delayToPublish*1000, true, card);
-            countdownTimer(card);          
+          if (this.checkNetwork() ) {
+            this.delayToPublish=20; // In seconds
+            if (confirm("This card will be published in 20 seconds.  Okay?"))
+            {
+              Cards.update({_id: card._id}, {$set: { 'published': true, 'timestamp' : new Date()} })
+              card.countdown = Math.round(this.delayToPublish);
+              $timeout(delayPublish, this.delayToPublish*1000, true, card);
+              countdownTimer(card);          
+            }
           }
         };
 
         this.removeCard = function(card) {
+          // if(Meteor.status().connected) {
+          if (this.checkNetwork() ) {
           if (confirm("Are you sure you want to delete this card?")) 
-          { 
+            { 
+            console.log ('removing card',card)
             Meteor.call('CardDelete',card, 
               function (error, result) {
                 if (error){
@@ -260,9 +290,15 @@
                 }
               })
             }
+          }
+          // } else {
+          //   alert ("Network connection down.  Not Processed.")
+          // }
         };
         this.addCardBelow = function(card){
-             Meteor.call('CardAddBelow', card.order,
+            if (this.checkNetwork() ) {
+            console.log ('adding card above',card)
+            Meteor.call('CardAddBelow', card.order,
                 function (error, result) {
                   if(error){
                     console.error(error);
@@ -270,9 +306,12 @@
                     console.info(result);
                   }
                 });
+          } 
         };
 
         this.addCardAbove = function(card){
+          if (this.checkNetwork() ) {
+           console.log ('adding card below',card)
            Meteor.call('CardAddAbove', card.order,
                 function (error, result) {
                   if(error){
@@ -281,11 +320,11 @@
                     console.info(result);
                   }
                 });
-
-        }
+          } 
+        };
 
         this.addImage=function(newImage){
-          // console.log (newImage)
+         if (this.checkNetwork() ) {
           Meteor.call('ImageURLAdd',newImage,
             function (error, result){
               if (error){
@@ -294,9 +333,11 @@
                 console.info(result)
               }
             })
-        }
+          } 
+        };
 
         this.removeImage=function(image){
+        if (this.checkNetwork() ) {
           Meteor.call('ImageURLRemove',image,
             function (error,result){
               if (error){
@@ -305,6 +346,7 @@
                 console.info(result)
               }
             })
+          } 
         }
 
         this.copyImage=function(image){
