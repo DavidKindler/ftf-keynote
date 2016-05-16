@@ -27,3 +27,8 @@ ftf*.sublime*
 *.sublime-workspace
 nbproject
 Thumbs.db
+
+cards.backup
+cards.txt
+reorder.js
+reorder.js.txt

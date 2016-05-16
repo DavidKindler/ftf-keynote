@@ -37,6 +37,11 @@ Meteor.startup(function() {
 
 Meteor.methods({
     CardAddNew: function (newCard) {
+        if(Cards.find().count() === 0) {
+          newCard.order =1;
+          Cards.insert(newCard);
+          return "First Card added";
+         }
         highestCard = Cards.findOne({},{sort:{order:-1}, limit:1})
         newCard.order = highestCard.order+1
         Cards.insert(newCard);
