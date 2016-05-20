@@ -14,7 +14,7 @@
         this.subscribe('finalmodal');
 
         // this.currentUrl = location.origin+"/#/card"
-        this.currentUrl = 'http://www.nxp.com/event/ftf2016/day1/card';
+        this.currentUrl = 'http://www.nxp.com/event/ftf2016/day2/card';
         // console.log (this.currentUrl)
         this.newCard={};
         // this.showWYSIWYGCardModal = false;
@@ -63,7 +63,7 @@
             return ImagesURL.find({});
           },
           cards:function() {
-            return Cards.find({},{sort:{time:-1}});
+            return Cards.find({},{sort:{order:-1}});
           },
            card: function() {
             return Cards.findOne({_id: $scope.card});
@@ -175,7 +175,6 @@
                 'image':this.newCard.image,
                 'pageurl':this.newCard.pageurl,
                 'content': this.newCard.content,
-                'time': this.newCard.time,
                 'public' : this.newCard.public,
                 'order':this.newCard.order
                  // 'timestamp' : new Date()
@@ -210,7 +209,6 @@
                 'image':this.newCard.image,
                 'pageurl':this.newCard.pageurl,
                 'content': this.newCard.content,
-                'time': this.newCard.time,
                 'public' : this.newCard.public,
                 'order':this.newCard.order
               }
@@ -264,8 +262,8 @@
 
         this.setPublic = function(card) {
           if (this.checkNetwork() ) {
-            this.delayToPublish=20; // In seconds
-            if (confirm("This card will be published in 20 seconds.  Okay?"))
+            this.delayToPublish=2; // In seconds
+            if (confirm("This card will be published in 2 seconds.  Okay?"))
             {
               Cards.update({_id: card._id}, {$set: { 'published': true, 'timestamp' : new Date()} })
               card.countdown = Math.round(this.delayToPublish);
@@ -273,6 +271,9 @@
               countdownTimer(card);          
             }
           }
+        };
+        this.resetCards=function(){
+          Meteor.call('CardReset');
         };
 
         this.removeCard = function(card) {
@@ -297,7 +298,7 @@
         };
         this.addCardBelow = function(card){
             if (this.checkNetwork() ) {
-            console.log ('adding card above',card)
+            console.log ('adding card below',card.order)
             Meteor.call('CardAddBelow', card.order,
                 function (error, result) {
                   if(error){
@@ -311,7 +312,7 @@
 
         this.addCardAbove = function(card){
           if (this.checkNetwork() ) {
-           console.log ('adding card below',card)
+           console.log ('adding card above',card.order)
            Meteor.call('CardAddAbove', card.order,
                 function (error, result) {
                   if(error){

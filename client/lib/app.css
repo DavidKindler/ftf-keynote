@@ -463,8 +463,11 @@ div.cbp-af-header-shrink div#nxp-ftf-video-headline-text {
 }
 
 .nav-container {
-  width:820px; 
-  margin:0px auto;}
+  width:845px; 
+  margin:0px auto;
+  /*margin-left:20%;*/
+  /*width:auto;*/
+}
 
 #header {
   /*margin-top: 10px;*/
@@ -947,6 +950,14 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
 #videomodal button {position: absolute;  right:10px; bottom:10px; z-index:9999;}
 #videomodal ul {line-height: 30px; font-size: 18px;}
  #videomodal img {width:100%; min-height: 170px;}
+
+ img.fr-fin.fr-dib {padding: 0px}
+
+ .nxp-petrol-blue {    background-color: #007088!important;   }
+
+  .nxp-white-text {   color: #fff!important;  }
+
+li.applicationsmenu div.dropdown-menu .row {margin-left:0px; margin-right:0px;}
 /*///////////////////////////////////////////////////////////////*/
 /*  ////////MEDIA QUERY FOR HEADER //////////////////////// */
 /*//////////////////////////////////////////////////////////////*/
@@ -985,7 +996,7 @@ li.aboutmenu div.dropdown-menu {left:-530px;}
   div.cbp-af-header-shrink div#nxp-ftf-video-headline-text { margin-left:40%; }
   #header .nav-link a {display: none;}
   #header #fsl-logo img { width: 150px;  }
-  .nav-container {width:auto;}
+  .nav-container {width:auto; margin-left: 0px;}
   li.productsmenu div.dropdown-menu { left:-65px;}
   #header #navbar-collapse-nxp.navbar-collapse {float:none; margin-left: 0px;}
   .logo-img img {margin-left:15px;}

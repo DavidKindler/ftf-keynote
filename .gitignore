@@ -1,5 +1,6 @@
 .meteor/local
 ftf*.sublime*
+.post/*
 
 # Numerous always-ignore extensions
 *.diff

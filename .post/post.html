@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" >
 <head>
- <!-- <script>document.write("<base href='http://" + document.location.host + "/' />")</script> -->
+ <!-- <script>document.write("<base href='http://" + document.location.origin+document.location.pathname + "/' />")</script>  -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -57,16 +57,16 @@
   angular.module("updateMeta",[]),function(){function t(t){function e(e,n,r){if(!document)return t.error("updateMeta: document is not available!"),void 0;if(!e)return t.error('updateMeta: Either of "name", "httpEquiv", "property" or "charset" must be provided!'),void 0;var o=document.querySelector(e);o&&o.setAttribute&&o.setAttribute(n,r)}return{restrict:"E",scope:{charset:"@",name:"@",content:"@",httpEquiv:"@",scheme:"@",property:"@",itemprop:"@"},link:function(t){var n;t.name&&(n='meta[name="'+t.name+'"]'),t.httpEquiv&&(n='meta[http-equiv="'+t.httpEquiv+'"]'),t.property&&(n='meta[property="'+t.property+'"]'),t.itemprop&&(n='meta[itemprop="'+t.itemprop+'"]'),t.$watch("content",function(r){"undefined"!=typeof r&&e(n,"content",t.content)}),t.$watch("charset",function(n){"undefined"!=typeof n&&e("meta[charset]","charset",t.charset)})}}}t.$inject=["$log"],angular.module("updateMeta").directive("updateMeta",t)}(),function(){function t(){return{restrict:"E",scope:{title:"@"},link:function(t){t.$watch("title",function(t){"undefined"!=typeof t&&document&&(document.title=t)})}}}t.$inject=["$log"],angular.module("updateMeta").directive("updateTitle",t)}();
   angular.module('FTFEventPost', ['ngRoute','updateMeta'])
   .run(['$route', function() {}])
-  .config(function($routeProvider){
+  .config(function($routeProvider,$locationProvider){
     $routeProvider.
         when('/', {
             templateUrl: 'card-detail.html',
             controller: 'CardDetailController'
         }).
-        when('/:cardId', {
-            templateUrl: 'card-detail.html',
-            controller: 'CardDetailController'
-        }).
+        // when('/:cardId', {
+        //     templateUrl: 'card-detail.html',
+        //     controller: 'CardDetailController'
+        // }).
         when('/card/:cardId', {
             templateUrl: 'card-detail.html',
             controller: 'CardDetailController'
@@ -74,6 +74,7 @@
         otherwise({
             redirectTo: '/'
         });
+        // $locationProvider.html5Mode(true);
   })
   .controller('CardDetailController', ['$scope', '$http', '$templateCache', '$route', '$routeParams', 
     function($scope, $http, $templateCache,  $routeParams, $route, $dialog) {
@@ -86,17 +87,23 @@
           then(function(response) {
             $scope.status = response.status;
             $scope.data = response.data;
+
             $scope.cardOne = $scope.data.filter(function( obj ) {
               return obj._id == $scope.cardId;
-            })[0] || {'content': 'NO DATA'};
-             if ($scope.cardOne.content != "NO DATA") {
+            })[0] || {'pageurl': null};
+            // console.log ($scope.cardOne)
+             if ($scope.cardOne.pageurl ) {
+              console.log ('got pageurl', $scope.cardOne)
               top.location.href=$scope.cardOne.pageurl;
              } else {
+              console.log ('no pageurl', $scope.cardOne)
               top.location.href='http://www.nxp.com/ftf';
              }
           }, function(response) {
             $scope.data = response.data || "Request failed";
             $scope.status = response.status;
+            top.location.href='http://www.nxp.com/ftf';
+            console.log ('no response')
         });
        
 

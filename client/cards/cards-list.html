@@ -1,6 +1,25 @@
 <bsnxpnav></bsnxpnav>
 <div class="row cbp-af-header" id="video-container-outer">
-        <videoplayer></videoplayer>
+<div class="videoplayer">
+    <!-- data-video-id="ref:FTF16"   data-video-id="ref:RF-SAGE-VIDEO"   -->
+<div id="video-container" class="outer-container text-center">
+  <video id="fslPlayer" 
+    data-video-id="ref:FTF16" 
+    data-account="4089003392001" 
+    class="video-js"
+    data-player="SycMTy4e" 
+    data-embed="default"
+    controls preload="auto" autoplay width="100%" height="100%"
+    poster="http://cache.nxp.com/videos/poster/NXP-FTF-2016-PROMO.jpg"
+    >
+    <p>Your user agent does not support the HTML5 Video element.</p>
+  </video>  
+  
+  <div id="nxp-ftf-video-headline-text" ><img src="//cache.nxp.com/files/test/twitter/NXP-FTF-LOGO.png"></div>
+</div>
+
+</div>
+        <!-- <videoplayer></videoplayer> -->
       
 </div>
 
@@ -8,7 +27,7 @@
   <div class="modal-dialog-video">
   <!-- <div class="modal-dialog"> -->
     <div class="modal-content">
-     <div class="modal-body dtmFTFDiv" data-dtmSection="Top 5 Links"> 
+     <div class="modal-body dtmFTFDiv" data-dtmsection="Top Link Pop-up Window"> 
          <div ng-bind-html="finalmodal.content | html" class="centerVideoModalContent"></div>
       </div>
       <button type="button" id="closefinalvideomodal" class="btn btn-md pull-right" data-dismiss="modal" >Close</button>
@@ -31,7 +50,7 @@
                     </div>
                 
                 <!-- <div class="item-footer"  ng-show="{{card.pageurl}}" > -->
-                <div class="item-footer"  ng-show="{{card.pageurl!=null}}" >
+                <div class="item-footer"  ng-show="card.pageurl.length>0" >
                  <ul class="list-inline">
                    <li class="facebook"><a class="social-icon" social-facebook custom-url="{{currentUrl}}/{{card._id}}"><facebook-icon></facebook-icon></a></li>
 
@@ -158,24 +177,53 @@ $.getScript("http://style.nxp.com/files/header/newco-nav.js", function(){
 
     $.getScript('http://style.nxp.com/files/brightcove/ftf16_player.min.js')
       .done(function(script,textStatus){
+        var myPlayer;
+        videojs('fslPlayer').ready(function(){
+            myPlayer = this;
+            console.log ('Videojs muyPlayer',myPlayer);
+            myPlayer.errors({
+              "errors" : {
+              "4": {
+                "headline": "This is an NXP custom error headline",
+                "type" : "NXP_CUSTOM_ERR_4",
+                "message": "Howdy folks,  how's it going so far?"
+                }
+            }
+          })
+       });
+
+
+        
         console.log ('loaded ftf16_player');
         // # Show poster at the end of the video
+        $('video').on('error',function(e){
+          console.log ('Video error',e);
+          myPlayer.error({code:"4"});
+        });
+        $('video').on('networkState',function(e){
+          console.log ('Video network state',e)
+          myPlayer.error({code:"4"});
+        });
+
+
+
         $('video').on('ended',function(){
           $('video')[0].autoplay=false
           // $('video')[0].attr('poster','//image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg')
           $('video')[0].load();
-          $('#fslPlayer').fadeOut('slow', function(){
-              $(this).html('<img src="http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg" class="img-responsive" style="margin-top:4%">')
-          }).fadeIn('slow');
+          
           //http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg
           console.log ('VIDEO HAS ENDED')
           setTimeout(function(){
+            $('#fslPlayer').fadeOut('slow', function(){
+              $(this).html('<img src="http://image.nxp.com/files/test/twitter/NXP-FTF-Takeover-Video-Graphics_Thanks_o1v1.jpg" class="img-responsive" style="margin-top:4%">')
+            }).fadeIn('slow');
             $('#videomodal').modal('show');
             setTimeout(function(){ 
                 top.location.href='http://www.nxp.com'
               },60000*5)
             console.log ('Page will refresh in 5 minutes')
-          },5000);
+          },10000);
           $('#closefinalvideomodal').click(function(e){
               e.preventDefault();
             // console.log ('You clicked on me!',$(this).attr('href'))
