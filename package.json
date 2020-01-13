@@ -10,7 +10,7 @@
     "ngclipboard": "^1.1.1",
     "prerender-node": "^2.2.1",
     "rangy": "^1.3.0",
-    "lodash": "4.17.5"
+    "lodash": "4.17.15"
 
   },
   "devDependencies": {},
