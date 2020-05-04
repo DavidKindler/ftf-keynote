@@ -10,17 +10,20 @@
     "ngclipboard": "^1.1.1",
     "prerender-node": "^3.0.0",
     "rangy": "^1.3.0",
-    "lodash": "4.17.15"
-
+    "lodash": "4.17.15",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
     "url": "http://r12306c@sw-stash.freescale.net/scm/ebiz/ftf-keynote.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "snyk": true
 }
